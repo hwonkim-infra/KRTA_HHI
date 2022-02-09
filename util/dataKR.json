@@ -1,0 +1,128 @@
+[
+  {
+    "Model": "DX150LC-7\n(CEBDT)",
+    "KRCode": "KR20",
+    "Bucket": 0.59,
+    "options": "KR10+Rotating+AVM",
+    "SOP": "'21.12월",
+    "Engine": "두산 D34",
+    "ApprDate": "~12월말까지"
+  },
+  {
+    "Model": "DX150LCR-7\n(CEBDU)",
+    "KRCode": "KR10",
+    "Bucket": 0.59,
+    "options": "4.0B+1.9A+AVM",
+    "SOP": "'22.1월",
+    "Engine": "두산 D34",
+    "ApprDate": ""
+  },
+  {
+    "Model": "DX240LC-7\n(CEBDP)",
+    "KRCode": "KR30",
+    "Bucket": 0.92,
+    "options": "STD",
+    "SOP": "'21.12월",
+    "Engine": "두산 DL06",
+    "ApprDate": "~12월말까지"
+  },
+  {
+    "Model": "DX240LC-7X\n(CEBDY)",
+    "KRCode": "KR10",
+    "Bucket": 0.92,
+    "options": "STD + 2.5D MG/MC+AVM",
+    "SOP": "'22.2월",
+    "Engine": "두산 DL06",
+    "ApprDate": "~11/5까지"
+  },
+  {
+    "Model": "DX240LCR-7\n(CEBDS)",
+    "KRCode": "KR10",
+    "Bucket": 0.92,
+    "options": "4.7B+2.1A+AVM",
+    "SOP": "'21.11월",
+    "Engine": "두산 DL06",
+    "ApprDate": ""
+  },
+  {
+    "Model": "DX150W-7\n(CEWCX)",
+    "KRCode": "KR30",
+    "Bucket": 0.59,
+    "options": "KR10+Rotating",
+    "SOP": "'22.1월",
+    "Engine": "두산 DL06",
+    "ApprDate": "~1월말까지"
+  },
+  {
+    "Model": "DX170W-7\n(CEWCX)",
+    "KRCode": "KR30",
+    "Bucket": 0.59,
+    "options": "KR10(STD(2.5A))+Rotating",
+    "SOP": "'22.1월",
+    "Engine": "두산 DL06",
+    "ApprDate": "~1월말까지"
+  },
+  {
+    "Model": "DX220W-7\n(CEWCL)",
+    "KRCode": "KR20",
+    "Bucket": 0.86,
+    "options": "철거용(STD+2 pumps)",
+    "SOP": "'22.2월",
+    "Engine": "두산 DL06",
+    "ApprDate": "~2월말까지"
+  },
+  {
+    "Model": "DX320LC-7\n(CECGS)",
+    "KRCode": "KR10",
+    "Bucket": 1.27,
+    "options": "STD (6.245B+3.1A+1.27b)",
+    "SOP": "'22.2월",
+    "Engine": "두산 DL08",
+    "ApprDate": "~12월말까지"
+  },
+  {
+    "Model": "DX350LC-7\n(CECGT)",
+    "KRCode": "KR10",
+    "Bucket": "Non Bucket",
+    "options": "Sheet Pile Driver, Demolition",
+    "SOP": "'21.12월",
+    "Engine": "두산 DL08",
+    "ApprDate": "~12월말까지"
+  },
+  {
+    "Model": "DX400LC-7\n(CECFL)",
+    "KRCode": "KR10",
+    "Bucket": 1.61,
+    "options": "STD(6.5HD+3.2HD+1.61b)",
+    "SOP": "'21.10월",
+    "Engine": "Scania DC09",
+    "ApprDate": "~2월말까지"
+  },
+  {
+    "Model": "DX550LC-7\n(CECGV)",
+    "KRCode": "KR10",
+    "Bucket": 2.39,
+    "options": "STD(7.1HD+3.35HD+2.39b)",
+    "SOP": "'22.2월",
+    "Engine": "Scania DC13",
+    "ApprDate": "~1월말까지"
+  },
+  {
+    "Model": "DX800LC-7",
+    "KRCode": "KR10",
+    "Bucket": 4.64,
+    "options": "7.7B+2.9A+4.64b",
+    "SOP": "양산중",
+    "Engine": "Perkins 2506J",
+    "ApprDate": ""
+  },
+  {
+    "Model": "DX1000LC-7",
+    "KRCode": "KR10",
+    "Bucket": 5.4,
+    "options": "8.4B+3.75A+5.4b",
+    "SOP": "양산예정",
+    "Engine": "Perkins 2806J",
+    "ApprDate": ""
+  }
+]
