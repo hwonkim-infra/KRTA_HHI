@@ -1,0 +1,96 @@
+<!-- ===============================================-->
+<!--    작업장치    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">작업장치와 작업반경</h5>
+    </div>
+    <div class="card-body bg-light">
+
+        <div class="row gx-2">
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="bucket_struck">버킷용량(평적) (㎥)</label>
+                <input class="form-control" id="bucket_struck" name="bucket_struck" type="text"
+                    value="<% if (editing){ %><%= product.bucket_struck %><% } %>" placeholder="㎥" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="bucket_heap">버킷용량(산적) (㎥)</label>
+                <input class="form-control" id="bucket_heap" name="bucket_heap" type="text"
+                    value="<% if (editing){ %><%= product.bucket_heap %><% } %>" placeholder="㎥" />
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="arm_length">암의길이 (㎜)</label>
+                <input class="form-control" id="arm_length" name="arm_length" type="text"
+                    value="<% if (editing){ %><%= product.arm_length %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="boom_length">붐의길이 (㎜)</label>
+                <input class="form-control" id="boom_length" name="boom_length" type="text"
+                    value="<% if (editing){ %><%= product.boom_length %><% } %>" placeholder="mm" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="digging_reach">최대굴착반지름 (㎜)</label>
+                <input class="form-control" id="digging_reach" name="digging_reach" type="text"
+                    value="<% if (editing){ %><%= product.digging_reach %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="digging_reach_woqc">최대굴착반지름 WO/QC (㎜)</label>
+                <input class="form-control" id="digging_reach_woqc" name="digging_reach_woqc" type="text"
+                    value="<% if (editing){ %><%= product.digging_reach_woqc %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="digging_height">최대굴착높이 (㎜)</label>
+                <input class="form-control" id="digging_height" name="digging_height" type="text"
+                    value="<% if (editing){ %><%= product.digging_height %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="digging_height_woqc">최대굴착높이 WO/QC (㎜)</label>
+                <input class="form-control" id="digging_height_woqc" name="digging_height_woqc" type="text"
+                    value="<% if (editing){ %><%= product.digging_height_woqc %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="digging_depth">최대굴착깊이 (㎜)</label>
+                <input class="form-control" id="digging_depth" name="digging_depth" type="text"
+                    value="<% if (editing){ %><%= product.digging_depth %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="digging_depth_woqc">최대굴착깊이 WO/QC (㎜)</label>
+                <input class="form-control" id="digging_depth_woqc" name="digging_depth_woqc" type="text"
+                    value="<% if (editing){ %><%= product.digging_depth_woqc %><% } %>" placeholder="mm" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="loading_height">최대덤프높이 (㎜)</label>
+                <input class="form-control" id="loading_height" name="loading_height" type="text"
+                    value="<% if (editing){ %><%= product.loading_height %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="loading_height_woqc">최대덤프높이 WO/QC (㎜)</label>
+                <input class="form-control" id="loading_height_woqc" name="loading_height_woqc" type="text"
+                    value="<% if (editing){ %><%= product.loading_height_woqc %><% } %>" placeholder="mm" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="quick_coupler">퀵 커플러 (모델명)</label>
+                <input class="form-control" id="quick_coupler" name="quick_coupler" type="text"
+                    value="<% if (editing){ %><%= product.quick_coupler %><% } %>" placeholder="RFQ???" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="quick_coupler_weight">퀵 커플러 (중량)</label>
+                <input class="form-control" id="quick_coupler_weight" name="quick_coupler_weight" type="text"
+                    value="<% if (editing){ %><%= product.quick_coupler_weight %><% } %>" placeholder="kg" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="Front_Creep">버켓 침하량 (㎜)</label>
+                <input class="form-control" id="Front_Creep" name="Front_Creep" type="text"
+                    value="<% if (editing){ %><%= product.Front_Creep %><% } %>" placeholder="mm" />
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

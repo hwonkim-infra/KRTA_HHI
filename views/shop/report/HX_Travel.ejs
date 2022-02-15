@@ -1,0 +1,438 @@
+<% 
+    var travel_reduc_1 = (1 + product.travel_ring_gear_R1 / product.travel_sun_gear_S1).toFixed(2);
+    var travel_reduc_2 = (1 + product.travel_ring_gear_R2 / product.travel_sun_gear_S2).toFixed(2);
+    var travel_reduc = (travel_reduc_1 * travel_reduc_2 - 1).toFixed(2);
+
+ %> 
+<% 
+var TM_rev_1 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_1 * travel_reduc)*1000).toFixed(2);
+var TM_rev_2 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_2 * travel_reduc)*1000).toFixed(2);
+var travel_speed_1 = (TM_rev_1 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);
+var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);
+ %> 
+<% 
+    var TM_1 = (( product.travel_pump_pressure  * product.TM_flow_1  / (200* Math.PI)) *  travel_reduc  *  product.TM_mt).toFixed(2);
+    var TM_2 = (( product.travel_pump_pressure  * product.TM_flow_2  / (200* Math.PI)) *  travel_reduc  *  product.TM_mt).toFixed(2);
+    var Traction_Sprocket = (2 * TM_2 * 1000 / product.sprocket_radius) * product.TM_r;
+    var ground_traction = product.surface_drag * 54850;
+
+
+ %> 
+
+
+
+    <!-- ===============================================-->
+    <!--    주행 능력    -->
+    <!-- ===============================================-->
+    <div class="pages" id="Travel_Speed">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">주행 속도</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    <p>
+                        “최고속도”란 평탄하고 건조한 아스팔트 포장노면에서 운전중량 상태의 건설기계가 주행할 수 있는 최고속도를 말한다.
+                    </p>
+
+                    <table width="100%" height="400px">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>기호</th>
+                                <th>단위</th>
+                                <th>사양</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>주행 펌프 유량</td>
+                                <td>$$Q$$</td>
+                                <td>l/min</td>
+                                <td><%= product.motor_displacement_travel %></td>
+                            </tr>
+                            <tr>
+                                <td>모터 이론 용적(1속)</td>
+                                <td>$$Q_{m1}$$</td>
+                                <td>cc/rev</td>
+                                <td><%= product.TM_flow_1 %></td>
+                            </tr>
+                            <tr>
+                                <td>모터 이론 용적(2속)</td>
+                                <td>$$Q_{m2}$$</td>
+                                <td>cc/rev</td>
+                                <td><%= product.TM_flow_2 %></td>
+                            </tr>
+                            <tr>
+                                <td>스프로켓 반경</td>
+                                <td>$$R$$</td>
+                                <td>㎜</td>
+                                <td><%= product.sprocket_radius %></td>
+                            </tr>
+                            <tr>
+                                <td>모터용적효율</td>
+                                <td>$$\mu_{mv}$$</td>
+                                <td></td>
+                                <td><%= product.TM_mv %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table width="100%" height="400px">
+                        <thead>
+                            <tr>
+                                <th colspan="3">계산</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="item-headers" colspan="3">주행모터 축 회전</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">$$SM = {Q \cdot \mu_{mv} \over {q \times i}} \times 1,000$$</td>
+                                <td>(고속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_1 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
+                                <td><%= TM_rev_1 %></td>
+                            </tr>
+                            <tr>
+                                <td>(저속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_2 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
+
+                                <td><%= TM_rev_2 %></td>
+                            </tr>
+                            <tr>
+                                <td class="item-headers" colspan="3">주행속도 (km/hr)</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">$$V = {SM \times 2\pi R \times 60 \over 10^6}$$</td>
+                                <td>(고속) $$V_1 = {<%= TM_rev_1 %> \times 2\pi \times <%= product.sprocket_radius %> \times 60 \over 10^6}$$</td>
+                                <td><%= travel_speed_1 %></td>
+                            </tr>
+                            <tr>
+                                <td>(저속) $$V_2 = {<%= TM_rev_2 %> \times 2\pi \times <%= product.sprocket_radius %> \times 60 \over 10^6}$$</td>
+                                <td><%= travel_speed_2 %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="pages" id="Travel_Reduction">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">주행 속도</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    <p>
+                        주행 감속비 계산
+                    </p>
+
+
+                    <table width="100%" height="400px">
+                        <thead>
+                            <tr>
+                                <th colspan="6">감속비 (주행)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>기어</td>
+                                <td>기호</td>
+                                <td>사양</td>
+                                <td class="item-headers" colspan="3">계산</td>
+                            </tr>
+                            <tr>
+                                <td>주행선기어1</td>
+                                <td>S1</td>
+                                <td><%= product.travel_sun_gear_S1 %></td>
+                                <td rowspan="2">$$i_1 = {(S_1+R_1) \over S_1}$$</td>
+                                <td rowspan="2">$${(<%= product.travel_sun_gear_S1 %>+<%= product.travel_ring_gear_R1 %>) \over <%= product.travel_sun_gear_S1 %>}$$</td>
+                                <td rowspan="2">$$<%= travel_reduc_1 %>$$</td>
+                            </tr>
+                            <tr>
+                                <td>주행링기어1</td>
+                                <td>R1</td>
+                                <td><%= product.travel_ring_gear_R1 %></td>
+                            </tr>
+                            <tr>
+                                <td>주행선기어2</td>
+                                <td>S2</td>
+                                <td><%= product.travel_sun_gear_S2 %></td>
+                                <td rowspan="2">$$i_2 = {(S_2+R_2) \over S_2}$$</td>
+                                <td rowspan="2">$${(<%= product.travel_sun_gear_S2 %>+<%= product.travel_ring_gear_R2 %>) \over <%= product.travel_sun_gear_S2 %>}$$</td>
+                                <td rowspan="2">$$<%= travel_reduc_2 %>$$</td>
+                            </tr>
+                            <tr>
+                                <td>주행링기어2</td>
+                                <td>R2</td>
+                                <td><%= product.travel_ring_gear_R2 %></td>
+                            </tr>
+                            <tr>
+                                <td class="item-headers" colspan="3">주행감속비</td>
+                                <td>$$I_{total} = i_1 \times i_2 -1 $$</td>
+                                <td>$$<%= travel_reduc_1 %> \times <%= travel_reduc_2 %> -1 $$</td>
+                                <td>$$<%= travel_reduc %>$$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="pages" id="Greadability_1">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">경사지 등판 및 제동 능력</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    <p>
+                        굴착기는 100분의 25(무한궤도식 굴착기는 100분의 30을 말한다) 기울기의 견고한 건조 지면을 올라갈 수 있고, 정지상태를 유지할 수 있는 제동장치 및 제동장금장치를
+                        갖추어야 한다.
+                    </p>
+
+                    <table width="100%" height="300px">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>기호</th>
+                                <th>단위</th>
+                                <th>사양</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>장비 총 중량</td>
+                                <td>$$W_T$$</td>
+                                <td>㎏</td>
+                                <td>54850</td>
+                            </tr>
+                            <tr>
+                                <td>주행 펌프 압력</td>
+                                <td>$$P$$</td>
+                                <td>㎏/㎠</td>
+                                <td><%= product.travel_pump_pressure %></td>
+                            </tr>
+                            <tr>
+                                <td>모터 기계 효율</td>
+                                <td>$$\mu_{mt}$$</td>
+                                <td>%</td>
+                                <td><%= product.TM_mt %></td>
+                            </tr>
+                            <tr>
+                                <td>동력 전달 효율</td>
+                                <td>$$\mu_r$$</td>
+                                <td>%</td>
+                                <td><%= product.TM_r %></td>
+                            </tr>
+                            <tr>
+                                <td>구동 점착 계수</td>
+                                <td>$$\mu$$</td>
+                                <td></td>
+                                <td><%= product.surface_drag %></td>
+                            </tr>
+                            <tr>
+                                <td>스프로켓 반경</td>
+                                <td>$$R$$</td>
+                                <td>㎜</td>
+                                <td><%= product.sprocket_radius %></td>
+                            </tr>
+                            <tr>
+                                <td>주행 저항 계수</td>
+                                <td>$$\xi$$</td>
+                                <td></td>
+                                <td><%= product.travel_drag %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="pages" id="Greadability_2">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">경사지 등판 및 제동 능력</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    <div class="head_description">주행 모터 토크 계산</div>
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td rowspan="2">$$TM = $$$${P \cdot q \over 200 \pi} \times i \times \mu_{mt}$$</td>
+                                <td>(1속)$$TM_1 = {<%= product.travel_pump_pressure %> \cdot <%= product.TM_flow_1 %> \over 200 \pi} \times <%= travel_reduc %> \times <%= product.TM_mt %>$$</td>
+                                <td>$$<%= TM_1 %>$$</td>
+                            </tr>
+                            <tr>
+                                <td>(2속)$$TM_2 = {<%= product.travel_pump_pressure %> \cdot <%= product.TM_flow_2 %> \over 200 \pi} \times <%= travel_reduc %> \times <%= product.TM_mt %>$$</td>
+                                <td>$$<%= TM_2 %>$$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="head_description">견인력 (DP, kgf): 아래 중 작은 항목</div>
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td class="item-headers" colspan="3">스프로켓 최대 구동력 TS(kgf)</td>
+                            </tr>
+                            <tr>
+                                <td>$$TS = {2 \times TM_1 \times 1000 \over R} \times \mu_r$$</td>
+                                <td>$${2 \times <%= TM_2 %> \times 1000 \over <%= product.sprocket_radius %>} \times <%= product.TM_r %>$$</td>
+                                <td>39635</td>
+                            </tr>
+                            <tr>
+                                <td class="item-headers" colspan="3">점착력 (AF, kgf)</td>
+                            </tr>
+                            <tr>
+                                <td>$$AF = \mu \times W_t$$</td>
+                                <td>$$<%= product.surface_drag %> \times 54850$$</td>
+                                <td>49365</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+
+                        따라서 견인력은 {} kgf
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="pages" id="Greadability_Slope">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">경사지 등판 및 제동 능력</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+
+                    <div class="head_description">견인력 (DP, kgf): 아래 중 작은 항목</div>
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td class="item-headers" colspan="3">경사지에서 미끄러지지 않는 각도</td>
+                            </tr>
+                            <tr>
+                                <td>$$ \mu \cdot W_T \cdot \cos \theta_1 = W_T \cdot \sin \theta_1 $$</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>$$\theta_1 = \tan^{-1}\mu$$</td>
+                                <td>$$\tan^{-1}0.90$$</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td class="item-headers" colspan="3">견인력에 의한 등판 능력</td>
+                            </tr>
+                            <tr>
+                                <td>$$ DP - \xi W_T = W_T \cdot \sin \theta_2 $$</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>$$ \theta_2 = \sin^{-1}{{DP - \xi W_T}\over W_T} $$</td>
+                                <td>$$ \sin^{-1}({{12106 - 0.015 × 21615 } \over 21615}) $$</td>
+                                <td>$$43.1$$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="head_description">엔진 오일 팬에 의한 최대 허용 경사 각도
+                        <p>
+                            $$\theta_3 = 35°$$
+                        </p>
+                    </div>
+
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="pages" id="Greadability_hold">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">경사지 등판 및 제동 능력</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+
+                    <div class="head_description">경사지에서의 제동 유지</div>
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>기호</th>
+                                <th>단위</th>
+                                <th>사양</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>장비 총 중량</td>
+                                <td>$$W_T$$</td>
+                                <td>㎏</td>
+                                <td>54850</td>
+                            </tr>
+                            <tr>
+                                <td>브레이크 토크</td>
+                                <td>$$T_b$$</td>
+                                <td>㎏m</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>주행 감속비</td>
+                                <td>$$I_{total}$$</td>
+                                <td>%</td>
+                                <td>61.47</td>
+                            </tr>
+                            <tr>
+                                <td>스프로켓 반경</td>
+                                <td>$$R$$</td>
+                                <td>㎜</td>
+                                <td>400</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="head_description">경사지에서의 제동 유지는 아래 제동 토크와 내려가는 힘 간의 비교로 결정</div>
+
+                    <table width="100%">
+                        <tbody>
+
+                            <tr>
+                                <td class="item-headers" colspan="3">주차 토크 (마찰력), TP(kgm)</td>
+                            </tr>
+                            <tr>
+                                <td>$$TP=2 \times T_b \times I$$</td>
+                                <td>$$2 \times 150 \times 61.47$$</td>
+                                <td>18441</td>
+                            </tr>
+                            <tr>
+                                <td class="item-headers" colspan="3">기준 경사지 (16.7)에서 스프로켓 구동력 TS(kgm)</td>
+                            </tr>
+                            <tr>
+                                <td>$$TS = R \times W_t \times \sin \theta$$</td>
+                                <td>$$0.4 \times 54850 \times \sin 16.7$$</td>
+                                <td>6305</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>

@@ -1,0 +1,257 @@
+<%- include('../includes/head.ejs') %>
+        <link rel="stylesheet" href="css/pages.css">
+
+
+<%- include('../includes/navigation.ejs') %>
+<!-- ===============================================-->
+<!--    Main Contents    -->
+<!-- ===============================================-->
+<div class="row g-0">
+
+    <div class="col-lg-12 ps-lg-2 mb-3">
+        <div class="card h-lg-100">
+            <div class="card-header">
+                <div class="row flex-between-center">
+                    <div class="col-auto">
+                        <h6 class="mb-0">Product List</h6>
+                    </div>
+
+                </div>
+            </div>
+
+    <% if (prods.length > 0) { %>
+    <div class="row g-0">
+        <% for (let product of prods) { %>
+
+        <div class="col-12 p-card">
+        <table >                                                
+            <tbody>
+                <tr>
+                <td colspan="2" width="25%">형식승인(신고)자</td>
+                <td colspan="4" >두산인프라코어</td>
+                </tr>
+                <tr>
+                <td colspan="2">건설기계명</td>
+                <td width="15%">굴착기</td>
+                <td colspan="2" width="30%">제작회사(제작국)</td>
+                <td> </td>
+                </tr>
+                <tr>
+                <td colspan="2">형식</td>
+                    
+                <td>                                         
+                    <%= product.model_name %>
+                    
+                </td>
+                <td colspan="2">규격</td>
+                <td>
+                    <%= product.machine_grade %>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="2">자체중량 (㎏)</td>
+                <td> 
+                    <%= product.operating_weight %>
+                </td>
+                <td colspan="2">변속기</td>
+                <td> 
+                    <%= product.gearbox %>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="2">최고속도 (㎞/hr)</td>
+                <td> 
+                    <%= product.travel_speed %>
+                </td>
+                <td rowspan="6" width="4%" class="vertical_cell">엔진</td>
+                <td>형식</td>
+                <td> 
+                    <%= product.engine_name %>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="2">등판능력 (무부하)</td>
+                <td> 
+                    <%= product.greadability %>
+                </td>
+                <td>출력(정격출력)</td>
+                <td>
+                    <%= product.engine_power %>
+                </td>
+                </tr>
+                <tr>
+                <td rowspan="4" width="4%" class="vertical_cell">외관</td>
+                <td>길이 (㎜)</td>
+                <td>
+                    <%= product.overall_length %>
+                </td>
+                <td>최대토오크</td>
+                <td>
+                    <%= product.engine_torque %>
+                </tr>
+                <tr>
+                <td>너비 (㎜)</td>
+                <td>
+                    <%= product.overall_width %>
+                <td>기통수</td>
+                <td>
+                    <%= product.engine_cylinder %>
+                </tr>
+                <tr>
+                <td>높이 (㎜)</td>
+                <td> 
+                    <%= product.overall_height %>
+                </td>
+                <td>연료종류</td>
+                <td>디젤 </td>
+                </tr>
+                <tr>
+                <td>최저지상고 (㎜)</td>
+                <td> 
+                    <%= product.ground_clearance %>
+                </td>
+                <td>제작회사</td>
+                <td> 
+                    <%= product.engine_supplier %>
+                </td>
+                </tr>
+                <tr>
+                <td rowspan="5" class="vertical_cell">무한궤도식등</td>
+                <td>슈폭 (㎜)</td>
+                <td>
+                    <%= product.shoe_width %></td>
+                <td rowspan="5" class="vertical_cell">드럼등기타방식</td>
+                <td>드럼치수(㎜× ㎜)</td>
+                <td id="drum_size">-</td>
+                </tr>
+                <tr>
+                <td>트랙높이</td>
+                <td> 
+                    <%= product.track_height %></td>
+                </td>
+                <td>타이어치수</td>
+                <td id="tire_radius">-</td>
+                </tr>
+                <tr>
+                <td>트랙중심간거리 (㎜)</td>
+                <td>
+                    <%= product.track_gap %>
+                </td>
+                <td>축간거리 (㎜)</td>
+                <td id="wheel_base">-</td>
+                </tr>
+                <tr>
+                <td>텀블러중심간거리 (㎜)</td>
+                <td>
+                    <%= product.tumbler_distance %>
+                </td>
+                <td>최소회전반경 (㎜)</td>
+                <td id="min_turning_raduis">-</td>
+                </tr>
+                <tr>
+                <td>접지압(㎏/㎠)</td>
+                <td> 
+                    <%= product.ground_pressure %>
+                </td>
+                <td>제동거리 (m/ ㎞/hr)</td>
+                <td id="braking_distance">-</td>
+                </tr>
+                <tr>
+                <td colspan="6">작 업 장 치</td>
+                </tr>
+                <tr>
+                <td colspan="2">버킷용량(평적) (㎥)</td>
+                <td> 
+                    <%= product.bucket_struck %>
+                </td>
+                <td colspan="2">버킷용량(산적) (㎥)</td>
+                <td> 
+                    <%= product.bucket_heap %>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="2">선회속도 (rpm)</td>
+                <td>
+                    <%= product.swing_speed %>
+                </td>
+                <td colspan="2">암의길이 (㎜)</td>
+                <td> 
+                    <%= product.arm_length %>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="2">붐의길이 (㎜)</td>
+                <td>
+                    <%= product.boom_length %>
+                </td>
+                <td colspan="2">최대굴착반지름 (㎜)</td>
+                <td> 
+                    <%= product.digging_reach %>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="2">최대굴삭깊이 (㎜)</td>
+                <td>
+                    <%= product.digging_depth %>
+                </td>
+                <td colspan="2">최대덤프높이 (㎜)</td>
+                <td> 
+                    <%= product.loading_height %>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="2">배토판너비x높이 (㎜)</td>
+                <td>
+                    <%= product.dozer_size %>
+                </td>
+                <td colspan="2"> </td>
+                <td> </td>
+                </tr>
+                <tr>
+                <td colspan="2" >퀵 커플러 (모델명 / 중량(kg))</td>
+                <td colspan="2">
+                    <%= product.quick_coupler %>
+                </td>          
+                <td>
+                    <%= product.quick_coupler_weight %>
+                </td>
+                </tr>
+                <tr>
+                <td  colspan="2" >비고</td>          
+                <td colspan="4">
+                    <%= product.ETC %>
+                </td>
+                </tr>
+                
+                <tr>
+                <td colspan="2">형식승인연월일</td>
+                <td> <%= product.quick_coupler_weight + product.loading_height %> </td>
+                <td colspan="2">형식승인번호</td>
+                <td> </td>
+                </tr>
+                <tr>
+                <td> 외관도</td>
+                <td> </td>
+                
+                </tr>
+            </tbody>
+            </table>
+            <%- product.drawing_exterior %> 
+
+        </div>
+        <% } %>
+
+
+
+    </div>
+    <% } else {%>
+    <h1>No Products Found</h1>
+
+    <% } %>
+        </div>
+    </div>
+</div>
+
+<!-- End of Main Content -->
+
+<%- include('../includes/end.ejs') %>

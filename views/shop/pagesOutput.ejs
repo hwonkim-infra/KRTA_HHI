@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공통 사항</title>
+
+    <link rel="stylesheet" href="../../stylesheets/pages.css">
+    <style></style>
+
+</head>
+
+<body>
+
+
+
+    <% for (let page of pages) { %>
+
+    <div class="pages" id="<% pages.id %>">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">
+                    <%= page.title %>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    <%- page.description %>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <% } %>
+
+
+
+
+    <script src="https://cdn.ckeditor.com/4.17.1/standard-all/ckeditor.js"></script>
+    <script>
+        // Turn off automatic editor creation first.
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.inline('editor1');
+    </script>
+
+</body>
+
+</html>

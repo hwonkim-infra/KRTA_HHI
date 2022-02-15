@@ -54,7 +54,7 @@ th {
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color .3s;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
 }
 
 .pagination a.active {
@@ -101,7 +101,6 @@ img {
 }
 
 .innertable {
-    border: 1px solid black;
     margin: 0 auto;
 }
 
@@ -109,4 +108,9 @@ img {
     padding-top: 10px;
     font-size: 25px;
     text-align: center;
+}
+
+.item-headers {
+    font: 15px bold;
+    padding: 10px;
 }

@@ -1,0 +1,100 @@
+<!-- ===============================================-->
+<!--    주행 및 등판능력    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">주행, 등판 능력</h5>
+    </div>
+    <div class="card-body bg-light">
+
+        <div class="row gx-2">
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="motor_displacement_travel">주행 펌프 유량 (Q)</label>
+                <input class="form-control" id="motor_displacement_travel" name="motor_displacement_travel" type="text"
+                    value="<% if (editing){ %><%= product.motor_displacement_travel %><% } %>" placeholder="bar" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="travel_pump_pressure">주행 펌프 압력 (P) </label>
+                <input class="form-control" id="travel_pump_pressure" name="travel_pump_pressure" type="text"
+                    value="<% if (editing){ %><%= product.travel_pump_pressure %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="TM_flow_1">모터 용적 1속 (Q_m_1) </label>
+                <input class="form-control" id="TM_flow_1" name="TM_flow_1" type="text"
+                    value="<% if (editing){ %><%= product.TM_flow_1 %><% } %>" placeholder="cc/rev	" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="TM_flow_2">모터 용적 2속 (Q_m_2) </label>
+                <input class="form-control" id="TM_flow_2" name="TM_flow_2" type="text"
+                    value="<% if (editing){ %><%= product.TM_flow_2 %><% } %>" placeholder="cc/rev	" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="TM_mv">모터 용적 효율 (\mu_{mv}) </label>
+                <input class="form-control" id="TM_mv" name="TM_mv" type="text"
+                    value="<% if (editing){ %><%= product.TM_mv %><% } %>" placeholder="" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="TM_mt">모터 기계 효율 (\mu_{mt})</label>
+                <input class="form-control" id="TM_mt" name="TM_mt" type="text"
+                    value="<% if (editing){ %><%= product.TM_mt %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="TM_r">동력 전달 효율 (\mu_r)</label>
+                <input class="form-control" id="TM_r" name="TM_r" type="text"
+                    value="<% if (editing){ %><%= product.TM_r %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="surface_drag">구동 점착 계수 (\mu)</label>
+                <input class="form-control" id="surface_drag" name="surface_drag" type="text"
+                    value="<% if (editing){ %><%= product.surface_drag %><% } %>" placeholder="mm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="sprocket_radius">스프로켓 반경 (R)</label>
+                <input class="form-control" id="sprocket_radius" name="sprocket_radius" type="text"
+                    value="<% if (editing){ %><%= product.sprocket_radius %><% } %>" placeholder="" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="travel_drag">주행 저항 계수 (\xi)</label>
+                <input class="form-control" id="travel_drag" name="travel_drag" type="text"
+                    value="<% if (editing){ %><%= product.travel_drag %><% } %>" placeholder="" />
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="travel_sun_gear_S1">주행감속_선기어(S1)</label>
+                <input class="form-control" id="travel_sun_gear_S1" name="travel_sun_gear_S1" type="text"
+                    value="<% if (editing){ %><%= product.travel_sun_gear_S1 %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="travel_ring_gear_R1">주행감속_링기어(R1)</label>
+                <input class="form-control" id="travel_ring_gear_R1" name="travel_ring_gear_R1" type="text"
+                    value="<% if (editing){ %><%= product.travel_ring_gear_R1 %><% } %>" placeholder="" />
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="travel_sun_gear_S2">주행감속_선기어(S2)</label>
+                <input class="form-control" id="travel_sun_gear_S2" name="travel_sun_gear_S2" type="text"
+                    value="<% if (editing){ %><%= product.travel_sun_gear_S2 %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="travel_ring_gear_R2">주행감속_링기어(R2)</label>
+                <input class="form-control" id="travel_ring_gear_R2" name="travel_ring_gear_R2" type="text"
+                    value="<% if (editing){ %><%= product.travel_ring_gear_R2 %><% } %>" placeholder="" />
+            </div>
+
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="greadability_ref">기준등판각도 (θ)</label>
+                <input class="form-control" id="greadability_ref" name="greadability_ref" type="text"
+                    value="<% if (editing){ %><%= product.greadability_ref %><% } %>" placeholder="" />
+            </div>
+
+        </div>
+    </div>
+</div>

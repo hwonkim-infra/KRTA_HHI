@@ -1,0 +1,259 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="css/pages.css">
+
+
+    <%- include('../includes/navigation.ejs') %>
+        <!-- ===============================================-->
+        <!--    Main Contents    -->
+        <!-- ===============================================-->
+        <div class="row g-0">
+
+            <div class="col-lg-12 ps-lg-2 mb-3">
+                <div class="card h-lg-100">
+                    <div class="card-header">
+                        <div class="row flex-between-center">
+                            <div class="col-auto">
+                                <h6 class="mb-0">
+                                    <% if (editing){ %>Edit Product
+                                        <% } else { %>Add Product
+                                            <% } %>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body h-100 pe-0">
+
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">건설기계 (무한궤도식 등) 제원표</h5>
+                            </div>
+                            <div class="card-body bg-light">
+
+                                <form class="product-form" action="/admin/<% if (editing){ %>edit-product<% } else { %>add-product<% } %>" method="POST">
+
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" width="20%">형식승인(신고)자</td>
+                                                <td colspan="4">두산인프라코어</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">건설기계명</td>
+                                                <td width="10%">굴착기</td>
+                                                <td colspan="2" width="30%">제작회사(제작국)</td>
+                                                <td> </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">형식</td>
+
+                                                <td>
+                                                    <input class="form-control" id="model_name" name="model_name" type="text" value="<% if (editing){ %><%= product.model_name %><% } %>" placeholder="기종명" />
+
+                                                </td>
+                                                <td colspan="2">규격</td>
+                                                <td>
+                                                    <input class="form-control" id="machine_grade" name="machine_grade" type="text" value="<% if (editing){ %><%= product.machine_grade %><% } %>" placeholder="규격" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">자체중량 (㎏)</td>
+                                                <td>
+                                                    <input class="form-control" id="operating_weight" name="operating_weight" type="text" value="<% if (editing){ %><%= product.operating_weight %><% } %>" placeholder="장비 중량" />
+                                                </td>
+                                                <td colspan="2">변속기</td>
+                                                <td>
+                                                    <input class="form-control" id="gearbox" name="gearbox" type="text" value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="무단" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">최고속도 (㎞/hr)</td>
+                                                <td>
+                                                    <input class="form-control" id="travel_speed" name="travel_speed" type="text" value="<% if (editing){ %><%= product.travel_speed %><% } %>" placeholder="㎞/hr" />
+                                                </td>
+                                                <td rowspan="6" width="4%" class="vertical_cell">엔진</td>
+                                                <td>형식</td>
+                                                <td>
+                                                    <input class="form-control" id="engine_name" name="engine_name" type="text" value="<% if (editing){ %><%= product.engine_name %><% } %>" placeholder="인증엔진명" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">등판능력 (무부하)</td>
+                                                <td>
+                                                    <input class="form-control" id="greadability" name="greadability" type="text" value="<% if (editing){ %><%= product.greadability %><% } %>" placeholder="각도" />
+                                                </td>
+                                                <td>출력(정격출력)</td>
+                                                <td>
+                                                    <input class="form-control" id="engine_power" name="engine_power" type="text" value="<% if (editing){ %><%= product.engine_power %><% } %>" placeholder="ps/rpm" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="4" width="4%" class="vertical_cell">외관</td>
+                                                <td>길이 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="overall_length" name="overall_length" type="text" value="<% if (editing){ %><%= product.overall_length %><% } %>" placeholder="mm" />
+                                                </td>
+                                                <td>최대토오크</td>
+                                                <td>
+                                                    <input class="form-control" id="engine_torque" name="engine_torque" type="text" value="<% if (editing){ %><%= product.engine_torque %><% } %>" placeholder="㎏ㆍm/rpm" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>너비 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="overall_width" name="overall_width" type="text" value="<% if (editing){ %><%= product.overall_width %><% } %>" placeholder="mm" /> </td>
+                                                <td>기통수</td>
+                                                <td>
+                                                    <input class="form-control" id="engine_cylinder" name="engine_cylinder" type="text" value="<% if (editing){ %><%= product.engine_cylinder %><% } %>" placeholder="기통" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>높이 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="overall_height" name="overall_height" type="text" value="<% if (editing){ %><%= product.overall_height %><% } %>" placeholder="mm" />
+                                                </td>
+                                                <td>연료종류</td>
+                                                <td>디젤 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>최저지상고 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="ground_clearance" name="ground_clearance" type="text" value="<% if (editing){ %><%= product.ground_clearance %><% } %>" placeholder="mm" />
+                                                </td>
+                                                <td>제작회사</td>
+                                                <td>
+                                                    <input class="form-control" id="engine_supplier" name="engine_supplier" type="text" value="<% if (editing){ %><%= product.engine_supplier %><% } %>" placeholder="엔진제작사" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="5" class="vertical_cell">무한궤도식등</td>
+                                                <td>슈폭 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="shoe_width" name="shoe_width" type="text" value="<% if (editing){ %><%= product.shoe_width %><% } %>" placeholder="mm" /> </td>
+                                                <td rowspan="5" class="vertical_cell">드럼등기타방식</td>
+                                                <td>드럼치수(㎜× ㎜)</td>
+                                                <td id="drum_size">-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>트랙높이</td>
+                                                <td>
+                                                    <input class="form-control" id="track_height" name="track_height" type="text" value="<% if (editing){ %><%= product.track_height %><% } %>" placeholder="mm" /> </td>
+                                                </td>
+                                                <td>타이어치수</td>
+                                                <td id="tire_radius">-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>트랙중심간거리 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="track_gap" name="track_gap" type="text" value="<% if (editing){ %><%= product.track_gap %><% } %>" placeholder="mm" />
+                                                </td>
+                                                <td>축간거리 (㎜)</td>
+                                                <td id="wheel_base">-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>텀블러중심간거리 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="tumbler_distance" name="tumbler_distance" type="text" value="<% if (editing){ %><%= product.tumbler_distance %><% } %>" placeholder="mm" /> </td>
+                                                <td>최소회전반경 (㎜)</td>
+                                                <td id="min_turning_raduis">-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>접지압(㎏/㎠)</td>
+                                                <td>
+                                                    <input class="form-control" id="ground_pressure" name="ground_pressure" type="text" value="<% if (editing){ %><%= product.ground_pressure %><% } %>" placeholder="㎏/㎠" />
+                                                </td>
+                                                <td>제동거리 (m/ ㎞/hr)</td>
+                                                <td id="braking_distance">-</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">작 업 장 치</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">버킷용량(평적) (㎥)</td>
+                                                <td>
+                                                    <input class="form-control" id="bucket_struck" name="bucket_struck" type="text" value="<% if (editing){ %><%= product.bucket_struck %><% } %>" placeholder="㎥" />
+                                                </td>
+                                                <td colspan="2">버킷용량(산적) (㎥)</td>
+                                                <td>
+                                                    <input class="form-control" id="bucket_heap" name="bucket_heap" type="text" value="<% if (editing){ %><%= product.bucket_heap %><% } %>" placeholder="㎥" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">선회속도 (rpm)</td>
+                                                <td>
+                                                    <input class="form-control" id="swing_speed" name="swing_speed" type="text" value="<% if (editing){ %><%= product.swing_speed %><% } %>" placeholder="rpm" />
+                                                </td>
+                                                <td colspan="2">암의길이 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="arm_length" name="arm_length" type="text" value="<% if (editing){ %><%= product.arm_length %><% } %>" placeholder="mm" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">붐의길이 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="boom_length" name="boom_length" type="text" value="<% if (editing){ %><%= product.boom_length %><% } %>" placeholder="mm" />
+                                                </td>
+                                                <td colspan="2">최대굴착반지름 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="digging_reach" name="digging_reach" type="text" value="<% if (editing){ %><%= product.digging_reach %><% } %>" placeholder="mm" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">최대굴삭깊이 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="digging_depth" name="digging_depth" type="text" value="<% if (editing){ %><%= product.digging_depth %><% } %>" placeholder="mm" />
+                                                </td>
+                                                <td colspan="2">최대덤프높이 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="loading_height" name="loading_height" type="text" value="<% if (editing){ %><%= product.loading_height %><% } %>" placeholder="mm" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">배토판너비x높이 (㎜)</td>
+                                                <td>
+                                                    <input class="form-control" id="dozer_size" name="dozer_size" type="text" value="<% if (editing){ %><%= product.dozer_size %><% } %>" placeholder="도저" />
+                                                </td>
+                                                <td colspan="2"> </td>
+                                                <td> </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">퀵 커플러 (모델명 / 중량(kg))</td>
+                                                <td colspan="2">
+                                                    <input class="form-control" id="quick_coupler" name="quick_coupler" type="text" value="<% if (editing){ %><%= product.quick_coupler %><% } %>" placeholder="" />
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" id="quick_coupler_weight" name="quick_coupler_weight" type="text" value="<% if (editing){ %><%= product.quick_coupler_weight %><% } %>" placeholder="kg" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">비고</td>
+                                                <td colspan="4">
+                                                    <input class="form-control" id="ETC" name="ETC" type="text" value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="무단" />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">형식승인연월일</td>
+                                                <td> </td>
+                                                <td colspan="2">형식승인번호</td>
+                                                <td> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+
+                                    <% if (editing){ %>
+                                        <input type="hidden" value="<%= product.id %>" name="productId">
+                                        <% } %>
+                                            <button class="btn btn-link btn-sm btn p-0" type="submit">  <% if (editing){ %> Update Product <% } else { %>Add Product<% } %></button>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End of Main Content -->
+
+        <%- include('../includes/end.ejs') %>
