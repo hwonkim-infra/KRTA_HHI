@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%- pageTitle %> 형식신고
+  </title>
+  <script id="MathJax-script" async src="../../venders/mathjax/tex-mml-chtml.js"></script>
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ["$", "$"],
+          ["\\(", "\\)"],
+        ],
+      },
+    };
+  </script>
+  {{!--
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script> --}}
+  <script id="MathJax-script" async src="../../venders/mathjax/tex-chtml.js"></script>
+
+  <link rel="stylesheet" href="../../stylesheets/pages.css">
+
+  <style></style>
+
+</head>
+
+<body>
+  <% var GrossWeight=product.operating_weight + 65 // 운전중량 %>
+
+
+
+    <!-- ===============================================-->
+    <!--    제원표    -->
+    <!-- ===============================================-->
+
+    <div class="pages" id="mainSpec">
+      <table style="height: 270mm">
+
+        <thead>
+          <tr>
+            <th colspan="6" height="50px">건설기계 (타이어식) 제원표</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2" width="32%">형식승인(신고)자</td>
+            <td colspan="4">현대건설기계</td>
+          </tr>
+          <tr>
+            <td colspan="2">건설기계명</td>
+            <td width="15%">굴착기</td>
+            <td colspan="2" width="30%">제작회사(제작국)</td>
+            <td>현대건설기계 <br> (대한민국) </td>
+          </tr>
+          <tr>
+            <td colspan="2">형식</td>
+            <td>
+              <%= product.model_name %>
+            </td>
+            <td colspan="2">규격</td>
+            <td>
+              <%= product.machine_grade %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">자체중량 (㎏)</td>
+            <td>
+              <%= product.operating_weight %>
+            </td>
+            <td colspan="2">변속기</td>
+            <td>
+              <%= product.gearbox %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">최고속도</td>
+            <td></td>
+            <td rowspan="12" width="4%" class="vertical_cell">타이어식</td>
+            <td>회전반경</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2">등판능력</td>
+            <td></td>
+            <td>제동거리</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="4" width="4%" class="vertical_cell">외 관</td>
+            <td>길이 (㎜)</td>
+            <td></td>
+            <td>축거(1)&nbsp;&nbsp;(㎜)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>너비 (㎜)</td>
+            <td></td>
+            <td>윤거(1)&nbsp;&nbsp;(㎜)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>높이 (㎜)</td>
+            <td></td>
+            <td>타이어(1축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>최저지상고 (㎜)</td>
+            <td></td>
+            <td>타이어(2축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="6" class="vertical_cell">엔 진</td>
+            <td>엔진 형식</td>
+            <td></td>
+            <td>공차 하중 (1축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>출력 (정격)</td>
+            <td></td>
+            <td>공차 하중 (2축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>최대 토크</td>
+            <td></td>
+            <td>적재 하중 (1축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>기통수</td>
+            <td></td>
+            <td>적재 하중 (2축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>연료 종류</td>
+            <td>디젤</td>
+            <td>한계 하중 (1축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>제작사</td>
+            <td></td>
+            <td>한계 하중 (2축)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="5" class="vertical_cell">작업장치</td>
+            <td>버켓용량(평적)</td>
+            <td></td>
+            <td colspan="2">버켓용량(산적)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>붐의 길이</td>
+            <td></td>
+            <td colspan="2">암의 길이</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>선회속도</td>
+            <td></td>
+            <td colspan="2">최대굴착반지름</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>최대굴착깊이</td>
+            <td></td>
+            <td colspan="2">최대덤프높이</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>배토판너비 높이</td>
+            <td colspan="3"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>퀵 커플러</td>
+            <td></td>
+            <td colspan="2">중량</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2">비고</td>
+            <td colspan="4"></td>
+          </tr>
+          <tr>
+            <td colspan="2">형식승인연월일</td>
+            <td></td>
+            <td colspan="2">형식승인번호</td>
+            <td></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+
+    <%- include('./report/HW_WorkingRangeAndQC.ejs') %>
+
+
+
+
+
+      <script src="https://cdn.ckeditor.com/4.17.1/standard-all/ckeditor.js"></script>
+      <script>
+        // Turn off automatic editor creation first.
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.inline('editor1');
+      </script>
+
+</body>
+
+</html>

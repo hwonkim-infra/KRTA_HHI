@@ -8,7 +8,7 @@ const shopRoutes = require('./routes/shop');
 const error404 = require('./controllers/error');
 
 const mongoose = require('mongoose');
-const MONGODB_URI = "mongodb+srv://hwKimDB:H5VRAUk2Zd2BYegH@cluster0.jbnnb.mongodb.net/HHI_HEX?retryWrites=true&w=majority";
+const MONGODB_URI = "mongodb://localhost:27017/HHI_KRTA?retryWrites=true&w=majority";
 
 
 

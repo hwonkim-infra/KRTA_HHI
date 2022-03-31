@@ -23,60 +23,60 @@
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="arm_length">암의길이 (㎜)</label>
                 <input class="form-control" id="arm_length" name="arm_length" type="text"
-                    value="<% if (editing){ %><%= product.arm_length %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.arm_length %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="boom_length">붐의길이 (㎜)</label>
                 <input class="form-control" id="boom_length" name="boom_length" type="text"
-                    value="<% if (editing){ %><%= product.boom_length %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.boom_length %><% } %>" placeholder="㎜" />
             </div>
 
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="digging_reach">최대굴착반지름 (㎜)</label>
                 <input class="form-control" id="digging_reach" name="digging_reach" type="text"
-                    value="<% if (editing){ %><%= product.digging_reach %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.digging_reach %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="digging_reach_woqc">최대굴착반지름 WO/QC (㎜)</label>
                 <input class="form-control" id="digging_reach_woqc" name="digging_reach_woqc" type="text"
-                    value="<% if (editing){ %><%= product.digging_reach_woqc %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.digging_reach_woqc %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="digging_height">최대굴착높이 (㎜)</label>
                 <input class="form-control" id="digging_height" name="digging_height" type="text"
-                    value="<% if (editing){ %><%= product.digging_height %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.digging_height %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="digging_height_woqc">최대굴착높이 WO/QC (㎜)</label>
                 <input class="form-control" id="digging_height_woqc" name="digging_height_woqc" type="text"
-                    value="<% if (editing){ %><%= product.digging_height_woqc %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.digging_height_woqc %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="digging_depth">최대굴착깊이 (㎜)</label>
                 <input class="form-control" id="digging_depth" name="digging_depth" type="text"
-                    value="<% if (editing){ %><%= product.digging_depth %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.digging_depth %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="digging_depth_woqc">최대굴착깊이 WO/QC (㎜)</label>
                 <input class="form-control" id="digging_depth_woqc" name="digging_depth_woqc" type="text"
-                    value="<% if (editing){ %><%= product.digging_depth_woqc %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.digging_depth_woqc %><% } %>" placeholder="㎜" />
             </div>
 
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="loading_height">최대덤프높이 (㎜)</label>
                 <input class="form-control" id="loading_height" name="loading_height" type="text"
-                    value="<% if (editing){ %><%= product.loading_height %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.loading_height %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="loading_height_woqc">최대덤프높이 WO/QC (㎜)</label>
                 <input class="form-control" id="loading_height_woqc" name="loading_height_woqc" type="text"
-                    value="<% if (editing){ %><%= product.loading_height_woqc %><% } %>" placeholder="mm" />
+                    value="<% if (editing){ %><%= product.loading_height_woqc %><% } %>" placeholder="㎜" />
             </div>
 
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="quick_coupler">퀵 커플러 (모델명)</label>
                 <input class="form-control" id="quick_coupler" name="quick_coupler" type="text"
-                    value="<% if (editing){ %><%= product.quick_coupler %><% } %>" placeholder="RFQ???" />
+                    value="<% if (editing){ %><%= product.quick_coupler %><% } %>" placeholder="RFQ??? / DMQ " />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="quick_coupler_weight">퀵 커플러 (중량)</label>
@@ -84,9 +84,14 @@
                     value="<% if (editing){ %><%= product.quick_coupler_weight %><% } %>" placeholder="kg" />
             </div>
             <div class="col-sm-6 mb-3">
-                <label class="form-label" for="Front_Creep">버켓 침하량 (㎜)</label>
-                <input class="form-control" id="Front_Creep" name="Front_Creep" type="text"
-                    value="<% if (editing){ %><%= product.Front_Creep %><% } %>" placeholder="mm" />
+                <label class="form-label" for="bucket_creep_before">버켓 침하량 (시작시 높이)</label>
+                <input class="form-control" id="bucket_creep_before" name="bucket_creep_before" type="text"
+                    value="<% if (editing){ %><%= product.bucket_creep_before %><% } %>" placeholder="㎜" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="bucket_creep_after">버켓 침하량 (10분 뒤 높이)</label>
+                <input class="form-control" id="bucket_creep_after" name="bucket_creep_after" type="text"
+                    value="<% if (editing){ %><%= product.bucket_creep_after %><% } %>" placeholder="㎜" />
             </div>
 
         </div>

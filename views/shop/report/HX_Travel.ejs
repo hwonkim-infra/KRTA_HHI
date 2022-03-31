@@ -1,30 +1,46 @@
 <% 
+    var gross_weight = product.operating_weight + 65;
+ %>
+
+<% 
     var travel_reduc_1 = (1 + product.travel_ring_gear_R1 / product.travel_sun_gear_S1).toFixed(2);
     var travel_reduc_2 = (1 + product.travel_ring_gear_R2 / product.travel_sun_gear_S2).toFixed(2);
     var travel_reduc = (travel_reduc_1 * travel_reduc_2 - 1).toFixed(2);
 
  %> 
-<% 
-var TM_rev_1 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_1 * travel_reduc)*1000).toFixed(2);
-var TM_rev_2 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_2 * travel_reduc)*1000).toFixed(2);
-var travel_speed_1 = (TM_rev_1 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);
-var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);
+<%  // 주행 속도
+    var TM_rev_1 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_1 * travel_reduc)*1000).toFixed(2);
+    var TM_rev_2 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_2 * travel_reduc)*1000).toFixed(2);
+    var travel_speed_1 = (TM_rev_1 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);
+    var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);  
+    var travel_speed_out = Math.max(travel_speed_1, travel_speed_2);
+
  %> 
 <% 
     var TM_1 = (( product.travel_pump_pressure  * product.TM_flow_1  / (200* Math.PI)) *  travel_reduc  *  product.TM_mt).toFixed(2);
     var TM_2 = (( product.travel_pump_pressure  * product.TM_flow_2  / (200* Math.PI)) *  travel_reduc  *  product.TM_mt).toFixed(2);
     var Traction_Sprocket = (2 * TM_2 * 1000 / product.sprocket_radius) * product.TM_r;
     var ground_traction = product.surface_drag * 54850;
-
-
  %> 
 
+<% 
+    var TS = ((2 * TM_1 * 1000 / product.sprocket_radius) * product.TM_r).toFixed(0);   // 스프로켓 최대 구동력
+    var AF = (product.surface_drag * (product.operating_weight + 65)).toFixed(2);   // 점착력
+    var DP = Math.min(TS, AF);  // 견인력
+    var traction_downward = (product.sprocket_radius / 1000 * gross_weight * Math.sin(16.7/180*Math.PI)).toFixed(2);  // 스프로켓 구동력
 
+%> 
+
+<% 
+    var theta_1 = (Math.atan(product.surface_drag)*(180/Math.PI)).toFixed(1);   // 경사지 지탱 각도
+    var theta_2 = ((180/Math.PI) * Math.asin( (DP  - product.travel_drag * gross_weight) / gross_weight)).toFixed(1); // 구동 등판 각도
+    var theta_3 = product.greadability_ref; // 기준 등판각
+ %> 
 
     <!-- ===============================================-->
     <!--    주행 능력    -->
     <!-- ===============================================-->
-    <div class="pages" id="Travel_Speed">
+    <div class="pages" id="Travel_Spec">
         <table class="bordertable">
             <tr class="borderheader">
                 <td height="30mm">주행 속도</td>
@@ -32,11 +48,11 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
 
             <tr>
                 <td class="head_description">
-                    <p>
-                        “최고속도”란 평탄하고 건조한 아스팔트 포장노면에서 운전중량 상태의 건설기계가 주행할 수 있는 최고속도를 말한다.
-                    </p>
+                    <p>“최고속도”란 평탄하고 건조한 아스팔트 포장노면에서 운전중량 상태의 건설기계가 주행할 수 있는 최고속도를 말한다.</p>
+                    <p>▷ 아래 계산 결과에 따라 <strong> 최고 주행 속도는 <%= travel_speed_out %>㎞/h</strong></p>
+                    <p>○ 주행 성능 관련 사양</p>
 
-                    <table width="100%" height="400px">
+                    <table class="innertable" width="90%" height="300px">
                         <thead>
                             <tr>
                                 <th>항목</th>
@@ -78,80 +94,20 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                             </tr>
                         </tbody>
                     </table>
-
-                    <table width="100%" height="400px">
+                    <p>○ 주행 감속비 관련 사양</p>
+                    <table class="innertable" width="60%" height="300px">
                         <thead>
                             <tr>
-                                <th colspan="3">계산</th>
+                                <th>항목</th>
+                                <th>기호</th>
+                                <th>사양</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="item-headers" colspan="3">주행모터 축 회전</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">$$SM = {Q \cdot \mu_{mv} \over {q \times i}} \times 1,000$$</td>
-                                <td>(고속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_1 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
-                                <td><%= TM_rev_1 %></td>
-                            </tr>
-                            <tr>
-                                <td>(저속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_2 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
-
-                                <td><%= TM_rev_2 %></td>
-                            </tr>
-                            <tr>
-                                <td class="item-headers" colspan="3">주행속도 (km/hr)</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">$$V = {SM \times 2\pi R \times 60 \over 10^6}$$</td>
-                                <td>(고속) $$V_1 = {<%= TM_rev_1 %> \times 2\pi \times <%= product.sprocket_radius %> \times 60 \over 10^6}$$</td>
-                                <td><%= travel_speed_1 %></td>
-                            </tr>
-                            <tr>
-                                <td>(저속) $$V_2 = {<%= TM_rev_2 %> \times 2\pi \times <%= product.sprocket_radius %> \times 60 \over 10^6}$$</td>
-                                <td><%= travel_speed_2 %></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-
-    <div class="pages" id="Travel_Reduction">
-        <table class="bordertable">
-            <tr class="borderheader">
-                <td height="30mm">주행 속도</td>
-            </tr>
-
-            <tr>
-                <td class="head_description">
-                    <p>
-                        주행 감속비 계산
-                    </p>
-
-
-                    <table width="100%" height="400px">
-                        <thead>
-                            <tr>
-                                <th colspan="6">감속비 (주행)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>기어</td>
-                                <td>기호</td>
-                                <td>사양</td>
-                                <td class="item-headers" colspan="3">계산</td>
-                            </tr>
+                        <tbody>                            
                             <tr>
                                 <td>주행선기어1</td>
                                 <td>S1</td>
                                 <td><%= product.travel_sun_gear_S1 %></td>
-                                <td rowspan="2">$$i_1 = {(S_1+R_1) \over S_1}$$</td>
-                                <td rowspan="2">$${(<%= product.travel_sun_gear_S1 %>+<%= product.travel_ring_gear_R1 %>) \over <%= product.travel_sun_gear_S1 %>}$$</td>
-                                <td rowspan="2">$$<%= travel_reduc_1 %>$$</td>
                             </tr>
                             <tr>
                                 <td>주행링기어1</td>
@@ -162,20 +118,91 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                                 <td>주행선기어2</td>
                                 <td>S2</td>
                                 <td><%= product.travel_sun_gear_S2 %></td>
-                                <td rowspan="2">$$i_2 = {(S_2+R_2) \over S_2}$$</td>
-                                <td rowspan="2">$${(<%= product.travel_sun_gear_S2 %>+<%= product.travel_ring_gear_R2 %>) \over <%= product.travel_sun_gear_S2 %>}$$</td>
-                                <td rowspan="2">$$<%= travel_reduc_2 %>$$</td>
                             </tr>
                             <tr>
                                 <td>주행링기어2</td>
                                 <td>R2</td>
                                 <td><%= product.travel_ring_gear_R2 %></td>
                             </tr>
+
+                        </tbody>
+                    </table>
+
+
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+
+  <div class="pages" id="Travel_Speed">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">주행 속도</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">                    
+                     <p>○ 주행 감속비 계산</p>
+
+                    <table width="100%" height="250px">
+                        <thead>
                             <tr>
-                                <td class="item-headers" colspan="3">주행감속비</td>
+                                <th colspan="3">감속비 (주행)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                               
+                                <td>$$i_1 = {(S_1+R_1) \over S_1}$$</td>
+                                <td>$${(<%= product.travel_sun_gear_S1 %>+<%= product.travel_ring_gear_R1 %>) \over <%= product.travel_sun_gear_S1 %>}$$</td>
+                                <td>$$<%= travel_reduc_1 %>$$</td>
+                            </tr>
+                            
+                            <tr>
+                                
+                                <td>$$i_2 = {(S_2+R_2) \over S_2}$$</td>
+                                <td>$${(<%= product.travel_sun_gear_S2 %>+<%= product.travel_ring_gear_R2 %>) \over <%= product.travel_sun_gear_S2 %>}$$</td>
+                                <td>$$<%= travel_reduc_2 %>$$</td>
+                            </tr>
+                            
+                            <tr>
+                                
                                 <td>$$I_{total} = i_1 \times i_2 -1 $$</td>
                                 <td>$$<%= travel_reduc_1 %> \times <%= travel_reduc_2 %> -1 $$</td>
                                 <td>$$<%= travel_reduc %>$$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>○ 주행모터 회전속도에 따른 주행속도 계산</p>
+
+                    <table width="100%">                        
+                        <tbody>
+                            <tr>
+                                <td class="item-headers" colspan="3">주행모터 축 회전</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">$$SM = {Q \cdot \mu_{mv} \over {q \times i}} \times 1,000$$</td>
+                                <td>(1속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_1 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
+                                <td><%= TM_rev_1 %></td>
+                            </tr>
+                            <tr>
+                                <td>(2속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_2 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
+
+                                <td><%= TM_rev_2 %></td>
+                            </tr>
+                            <tr>
+                                <td class="item-headers" colspan="3">주행속도 (km/hr)</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">$$V = {SM \times 2\pi R \times 60 \over 10^6}$$</td>
+                                <td>(1속) $$V_1 = {<%= TM_rev_1 %> \times 2\pi \times <%= product.sprocket_radius %> \times 60 \over 10^6}$$</td>
+                                <td><%= travel_speed_1 %></td>
+                            </tr>
+                            <tr>
+                                <td>(2속) $$V_2 = {<%= TM_rev_2 %> \times 2\pi \times <%= product.sprocket_radius %> \times 60 \over 10^6}$$</td>
+                                <td><%= travel_speed_2 %></td>
                             </tr>
                         </tbody>
                     </table>
@@ -185,7 +212,8 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
     </div>
 
 
-    <div class="pages" id="Greadability_1">
+
+    <div class="pages" id="Greadability_traction">
         <table class="bordertable">
             <tr class="borderheader">
                 <td height="30mm">경사지 등판 및 제동 능력</td>
@@ -197,8 +225,10 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                         굴착기는 100분의 25(무한궤도식 굴착기는 100분의 30을 말한다) 기울기의 견고한 건조 지면을 올라갈 수 있고, 정지상태를 유지할 수 있는 제동장치 및 제동장금장치를
                         갖추어야 한다.
                     </p>
+                    <p>○ 견인력 관련 제원</p>
 
-                    <table width="100%" height="300px">
+
+                    <table class="innertable" width="90%" height="300px">
                         <thead>
                             <tr>
                                 <th>항목</th>
@@ -212,7 +242,7 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                                 <td>장비 총 중량</td>
                                 <td>$$W_T$$</td>
                                 <td>㎏</td>
-                                <td>54850</td>
+                                <td><%= product.operating_weight + 65 %></td>
                             </tr>
                             <tr>
                                 <td>주행 펌프 압력</td>
@@ -223,13 +253,13 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                             <tr>
                                 <td>모터 기계 효율</td>
                                 <td>$$\mu_{mt}$$</td>
-                                <td>%</td>
+                                <td></td>
                                 <td><%= product.TM_mt %></td>
                             </tr>
                             <tr>
                                 <td>동력 전달 효율</td>
                                 <td>$$\mu_r$$</td>
-                                <td>%</td>
+                                <td></td>
                                 <td><%= product.TM_r %></td>
                             </tr>
                             <tr>
@@ -266,7 +296,9 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
 
             <tr>
                 <td class="head_description">
+                    <p>▷ 아래 계산 결과에 따라 주행 견인력은  <%= DP %>  kgf</p>
                     <div class="head_description">주행 모터 토크 계산</div>
+
                     <table width="100%">
                         <tbody>
                             <tr>
@@ -280,6 +312,7 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                             </tr>
                         </tbody>
                     </table>
+                    
                     <div class="head_description">견인력 (DP, kgf): 아래 중 작은 항목</div>
                     <table width="100%">
                         <tbody>
@@ -287,24 +320,20 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                                 <td class="item-headers" colspan="3">스프로켓 최대 구동력 TS(kgf)</td>
                             </tr>
                             <tr>
-                                <td>$$TS = {2 \times TM_1 \times 1000 \over R} \times \mu_r$$</td>
-                                <td>$${2 \times <%= TM_2 %> \times 1000 \over <%= product.sprocket_radius %>} \times <%= product.TM_r %>$$</td>
-                                <td>39635</td>
+                                <td>$$TS = {2 \times TM_{max} \times 1000 \over R} \times \mu_r$$</td>
+                                <td>$${2 \times <%= Math.max(TM_1, TM_2) %> \times 1000 \over <%= product.sprocket_radius %>} \times <%= product.TM_r %>$$</td>
+                                <td>$$<%= TS %> $$</td>
                             </tr>
                             <tr>
                                 <td class="item-headers" colspan="3">점착력 (AF, kgf)</td>
                             </tr>
                             <tr>
                                 <td>$$AF = \mu \times W_t$$</td>
-                                <td>$$<%= product.surface_drag %> \times 54850$$</td>
-                                <td>49365</td>
+                                <td>$$<%= product.surface_drag %> \times <%= product.operating_weight + 65 %>$$</td>
+                                <td>$$<%= AF %> $$</td>
                             </tr>
                         </tbody>
                     </table>
-                    <div>
-
-                        따라서 견인력은 {} kgf
-                    </div>
                 </td>
             </tr>
         </table>
@@ -318,9 +347,10 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
 
             <tr>
                 <td class="head_description">
+                    <p>등판 및 정차 가능 경사각은 아래 사양 중 가장 작은 각에 해당: <br>
+                    아래 계산 결과에 따라 등판 가능 경사각은 <%= Math.min(theta_1, theta_2, theta_3) %>°</p>
 
-                    <div class="head_description">견인력 (DP, kgf): 아래 중 작은 항목</div>
-                    <table width="100%">
+                    <table class="innertable" width="90%">
                         <tbody>
                             <tr>
                                 <td class="item-headers" colspan="3">경사지에서 미끄러지지 않는 각도</td>
@@ -332,8 +362,8 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                             </tr>
                             <tr>
                                 <td>$$\theta_1 = \tan^{-1}\mu$$</td>
-                                <td>$$\tan^{-1}0.90$$</td>
-                                <td>42</td>
+                                <td>$$\tan^{-1}<%= product.surface_drag %>$$</td>
+                                <td>$$<%= theta_1 %>$$</td>
                             </tr>
                             <tr>
                                 <td class="item-headers" colspan="3">견인력에 의한 등판 능력</td>
@@ -345,18 +375,19 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                             </tr>
                             <tr>
                                 <td>$$ \theta_2 = \sin^{-1}{{DP - \xi W_T}\over W_T} $$</td>
-                                <td>$$ \sin^{-1}({{12106 - 0.015 × 21615 } \over 21615}) $$</td>
-                                <td>$$43.1$$</td>
+                                <td>$$ \sin^{-1}({{<%= DP %>  - <%= product.travel_drag %> × <%= gross_weight %>} \over <%= gross_weight %>}) $$</td>
+                                <td>$$ <%= theta_2 %> $$</td>
+                            </tr>
+                            <tr>
+                                <td class="item-headers" colspan="3">엔진 오일 팬에 의한 최대 허용 경사</td>
+                            </tr>
+                            <tr>
+                                <td>엔진 팬 제한 각 $$\theta_3 $$</td>
+                                <td></td>
+                                <td>$$ <%= theta_3 %>°$$</td>
                             </tr>
                         </tbody>
-                    </table>
-                    <div class="head_description">엔진 오일 팬에 의한 최대 허용 경사 각도
-                        <p>
-                            $$\theta_3 = 35°$$
-                        </p>
-                    </div>
-
-
+                    </table>                                      
                 </td>
             </tr>
         </table>
@@ -371,8 +402,10 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
             <tr>
                 <td class="head_description">
 
-                    <div class="head_description">경사지에서의 제동 유지</div>
-                    <table width="100%">
+                    <div class="head_description">경사지에서의 제동 유지는 제동 토크와 내려가는 힘 간의 비교로 결정</div>
+                    <p>○ 제동능력 관련 사양</p>
+
+                    <table class="innertable" width="80%">
                         <thead>
                             <tr>
                                 <th>항목</th>
@@ -386,49 +419,47 @@ var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**
                                 <td>장비 총 중량</td>
                                 <td>$$W_T$$</td>
                                 <td>㎏</td>
-                                <td>54850</td>
+                                <td><%= gross_weight %></td>
                             </tr>
                             <tr>
                                 <td>브레이크 토크</td>
                                 <td>$$T_b$$</td>
                                 <td>㎏m</td>
-                                <td>150</td>
+                                <td><%= product.brake_torque %> </td>
                             </tr>
                             <tr>
                                 <td>주행 감속비</td>
                                 <td>$$I_{total}$$</td>
                                 <td>%</td>
-                                <td>61.47</td>
+                                <td><%= travel_reduc %></td>
                             </tr>
                             <tr>
                                 <td>스프로켓 반경</td>
                                 <td>$$R$$</td>
                                 <td>㎜</td>
-                                <td>400</td>
+                                <td><%= product.sprocket_radius %></td>
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="head_description">경사지에서의 제동 유지는 아래 제동 토크와 내려가는 힘 간의 비교로 결정</div>
-
+                    <p>○ 주차 토크와 내려가는 힘 간의 비교</p>
                     <table width="100%">
                         <tbody>
 
                             <tr>
-                                <td class="item-headers" colspan="3">주차 토크 (마찰력), TP(kgm)</td>
+                                <td class="item-headers" colspan="3">주차 토크 TP(kgm)</td>
                             </tr>
                             <tr>
                                 <td>$$TP=2 \times T_b \times I$$</td>
-                                <td>$$2 \times 150 \times 61.47$$</td>
-                                <td>18441</td>
+                                <td>$$2 \times <%= product.brake_torque %> \times <%= travel_reduc %>$$</td>
+                                <td>$$<%= 2 * product.brake_torque * travel_reduc %>$$</td>
                             </tr>
                             <tr>
-                                <td class="item-headers" colspan="3">기준 경사지 (16.7)에서 스프로켓 구동력 TS(kgm)</td>
+                                <td class="item-headers" colspan="3">기준 경사지 (16.7)에서 내려가는 힘 TS(kgm)</td>
                             </tr>
                             <tr>
                                 <td>$$TS = R \times W_t \times \sin \theta$$</td>
-                                <td>$$0.4 \times 54850 \times \sin 16.7$$</td>
-                                <td>6305</td>
+                                <td>$$<%= (product.sprocket_radius / 1000).toFixed(3) %> \times <%= gross_weight %> \times \sin 16.7$$</td>
+                                <td>$$<%= traction_downward %>$$ </td>
                             </tr>
                         </tbody>
                     </table>

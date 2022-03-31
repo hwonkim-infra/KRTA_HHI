@@ -2,35 +2,48 @@ const path = require('path');
 
 const express = require('express');
 
-const adminController = require('../controllers/admin');
-const pagesController = require('../controllers/pages');
+const adminController = require('../controllers/admin_HEX');
+const pagesController = require('../controllers/pages_Supple');
+
+const adminWEXController = require('../controllers/admin_WEX');
 
 
 const router = express.Router();
 
-// /admin/add-product => GET
-router.get('/add-product', adminController.getAddProduct);
+// /admin/add-HEX => GET
+router.get('/add-HEX', adminController.getAddProduct);
 
-// /admin/products => GET
-router.get('/products', adminController.getProducts);
+// /admin/HEXs => GET
+router.get('/HEXs', adminController.getProducts);
 
-// /admin/add-product => POST
-router.post('/add-product', adminController.postAddProduct);
+// /admin/add-HEX => POST
+router.post('/add-HEX', adminController.postAddProduct);
+router.get('/edit-HEX/:Id', adminController.getEditProduct);
 
-router.get('/edit-product/:productId', adminController.getEditProduct);
-
-
-
-router.post('/edit-product', adminController.postEditProduct);
-
-router.post('/delete-product', adminController.postDeleteProduct);
+router.post('/edit-HEX', adminController.postEditProduct);
+router.post('/delete-HEX', adminController.postDeleteProduct);
 
 
+// /admin/add-WEX => GET
+router.get('/add-WEX', adminWEXController.getAddProduct);
 
-/* PAGES */
+// /admin/WEXs => GET
+router.get('/WEXs', adminWEXController.getProducts);
+
+// /admin/add-WEX => POST
+router.post('/add-WEX', adminWEXController.postAddProduct);
+router.get('/edit-WEX/:Id', adminWEXController.getEditProduct);
+
+router.post('/edit-WEX', adminWEXController.postEditProduct);
+router.post('/delete-WEX', adminWEXController.postDeleteProduct);
+
+
+
+
+
+/* Common PAGES */
 // /admin/add-page => GET
 router.get('/add-page', pagesController.getAddPage);
-
 router.get('/pagesOutput', pagesController.getReport);
 
 

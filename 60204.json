@@ -1,0 +1,258 @@
+{
+    "General Req.": {
+        "general": [],
+        "Selection of equipment": {
+            "General": [],
+            "Switchgear": {}
+        },
+        "Electrical supply": {
+            "General": [],
+            "AC supplies ": [],
+            "DC supplies ": [],
+            "Special supply systems ": {}
+        },
+        "Physical environment and operating conditions": {
+            "General": [],
+            "Electromagnetic compatibility (EMC) ": [],
+            "Ambient air temperature ": [],
+            "Humidity ": [],
+            "Altitude ": [],
+            "Contaminants ": [],
+            "Ionizing and non-ionizing radiation ": [],
+            "Vibration, shock, and bump ": {}
+        },
+        "Transportation and storage": [],
+        "Provisions for handling": {}
+    },
+    "Incoming supply conductor terminations and devices for disconnecting and switching off": {
+        "Incoming supply conductor terminations": {
+            "requirement": [
+                "가능한 단일 전원 또는 일부에서 전원인출",
+                "입력도체는 플러그 또는 차단장치에서 종료",
+                "중립선 및 단자: 기술문서에 분명히 표시"
+            ]
+        },
+        "Terminal for connection of the external protective conductor": {
+            "requirement": ["보호 도체의 최소 단면적"]
+        },
+        "Supply disconnecting (isolating) device": {
+            "General": {
+                "requirement": ["퓨즈 또는 개폐기"]
+            },
+            "Type": {
+                "requirement": []
+            },
+            "Requirements ": {
+                "requirement": [
+                    "open close 표시",
+                    "조작 수단",
+                    "잠금 수단",
+                    "상도체 분리",
+                    "차단 용량"
+                ]
+            },
+            "Operating means of the supply disconnecting device": {
+                "requirement": []
+            },
+            "Excepted circuits ": {
+                "requirement": []
+            }
+        },
+        "Devices for removal of power for prevention of unexpected start-up": {
+            "requirement": [
+                "유지보수 중 기동 위험이 있는 기계의 경우 위험방지 전원제거 장치"
+            ]
+        },
+        "Devices for isolating electrical equipment": {
+            "requirement": ["감전 또는 화상 위험 없이 전기장비 분리"]
+        },
+        "Protection against unauthorized, inadvertent and/or mistaken connection": {
+            "requirement": ["무단 재연결 또는 원격 연결 방지 장치"]
+        }
+    },
+
+    "Protection against electric shock": {
+        "general": ["기본과 고장 보호를 통해 전격으로부터 인명 보호"],
+        "basic protection": {
+            "General ": ["일반인 노출 위험: IP2 IPXXB 이상 보호등급"],
+            "Protection by enclosures": [
+                "충전부는 외함으로 보호.",
+                "개방 전 활선부 차단"
+            ],
+            "Protection by insulation of live parts ": ["내구절연체로 피복"],
+            "Protection against residual voltages ": [
+                "60V이상 잔류 전압: 5초 내로 이하로 방전"
+            ],
+            "Protection by barriers ": [],
+            "Protection by placing out of reach or protection by obstacles": {}
+        },
+        "Fault protection": {
+            "General": [],
+            "Prevention of the occurrence of a touch voltage ": [],
+            "Protection by automatic disconnection of supply ": [
+                "고장시 보호장치를 자동 작동"
+            ]
+        },
+        "Protection by the use of PELV": {
+            "General": ["직접접촉 예방 위한 특별 저압 배치"],
+            "Sources for PELV": {}
+        }
+    },
+    "Protection of equipment": {
+        "General": [],
+        "Overcurrent protection": {
+            "General ": ["가장 작은 정격/허용 전류 부품에 대한 과전류 보호"],
+            "Supply conductors ": [],
+            "Power circuits ": ["과전류 감지 및 차단 장치를 전원 충전 도체에 적용"],
+            "Control circuits": ["전원 접속 회로 도체를 과전류 보호"],
+            "Socket outlets and their associated conductors ": [
+                "과전류 보호 및 미접지 충전 도체 차단"
+            ],
+            "Lighting circuits ": ["별도로 과전류 보호"],
+            "Transformers ": ["자화돌입전류, 2차 단자 사고 보호"],
+            "Location of overcurrent protective devices ": [
+                "피보호 도체와 전원 사이에 설치"
+            ],
+            "Overcurrent protective devices ": [],
+            "Rating and setting of overcurrent protective devices ": {}
+        },
+        "Protection of motors against overheating": {
+            "General ": [],
+            "Overload protection ": [],
+            "Over-temperature protection": {}
+        },
+        "Protection against abnormal temperature": [],
+        "Protection against the effects of supply interruption or voltage reduction and subsequent restoration": [
+            "전원 차단 또는 강하 자체가 유발할 수 있는 위험 고려 및 보호 조치"
+        ],
+        "Motor overspeed protection": ["전동기 과속 위험 방지"],
+        "Additional earth fault/residual current protection": [
+            "추가적 지락 전류 보호"
+        ],
+        "Phase sequence protection": [],
+        "Protection against overvoltages due to lightning and to switching surges": [],
+        "Short-circuit current rating": {}
+    },
+    "Equipotential bonding": {
+        "General": [
+            "기계 작동에 영향을 줄 수 있는 절연 고장",
+            "민감 전기 설비 전기장애",
+            "낙뢰 유도 전류"
+        ],
+        "Protective bonding circuit": {
+            "General": [],
+            "Protective conductors ": ["보호 도체 재질 및 크기 규격"],
+            "Continuity of the protective bonding circuit ": [
+                "본딩회로 연속성 설계 및 유지"
+            ],
+            "Protective conductor connecting points": [],
+            "Mobile machines": ["탑재형 전원: 도전성 부분은 본딩 접속"],
+            "Additional requirements for electrical equipment having earth leakage": [],
+            "currents higher than 10 mA": {}
+        },
+        "Measures to restrict the effects of high leakage current": [
+            "과누설 전류: 별도 권선 전용 변압기로"
+        ],
+        "Functional bonding": ["절연 고장이 오기능으로 이어짐 방지"]
+    },
+    "Control circuits and control functions": {
+        "Control circuits": {
+            "제어회로 전원": [
+                "제어회로 전원이 AC 면 별도 변압기로 직류 제어 회로 분리."
+            ],
+            "제어회로 전압": ["공칭전압은 제어회로 작동에 지장 없을 것 "]
+        },
+        "Control functions": {
+            "정지 기능": [],
+            "작동": [],
+            "무선 제어 시스템": {
+                "Cableless Control System": "원격 제어 능력을 지속적 모니터링",
+                "권한": "미인가 신호 차단",
+                "다중 제어": [
+                    "한 번에 한 대상만 활성화",
+                    "대상 전환은 수동 조치",
+                    "제어 대상 표시"
+                ],
+                "portable controller": "미인가 조작 방지",
+                "비활성화": "대상 장비 제어 상실에 대한 예방조치 필요",
+                "비상정지": "비상정지 및 비상정지 초기화, 재설정 수단 필요"
+            }
+        },
+        "Protective interlocks": {
+            "재작동 & 복귀": "재시동으로 인한 연관 위험 방지",
+            "과주행 방지": "속도 압력 위치 등 미리 감지 및 제어",
+            "보조 기능": "보조기능이 고장시 2차 위험이 있는 경우 ",
+            "반작용, 역전류": "반작용, 역회전 등으로 이한 고장이나 단락 방지",
+            "안전 기능": "",
+            "": ""
+        },
+        "Control functions in the event of failure": {
+            "절연 결함": [
+                "절연결함의 2차 위험 예방",
+                "변압기 접지/ 비접지 제어",
+                "변압기가 접지 중앙 탭 권선 이용",
+                "변압기가 공급하지 않는 제어 회로",
+                "정전"
+            ]
+        }
+    },
+    "Operator interface and machine-mounted control devices": {
+        "General": ["IEC 61310에 따른 선정, 설치, 식별, 코드", "접근성, 안전성, 유지보수용이", "IP 등급", "위치 감지 과주행 보호"],
+        "Actuators": ["색상으로 부호화", "표준 아이콘 사용"],
+        "Indicator lights and displays": ["표시등", "색상"],
+        "Illuminated push-buttons": ["색상 부호화"],
+        "Rotary control devices": ["정지부분 회전 방지"],
+        "Start devices": ["오작동 최소화"],
+        "Emergency stop devices": {
+            "위치": "접근성",
+            "형태": "누름, 당김, 페달"
+        },
+        "Emergency switching off devices": {},
+        "Enabling control device": ["기능 상실 위험 최소화"]
+    },
+    "Controlgear: location, mounting, and enclosures": {
+        "General requirements": [],
+        "Location and mounting": {
+            "접근과 유지보수": "",
+            "물리적 분리 및 그룹화": "",
+            "발열": ""
+        },
+        "Degrees of protection": [],
+        "Enclosures, doors and openings": ["오염, 습기, 외력 보호."],
+        "Access to electrical equipment": ["폭 0.7 높이 2m. 바깥쪽 개방. "]
+    },
+    "Conductors and cables": {
+        "General requirements": [],
+        "Conductors": ["구리, 최소단면적과 강도"],
+        "Insulation": ["절연으로 인한 화재 및 가스 방출 위험"],
+        "Current-carrying capacity in normal service": ["허용 전류 용량 변경 요인"],
+        "Conductor and cable voltage drop": ["공칭 전압 5%"],
+        "Flexible cables": ["5~6등급 도체", "기계적 정격", "드럼 케이블 허용 전류"],
+        "Conductor wires, conductor bars and slip-ring assemblies": ["보호 도체", "분리 차단 기능", "도체 계통 구역 구분"]
+    },
+    "Wiring practices": {
+        "Connections and routing": ["도체 고정 및 구분", "단자 연결 및 보호", "교류 와전류 방지", "비접촉 픽업 변환기"],
+        "Identification of conductors": ["색상 등 표식", "본딩 도체 식별", "중성 도체"],
+        "Wiring inside enclosures": ["위치 고정 지지", "내화 절연재", "이동부 접속 보호", "플러그 소켓 조합", "선적 분해"],
+        "Wiring outside enclosures": ["적절 보호 등급", "금속전선관 및 피딩", "유연 금속 전선", "케이블 트렁킹", "구획 및 접속함"],
+        "Ducts, connection boxes and other boxes": {}
+    },
+    "Electric motors and associated equipment": {
+        "General requirements": ["IEC 60034"],
+        "Motor enclosures": ["IEC 60034-5"],
+        "Motor dimensions": ["IEC 60072"],
+        "Motor mounting and compartments": ["주변장치 보호 및 접근성"],
+        "Criteria for motor selection": ["IEC 60034-1"],
+        "Protective devices for mechanical brakes": ["과부하 보호장치"]
+    },
+    "Socket-outlets and lighting": {
+        "Socket-outlets for accessories": ["IEC 60309-1"],
+        "Local lighting of the machine and of the equipment": ["조명 과전류 보호"]
+    },
+    "Marking, warning signs and reference designations": {
+        "General": [],
+        "Warning signs": {},
+        "Marking of enclosures of electrical equipment": [],
+        "Reference designations": {}
+    }
+}

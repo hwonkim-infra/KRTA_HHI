@@ -1,0 +1,105 @@
+<%- include('../includes/head.ejs') %>
+    <script src="/vendors/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'save',
+            height: "960"
+
+        });
+    </script>
+
+    <%- include('../includes/navigation.ejs') %>
+        <!-- ===============================================-->
+        <!--    Main Contents    -->
+        <!-- ===============================================-->
+        <div class="row g-0">
+
+            <div class="col-lg-12 ps-lg-2 mb-3">
+                <div class="card h-lg-100">
+                    <div class="card-header">
+                        <div class="row flex-between-center">
+                            <div class="col-auto">
+                                <h4 class="mb-0">
+                                    <% if (editing){ %>Edit File
+                                        <% } else { %>Add File
+                                            <% } %>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body h-100 pe-0">
+                        <form class="product-form"
+                            action="/admin/<% if (editing){ %>edit-Supple<% } else { %>add-Supple<% } %>" method="POST">
+
+                            <div class="col-sm-6 mb-3">
+                                <label class="form-label" for="file_name">대상 기종 타입</label>
+                                <input class="form-control" id="file_name" name="file_name" type="text"
+                                    value="<% if (editing){ %><%= product.file_name %><% } %>" placeholder="Large Crawler / Mini Wheel Loader/ " />
+                            </div>
+
+                            <!-- ===============================================-->
+                            <!--    외관도    -->
+                            <!-- ===============================================-->
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h5 class="mb-0">건설기계 안전기준</h5>
+                                </div>
+                                <div class="card-body bg-light">
+                                    <div class="row gx-2">
+                                        <label class="form-label article" for="at_12_6_Operator_Protection_1">제12조의6(조종사
+                                            보호구조)
+                                        </label>
+                                        <div class="article description">
+                                            ① 캡이 설치된 굴착기의 조종실은 다음 각 호의 기준에 적합한 조종사 보호구조여야 한다.
+                                            <br>
+                                            1. 운전중량 1,500킬로그램을 초과하는 굴착기는 위쪽 또는 앞쪽에서 접근하는 물체로부터 조종사를 보호하는 가드를 설치할 수 있는
+                                            구조일 것<br>
+                                            2. 운전중량 1,500킬로그램 초과, 6,000킬로그램 이하인 굴착기는 전도시에 좌석안전띠를 착용한 상태의 조종사를 보호하기 위하여
+                                            전도보호구조를 설치할 것<br>
+                                            3. 굴착기에 전복보호구조를 설치하는 경우에는 전복보호구조의 시험방법 및 기준에 적합할 것<br>
+                                            ② 제1항 각 호에 따른 구조의 시험방법 및 기준은 별표 2와 같다.
+
+                                        </div>
+
+                                        <textarea name="at_12_6_Operator_Protection_1"
+                                            class="form-control tinymce d-none"><% if (editing){ %><%= product.at_12_6_Operator_Protection_1 %><% } %></textarea>
+                                    </div>
+                                    <div class="row gx-2">
+                                        <label class="form-label article" for="at_12_6_Operator_Protection_2">제12조의6(조종사
+                                            보호구조)
+                                        </label>
+                                        <p>
+                                            ③ 제작자등은 조종사 보호구조에 관한 정보를 제공하기 위해 쉽게 읽을 수 있는 위치에 영구적인 방법으로 라벨을 부착하여야 한다.</p>
+                                        <textarea name="at_12_6_Operator_Protection_2"
+                                            class="form-control tinymce d-none"><% if (editing){ %><%= product.at_12_6_Operator_Protection_2 %><% } %></textarea>
+                                    </div>
+                                    <div class="row gx-2">
+                                        <label class="form-label" for="at_12_7_Swing_Brake">제12조의7(선회주차브레이크)
+                                        </label>
+                                        <p>① 굴착기는 선회할 때 작업의 안전을 위해 선회주차브레이크를 설치해야 한다. <br>② 선회주차브레이크는 선회조작이 중립에 위치할 때
+                                            자동으로 제동되어야 하며, 엔진이 가동되는 상태나 정지된 상태에서도 제동기능을 유지하여야 한다.</p>
+                                        <textarea name="at_12_7_Swing_Brake"
+                                            class="form-control tinymce d-none"><% if (editing){ %><%= product.at_12_7_Swing_Brake %><% } %></textarea>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <% if (editing){ %>
+                                <input type="hidden" value="<%= product.id %>" name="productId">
+                                <% } %>
+                                    <button class="btn btn-link btn-sm btn p-0" type="submit">
+                                        <% if (editing){ %> Update Product
+                                            <% } else { %>Add Product<% } %>
+                                    </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End of Main Content -->
+
+        <%- include('../includes/end.ejs') %>

@@ -1,0 +1,176 @@
+<!-- ===============================================-->
+<!--    형식과 외관    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">형식과 외관</h5>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="model_name">형식</label>
+                <input class="form-control" id="model_name" name="model_name" type="text"
+                    value="<% if (editing){ %><%= product.model_name %><% } %>" placeholder="HXㅇㅇㅇ" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="machine_grade">규격</label>
+                <input class="form-control" id="machine_grade" name="machine_grade" type="text"
+                    value="<% if (editing){ %><%= product.machine_grade %><% } %>" placeholder="OOton" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="operating_weight">자체중량 (㎏)</label>
+                <input class="form-control" id="operating_weight" name="operating_weight" type="number" step="1"
+                    value="<% if (editing){ %><%= product.operating_weight %><% } %>" placeholder="kg" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="gearbox">변속기</label>
+                <input class="form-control" id="gearbox" name="gearbox" type="text"
+                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="무단 2속" />
+            </div>
+
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="overall_length">길이 (㎜)</label>
+                <input class="form-control" id="overall_length" name="overall_length" type="number" step="1"
+                    value="<% if (editing){ %><%= product.overall_length %><% } %>" placeholder="㎜" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="overall_width">너비 (㎜)</label>
+                <input class="form-control" id="overall_width" name="overall_width" type="number"
+                    value="<% if (editing){ %><%= product.overall_width %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="overall_height">높이 (㎜)</label>
+                <input class="form-control" id="overall_height" name="overall_height" type="number"
+                    value="<% if (editing){ %><%= product.overall_height %><% } %>" placeholder="㎜" />
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="ETC">비고 (㎜)</label>
+                <input class="form-control" id="ETC" name="ETC" type="text"
+                    value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="비고" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ===============================================-->
+<!--    엔진 사양    -->
+<!-- ===============================================-->
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">엔진 사양</h5>
+    </div>
+    <div class="card-body bg-light">
+
+        <div class="row gx-2">
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_name">엔진 형식</label>
+                <input class="form-control" id="engine_name" name="engine_name" type="text"
+                    value="<% if (editing){ %><%= product.engine_name %><% } %>" placeholder="인증엔진명" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_supplier">엔진제작사</label>
+                <input class="form-control" id="engine_supplier" name="engine_supplier" type="text"
+                    value="<% if (editing){ %><%= product.engine_supplier %><% } %>" placeholder="엔진제작사" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_power">출력(정격) </label>
+                <input class="form-control" id="engine_power" name="engine_power" type="number"
+                    value="<% if (editing){ %><%= product.engine_power %><% } %>" placeholder="ps" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="nominal_rev">회전수(정격출력) </label>
+                <input class="form-control" id="nominal_rev" name="nominal_rev" type="number"
+                    value="<% if (editing){ %><%= product.nominal_rev %><% } %>" placeholder="rpm" />
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_torque">최대토크</label>
+                <input class="form-control" id="engine_torque" name="engine_torque" type="number"
+                    value="<% if (editing){ %><%= product.engine_torque %><% } %>" placeholder="㎏ㆍm" /></td>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="torque_rev">회전수(최대토크) </label>
+                <input class="form-control" id="torque_rev" name="torque_rev" type="number"
+                    value="<% if (editing){ %><%= product.torque_rev %><% } %>" placeholder="rpm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_cylinder">기통수</label>
+                <input class="form-control" id="engine_cylinder" name="engine_cylinder" type="number"
+                    value="<% if (editing){ %><%= product.engine_cylinder %><% } %>" placeholder="기통" /></td>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ===============================================-->
+<!--    트랙과 하부체    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">트랙과 하부체</h5>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="shoe_width">슈폭 (㎜)</label>
+                <input class="form-control" id="shoe_width" name="shoe_width" type="number"
+                    value="<% if (editing){ %><%= product.shoe_width %><% } %>" placeholder="㎜" />
+                </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="track_height">트랙높이 (㎜)</label>
+                <input class="form-control" id="track_height" name="track_height" type="number"
+                    value="<% if (editing){ %><%= product.track_height %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="track_gap">트랙중심간거리 (㎜)</label>
+                <input class="form-control" id="track_gap" name="track_gap" type="number"
+                    value="<% if (editing){ %><%= product.track_gap %><% } %>" placeholder="㎜" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tumbler_distance">텀블러중심간거리 (㎜)</label>
+                <input class="form-control" id="tumbler_distance" name="tumbler_distance" type="number"
+                    value="<% if (editing){ %><%= product.tumbler_distance %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="track_length">트랙길이 (㎜)</label>
+                <input class="form-control" id="track_length" name="track_length" type="number"
+                    value="<% if (editing){ %><%= product.track_length %><% } %>" placeholder="㎜" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="ground_clearance">최저지상고 (㎜)</label>
+                <input class="form-control" id="ground_clearance" name="ground_clearance" type="number"
+                    value="<% if (editing){ %><%= product.ground_clearance %><% } %>" placeholder="㎜" />
+            </div>
+
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="dozer_size">배토판너비x높이 (㎜ ㎜)</label>
+                <input class="form-control" id="dozer_size" name="dozer_size" type="text"
+                    value="<% if (editing){ %><%= product.dozer_size %><% } %>" placeholder="도저" />
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

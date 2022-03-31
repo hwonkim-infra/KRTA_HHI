@@ -1,0 +1,104 @@
+
+<% var GrossWeight = product.operating_weight + 65 // 운전중량 %>
+<% 
+var ground_Length = product.tumbler_distance+0.35*(product.track_length-product.tumbler_distance);
+var ground_pressure = (GrossWeight / (2 * product.shoe_width/10 * ground_Length/10));
+var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * product.shoe_width/10 * ground_Length/10));
+%> 
+
+  <!-- ===============================================-->
+  <!--    접지압    -->
+  <!-- ===============================================-->
+  <div class="pages" id="Ground_Pressure">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          접지압
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>
+          <table class="innertable" height="90%" width="90%">
+            <thead>
+              <tr>
+                <th colspan="5" height="350px">
+                  <img src="/images/GroundPressure.png" width="80%">
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="5">접지압 (퀵커플러)</td>
+              </tr>
+              <tr>
+                <td width="28%">텀블러 중심거리</td>
+                <td width="5%">l</td>
+                <td width="15%" id=""><%= product.tumbler_distance/10 %></td>
+                <td width="10%">(㎝)</td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>무한궤도길이</td>
+                <td>Lt</td>
+                <td id=""><%= product.track_length/10 %></td>
+                <td>(㎝)</td>
+                <td>　</td>
+              </tr>
+              <tr>
+                <td>접지길이</td>
+                <td>L</td>
+                <td id=""> <%= ground_Length/10 %></td>
+                <td>(㎝)</td>
+                <td>l+0.35×(Lt-Lc)</td>
+              </tr>
+              <tr>
+                <td>장비전중량</td>
+                <td>W</td>
+                <td id=""><%= GrossWeight %></td>
+                <td>(㎏)</td>
+                <td>운전자 65㎏</td>
+              </tr>
+              <tr>
+                <td>슈폭</td>
+                <td>B</td>
+                <td id=""><%= product.shoe_width %></td>
+                <td>(㎝)</td>
+                <td>　</td>
+              </tr>
+              <tr>
+                <td>접지압</td>
+                <td>P</td>
+                <td id=""><%= ground_pressure.toFixed(2) %></td>
+                <td>(kg/㎠)</td>
+                <td> 운전중량 / <br>(트랙의 수 × 슈폭 × 접지길이) </td>
+              </tr>
+              <tr>
+                <td colspan="5">접지압 (퀵커플러 제외)</td>
+              </tr>
+
+              <tr>
+                <td>장비전중량</td>
+                <td>W</td>
+                <td id=""><%= GrossWeight - product.quick_coupler_weight %></td>
+                <td>(㎏)</td>
+                <td>퀵 커플러 중량 제외</td>
+              </tr>
+              <tr>
+                <td>접지압</td>
+                <td>P</td>
+                <td id=""><%= ground_pressure_woqc.toFixed(2) %></td>
+                <td>(kg/㎠)</td>
+                <td>　 <br> </td>
+              </tr>
+            </tbody>
+
+
+          </table>
+
+
+        </td>
+      </tr>
+    </table>
+  </div>

@@ -4,9 +4,12 @@ var planet_reduct_1 = 1+product.planetary_ring_gear_C1/product.planetary_sun_gea
 var planet_reduct_2 = 1+product.planetary_ring_gear_C2/product.planetary_sun_gear_A2;
 var planet_reduct_tot = (planet_reduct_1 * planet_reduct_2).toFixed(2)
 var swing_reduction_rev =  (product.swing_pump_flow*product.swing_motor_eff/product.motor_displacement_swing*1000).toFixed(2)
-var swing_rev = (swing_reduction_rev/planet_reduct_tot*product.gear_pinion/product.gear_swing_bearing).toFixed(1);
 
+var i_B = (product.gear_swing_bearing / product.gear_pinion).toFixed(2) // 7.07
+var i_T = (planet_reduct_tot * i_B).toFixed(2) // 148.14
+var swing_rev = (swing_reduction_rev/i_T).toFixed(1);
 %>
+
 
             <!-- ===============================================-->
             <!--    선회 속도    -->
@@ -20,8 +23,10 @@ var swing_rev = (swing_reduction_rev/planet_reduct_tot*product.gear_pinion/produ
                 </tr>
 
                 <tr>
-                  <td>
-                    <table class="innertable" width="90%" height="400px">
+                  <td class="head_description">
+                    <p>▷ 아래 계산 결과에 따라 <strong> 최고 선회 속도는 <%= swing_rev %> rpm </strong></p>
+                    <p>○ 선회 성능 관련 사양</p>
+                    <table class="innertable" width="80%">
                       <thead>
                         <tr>
                           <th>항목</th>
@@ -56,7 +61,7 @@ var swing_rev = (swing_reduction_rev/planet_reduct_tot*product.gear_pinion/produ
                         <tr>
                           <td>선회모터용적효율</td>
                           <td>$$\eta_{mv}$$</td>
-                          <td>%</td>
+                          <td></td>
                           <td><%= product.swing_motor_eff %></td>
                           <td></td>
                         </tr>
@@ -76,47 +81,7 @@ var swing_rev = (swing_reduction_rev/planet_reduct_tot*product.gear_pinion/produ
                         </tr>
                       </tbody>
                     </table>
-                    <p>선회 속도 계산</p>
-                    <table class="innertable" width="90%" height="400px">
-                      <thead>
-                        <tr>
-                          <th colspan="3">계산</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="item-headers" colspan="3">선회감속기 축 회전수 SM(rpm)</td>
-                        </tr>
-                        <tr>
-                          <td>$$SM = {Q \times \eta_{mv} \over q_m} \times 1000$$</td>
-                          <td>$${<%= product.swing_pump_flow %> \times <%= product.swing_motor_eff %> \over <%= product.motor_displacement_swing %>} \times 1000$$</td>
-                          <td>$$<%= swing_reduction_rev %>$$</td>
-                        </tr>
-                        <tr>
-                          <td class="item-headers" colspan="3">선회속도 S(rpm)</td>
-                        </tr>
-                        <tr>
-                          <td>$$S = {SM \over i} \times {P_g \over S_b}$$</td>
-                          <td>$${<%= swing_reduction_rev %> \over <%= planet_reduct_tot %>} \times {<%= product.gear_pinion %> \over <%= product.gear_swing_bearing %>}$$</td>
-                          <td>$$<%= swing_rev %>$$</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </div>
-
-            
-    <div class="pages" id="Swing_Reduction">
-        <table class="bordertable">
-            <tr class="borderheader">
-                <td height="30mm">선회 속도</td>
-            </tr>
-
-            <tr>
-                <td class="head_description">
-                    <p>선회 감속비</p>
+                    <p>○ 선회 감속비 제원 사양</p>
 
                     <table class="innertable" width="90%" height="400px">
                         <thead>
@@ -165,12 +130,24 @@ var swing_rev = (swing_reduction_rev/planet_reduct_tot*product.gear_pinion/produ
                         </tbody>
                     </table>
 
-                    <table class="innertable" width="90%" height="400px">
-                        <thead>
-                            <tr>
-                                <th colspan="3">계산</th>
-                            </tr>
-                        </thead>
+                  
+                </tr>
+              </table>
+            </div>
+
+            
+    <div class="pages" id="Swing_Reduction">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">선회 속도</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    
+                    <p>○ 치차 비율에 따른 감속비 계산</p>
+
+                    <table class="innertable" width="90%" >                        
                         <tbody>
                             <tr>
                                 <td class="item-headers" colspan="3">유성치차부(i_A)</td>
@@ -195,19 +172,45 @@ var swing_rev = (swing_reduction_rev/planet_reduct_tot*product.gear_pinion/produ
                             </tr>
                             <tr>
                                 <td>$$i_B = i_3 = {E \over D}$$</td>
-                                <td>$${118 \over 15}$$</td>
-                                <td>$$7.87$$</td>
+                                <td>$${<%= product.gear_swing_bearing %> \over <%= product.gear_pinion %>}$$</td>
+                                <td>$$<%= i_B %>$$</td>
                             </tr>
                             <tr>
                                 <td class="item-headers" colspan="3">총 감속비</td>
                             </tr>
                             <tr>
-                                <td>$$i = i_A \times i_B$$</td>
-                                <td>$$18.824 \times 7.87$$</td>
-                                <td>$$148.14$$</td>
+                                <td>$$i_T = i_A \times i_B$$</td>
+                                <td>$$<%= planet_reduct_tot %> \times <%= i_B %>$$</td>
+                                <td>$$<%= i_T %>$$</td>
                             </tr>
+
+                            
+
                         </tbody>
                     </table>
+                    <p>○ 선회 속도 계산</p>
+                    <table class="innertable" width="80%">
+                      
+                      <tbody>
+                        <tr>
+                          <td class="item-headers" colspan="3">선회감속기 축 회전수 SM(rpm)</td>
+                        </tr>
+                        <tr>
+                          <td>$$SM = {Q \times \eta_{mv} \over q_m} \times 1000$$</td>
+                          <td>$${<%= product.swing_pump_flow %> \times <%= product.swing_motor_eff %> \over <%= product.motor_displacement_swing %>} \times 1000$$</td>
+                          <td>$$<%= swing_reduction_rev %>$$</td>
+                        </tr>
+                        <tr>
+                          <td class="item-headers" colspan="3">선회속도 S(rpm)</td>
+                        </tr>
+                        <tr>
+                          <td>$$S = {SM \over i} $$</td>
+                          <td>$${<%= swing_reduction_rev %> \over <%= i_T %>} $$</td>
+                          <td>$$<%= swing_rev %>$$</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
                 </td>
             </tr>
         </table>
