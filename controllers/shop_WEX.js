@@ -4,7 +4,7 @@ const Product = require('../models/product_WEX');
 
 exports.getReport = (req, res, next) => {
     const prodId = req.params.productId;
-    console.log("🚀 ~ file: shop_HEX.js ~ line 19 ~ prodId", req.params)
+    console.log("🚀 ~ file: shop_WEX.js ~ line 19 ~ prodId", req.params)
     Product.findById(prodId)
         .then(product => {
 

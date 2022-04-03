@@ -21,20 +21,25 @@ exports.postAddProduct = (req, res, next) => {
         overall_width: req.body.overall_width,
         overall_height: req.body.overall_height,
         ground_clearance: req.body.ground_clearance,
-        shoe_width: req.body.shoe_width,
-        tumbler_distance: req.body.tumbler_distance,
-        track_length: req.body.track_length,
-        track_height: req.body.track_height,
-        track_gap: req.body.track_gap,
+        tire_firstAxle: req.body.tire_firstAxle,
+        tire_secondAxle: req.body.tire_secondAxle,
+
 
         // 엔진 관련
         engine_name: req.body.engine_name,
-        engine_supplier: req.body.engine_supplier,
         engine_power: req.body.engine_power,
-        nominal_rev: req.body.nominal_rev,
         engine_torque: req.body.engine_torque,
-        torque_rev: req.body.torque_rev,
         engine_cylinder: req.body.engine_cylinder,
+        engine_supplier: req.body.engine_supplier,
+        displacement: req.body.displacement,
+        engine_type: req.body.engine_type,
+        cylinder_arrange: req.body.cylinder_arrange,
+        bore_stroke: req.body.bore_stroke,
+        cooling: req.body.cooling,
+        compression_ratio: req.body.compression_ratio,
+        high_idle: req.body.high_idle,
+        low_idle: req.body.low_idle,
+
         // 작업장치 관련
         bucket_struck: req.body.bucket_struck,
         bucket_heap: req.body.bucket_heap,
@@ -44,21 +49,21 @@ exports.postAddProduct = (req, res, next) => {
         ETC: req.body.ETC,
         digging_reach: req.body.digging_reach,
         digging_reach_woqc: req.body.digging_reach_woqc,
+        digging_height: req.body.digging_height,
+        digging_height_woqc: req.body.digging_height_woqc,
         digging_depth: req.body.digging_depth,
         digging_depth_woqc: req.body.digging_depth_woqc,
         loading_height: req.body.loading_height,
         loading_height_woqc: req.body.loading_height_woqc,
         quick_coupler: req.body.quick_coupler,
         quick_coupler_weight: req.body.quick_coupler_weight,
-        bucket_creep_before: req.body.bucket_creep_before,
-        bucket_creep_after: req.body.bucket_creep_after,
+
+
         // 선회성능 관련
-        swing_pump_flow: req.body.swing_pump_flow,
+        pump_displacement_swing: req.body.pump_displacement_swing,
         motor_displacement_swing: req.body.motor_displacement_swing,
+        motor_eff_swing: req.body.motor_eff_swing,
         swing_reduction: req.body.swing_reduction,
-        swing_motor_eff: req.body.swing_motor_eff,
-        swing_pinion: req.body.swing_pinion,
-        swing_bearing: req.body.swing_bearing,
         gear_pinion: req.body.gear_pinion,
         gear_swing_bearing: req.body.gear_swing_bearing,
         planetary_sun_gear_A1: req.body.planetary_sun_gear_A1,
@@ -67,24 +72,19 @@ exports.postAddProduct = (req, res, next) => {
         planetary_sun_gear_A2: req.body.planetary_sun_gear_A2,
         planetary_planet_gear_B2: req.body.planetary_planet_gear_B2,
         planetary_ring_gear_C2: req.body.planetary_ring_gear_C2,
+
         // 주행성능 관련
         pump_displacement_travel: req.body.pump_displacement_travel,
         motor_displacement_travel: req.body.motor_displacement_travel,
-        travel_pump_pressure: req.body.travel_pump_pressure,
-        TM_flow_1: req.body.TM_flow_1,
-        TM_flow_2: req.body.TM_flow_2,
-        TM_mv: req.body.TM_mv,
-        TM_mt: req.body.TM_mt,
-        TM_r: req.body.TM_r,
-        surface_drag: req.body.surface_drag,
-        sprocket_radius: req.body.sprocket_radius,
-        travel_drag: req.body.travel_drag,
-        travel_sun_gear_S1: req.body.travel_sun_gear_S1,
-        travel_ring_gear_R1: req.body.travel_ring_gear_R1,
-        travel_sun_gear_S2: req.body.travel_sun_gear_S2,
-        travel_ring_gear_R2: req.body.travel_ring_gear_R2,
-        greadability_ref: req.body.greadability_ref,
-        brake_torque: req.body.brake_torque,
+        motor_eff_travel: req.body.motor_eff_travel,
+        TM_reduction: req.body.TM_reduction,
+        axle_reduction: req.body.axle_reduction,
+        tire_rolling_radius: req.body.tire_rolling_radius,
+        traction_force: req.body.traction_force,
+        friction_surface: req.body.friction_surface,
+        roadload: req.body.roadload,
+
+
 
         // 외관도 관련
         drawing_exterior: req.body.drawing_exterior,
@@ -146,11 +146,14 @@ exports.postEditProduct = (req, res, next) => {
             product.overall_width = req.body.overall_width;
             product.overall_height = req.body.overall_height;
             product.ground_clearance = req.body.ground_clearance;
-            product.shoe_width = req.body.shoe_width;
-            product.tumbler_distance = req.body.tumbler_distance;
-            product.track_length = req.body.track_length;
-            product.track_height = req.body.track_height;
-            product.track_gap = req.body.track_gap;
+            product.tire_firstAxle = req.body.tire_firstAxle;
+            product.tire_secondAxle = req.body.tire_secondAxle;
+            product.axle_weight_first_limit = req.body.axle_weight_first_limit;
+            product.axle_weight_second_limit = req.body.axle_weight_second_limit;
+            product.wheel_base = req.body.wheel_base;
+            product.axle_track_first = req.body.axle_track_first;
+            product.axle_track_second = req.body.axle_track_second;
+
 
             // 엔진 관련
             product.engine_name = req.body.engine_name;
@@ -162,6 +165,7 @@ exports.postEditProduct = (req, res, next) => {
             product.engine_cylinder = req.body.engine_cylinder;
 
             // 작업장치 관련
+
             product.bucket_struck = req.body.bucket_struck;
             product.bucket_heap = req.body.bucket_heap;
             product.arm_length = req.body.arm_length;
@@ -170,23 +174,22 @@ exports.postEditProduct = (req, res, next) => {
             product.ETC = req.body.ETC;
             product.digging_reach = req.body.digging_reach;
             product.digging_reach_woqc = req.body.digging_reach_woqc;
+            product.digging_height = req.body.digging_height;
+            product.digging_height_woqc = req.body.digging_height_woqc;
             product.digging_depth = req.body.digging_depth;
             product.digging_depth_woqc = req.body.digging_depth_woqc;
             product.loading_height = req.body.loading_height;
             product.loading_height_woqc = req.body.loading_height_woqc;
             product.quick_coupler = req.body.quick_coupler;
             product.quick_coupler_weight = req.body.quick_coupler_weight;
-            product.bucket_creep_before = req.body.bucket_creep_before;
-            product.bucket_creep_after = req.body.bucket_creep_after;
+
 
             // 선회 성능 관련
 
-            product.swing_pump_flow = req.body.swing_pump_flow;
+            product.pump_displacement_swing = req.body.pump_displacement_swing;
             product.motor_displacement_swing = req.body.motor_displacement_swing;
+            product.motor_eff_swing = req.body.motor_eff_swing;
             product.swing_reduction = req.body.swing_reduction;
-            product.swing_motor_eff = req.body.swing_motor_eff;
-            product.swing_pinion = req.body.swing_pinion;
-            product.swing_bearing = req.body.swing_bearing;
             product.gear_pinion = req.body.gear_pinion;
             product.gear_swing_bearing = req.body.gear_swing_bearing;
             product.planetary_sun_gear_A1 = req.body.planetary_sun_gear_A1;
@@ -196,25 +199,19 @@ exports.postEditProduct = (req, res, next) => {
             product.planetary_planet_gear_B2 = req.body.planetary_planet_gear_B2;
             product.planetary_ring_gear_C2 = req.body.planetary_ring_gear_C2;
 
+
             // 주행 성능 관련
 
             product.pump_displacement_travel = req.body.pump_displacement_travel;
             product.motor_displacement_travel = req.body.motor_displacement_travel;
-            product.travel_pump_pressure = req.body.travel_pump_pressure;
-            product.TM_flow_1 = req.body.TM_flow_1;
-            product.TM_flow_2 = req.body.TM_flow_2;
-            product.TM_mv = req.body.TM_mv;
-            product.TM_mt = req.body.TM_mt;
-            product.TM_r = req.body.TM_r;
-            product.surface_drag = req.body.surface_drag;
-            product.sprocket_radius = req.body.sprocket_radius;
-            product.travel_drag = req.body.travel_drag;
-            product.travel_sun_gear_S1 = req.body.travel_sun_gear_S1;
-            product.travel_ring_gear_R1 = req.body.travel_ring_gear_R1;
-            product.travel_sun_gear_S2 = req.body.travel_sun_gear_S2;
-            product.travel_ring_gear_R2 = req.body.travel_ring_gear_R2;
-            product.greadability_ref = req.body.greadability_ref;
-            product.brake_torque = req.body.brake_torque;
+            product.motor_eff_travel = req.body.motor_eff_travel;
+            product.TM_reduction = req.body.TM_reduction;
+            product.axle_reduction = req.body.axle_reduction;
+            product.tire_rolling_radius = req.body.tire_rolling_radius;
+            product.traction_force = req.body.traction_force;
+            product.friction_surface = req.body.friction_surface;
+            product.roadload = req.body.roadload;
+
 
             // 외관도 관련
             product.drawing_exterior = req.body.drawing_exterior;

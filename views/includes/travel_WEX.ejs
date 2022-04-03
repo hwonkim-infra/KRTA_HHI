@@ -1,0 +1,64 @@
+<!-- ===============================================-->
+<!--    주행 및 등판능력    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">주행, 등판 능력</h5>
+    </div>
+    <div class="card-body bg-light">
+
+        <div class="row gx-2">
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="pump_displacement_travel">주행 펌프 유량 (Q)</label>
+                <input class="form-control" id="pump_displacement_travel" name="pump_displacement_travel" type="number"
+                    value="<% if (editing){ %><%= product.pump_displacement_travel %><% } %>" placeholder="" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="motor_displacement_travel">주행 모터 이론 용적 </label>
+                <input class="form-control" id="motor_displacement_travel" name="motor_displacement_travel" type=""
+                    value="<% if (editing){ %><%= product.motor_displacement_travel %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="motor_eff_travel">주행 모터 용적 효율 </label>
+                <input class="form-control" id="motor_eff_travel" name="motor_eff_travel" 
+                    value="<% if (editing){ %><%= product.motor_eff_travel %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="TM_reduction">트랜스미션 감속비</label>
+                <input class="form-control" id="TM_reduction" name="TM_reduction" 
+                    value="<% if (editing){ %><%= product.TM_reduction %><% } %>" placeholder="" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_reduction">액슬 감속비 </label>
+                <input class="form-control" id="axle_reduction" name="axle_reduction"   
+                    value="<% if (editing){ %><%= product.axle_reduction %><% } %>" placeholder="" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tire_rolling_radius">타이어 동하중 반경</label>
+                <input class="form-control" id="tire_rolling_radius" name="tire_rolling_radius"  
+                    value="<% if (editing){ %><%= product.tire_rolling_radius %><% } %>" placeholder="" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_motor_rev">주행모터 축 회전수</label>
+                <input class="form-control" id="axle_motor_rev" name="axle_motor_rev"   
+                    value="<% if (editing){ %><%= product.axle_motor_rev %><% } %>" placeholder="" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="greadability_ref">기준등판각도 (θ<sub>ref</sub>)</label>
+                <input class="form-control" id="greadability_ref" name="greadability_ref" type="number"
+                    value="<% if (editing){ %><%= product.greadability_ref %><% } %>" placeholder="" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="brake_torque">브레이크 토크 (T<sub>b</sub>)</label>
+                <input class="form-control" id="brake_torque" name="brake_torque" 
+                    value="<% if (editing){ %><%= product.brake_torque %><% } %>" placeholder="" />
+            </div>
+
+        </div>
+    </div>
+</div>

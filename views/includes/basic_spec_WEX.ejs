@@ -1,0 +1,204 @@
+<!-- ===============================================-->
+<!--    형식과 외관    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">형식과 외관</h5>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="model_name">형식</label>
+                <input class="form-control" id="model_name" name="model_name" type="text"
+                    value="<% if (editing){ %><%= product.model_name %><% } %>" placeholder="HWㅇㅇㅇ" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="machine_grade">규격</label>
+                <input class="form-control" id="machine_grade" name="machine_grade" type="text"
+                    value="<% if (editing){ %><%= product.machine_grade %><% } %>" placeholder="OOton" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="operating_weight">자체중량 (㎏)</label>
+                <input class="form-control" id="operating_weight" name="operating_weight" type="number" step="1"
+                    value="<% if (editing){ %><%= product.operating_weight %><% } %>" placeholder="kg" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="gearbox">변속기</label>
+                <input class="form-control" id="gearbox" name="gearbox" type="text"
+                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="전진 2단/ 후진 2단" />
+            </div>
+
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="overall_length">길이 (㎜)</label>
+                <input class="form-control" id="overall_length" name="overall_length" type="number" step="1"
+                    value="<% if (editing){ %><%= product.overall_length %><% } %>" placeholder="㎜" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="overall_width">너비 (㎜)</label>
+                <input class="form-control" id="overall_width" name="overall_width" type="number"
+                    value="<% if (editing){ %><%= product.overall_width %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="overall_height">높이 (㎜)</label>
+                <input class="form-control" id="overall_height" name="overall_height" type="number"
+                    value="<% if (editing){ %><%= product.overall_height %><% } %>" placeholder="㎜" />
+            </div>
+
+            
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="ETC">비고 (㎜)</label>
+                <input class="form-control" id="ETC" name="ETC" type="text"
+                    value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="비고" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ===============================================-->
+<!--    엔진 사양    -->
+<!-- ===============================================-->
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">엔진 사양</h5>
+    </div>
+    <div class="card-body bg-light">
+
+        <div class="row gx-2">
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_name">엔진 형식</label>
+                <input class="form-control" id="engine_name" name="engine_name" type="text"
+                    value="<% if (editing){ %><%= product.engine_name %><% } %>" placeholder="인증엔진명" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_supplier">엔진제작사</label>
+                <input class="form-control" id="engine_supplier" name="engine_supplier" type="text"
+                    value="<% if (editing){ %><%= product.engine_supplier %><% } %>" placeholder="엔진제작사" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_power">출력(정격) </label>
+                <input class="form-control" id="engine_power" name="engine_power" type="number"
+                    value="<% if (editing){ %><%= product.engine_power %><% } %>" placeholder="ps" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="nominal_rev">회전수(정격출력) </label>
+                <input class="form-control" id="nominal_rev" name="nominal_rev" type="number"
+                    value="<% if (editing){ %><%= product.nominal_rev %><% } %>" placeholder="rpm" />
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_torque">최대토크</label>
+                <input class="form-control" id="engine_torque" name="engine_torque" type=""
+                    value="<% if (editing){ %><%= product.engine_torque %><% } %>" placeholder="㎏ㆍm" /></td>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="torque_rev">회전수(최대토크) </label>
+                <input class="form-control" id="torque_rev" name="torque_rev" type="number"
+                    value="<% if (editing){ %><%= product.torque_rev %><% } %>" placeholder="rpm" />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="engine_cylinder">기통수</label>
+                <input class="form-control" id="engine_cylinder" name="engine_cylinder" type="number"
+                    value="<% if (editing){ %><%= product.engine_cylinder %><% } %>" placeholder="기통" /></td>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ===============================================-->
+<!--    하부체와 축중량    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">하부체와 축중량</h5>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tire_firstAxle">타이어 1축</label>
+                <input class="form-control" id="tire_firstAxle" name="tire_firstAxle" type="number"
+                    value="<% if (editing){ %><%= product.tire_firstAxle %><% } %>" placeholder="타이어 규격" />
+                </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tire_secondAxle">타이어 2축</label>
+                <input class="form-control" id="tire_secondAxle" name="tire_secondAxle" type="number"
+                    value="<% if (editing){ %><%= product.tire_secondAxle %><% } %>" placeholder="타이어 규격" /> </td>
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_weight_first_limit">허용 하중 1축</label>
+                <input class="form-control" id="axle_weight_first_limit" name="axle_weight_first_limit" type="number"
+                    value="<% if (editing){ %><%= product.axle_weight_first_limit %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_weight_second_limit">허용 하중 2축</label>
+                <input class="form-control" id="axle_weight_second_limit" name="axle_weight_second_limit" type="number"
+                    value="<% if (editing){ %><%= product.axle_weight_second_limit %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="wheel_base">축거</label>
+                <input class="form-control" id="wheel_base" name="wheel_base" type="number"
+                    value="<% if (editing){ %><%= product.wheel_base %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="ground_clearance">최저지상고 (㎜)</label>
+                <input class="form-control" id="ground_clearance" name="ground_clearance" type="number"
+                    value="<% if (editing){ %><%= product.ground_clearance %><% } %>" placeholder="㎜" />
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_track_first">윤거 1</label>
+                <input class="form-control" id="axle_track_first" name="axle_track_first" type="number"
+                    value="<% if (editing){ %><%= product.axle_track_first %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_track_second">윤거 2</label>
+                <input class="form-control" id="axle_track_second" name="axle_track_second" type="number"
+                    value="<% if (editing){ %><%= product.axle_track_second %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="COG_center_unload">공차무게중심-선회중심</label>
+                <input class="form-control" id="COG_center_unload" name="COG_center_unload" type="number"
+                    value="<% if (editing){ %><%= product.COG_center_unload %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="COG_center_load">적재무게중심-선회중심</label>
+                <input class="form-control" id="COG_center_load" name="COG_center_load" type="number"
+                    value="<% if (editing){ %><%= product.COG_center_load %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="firstAxle_center">1축-선회중심</label>
+                <input class="form-control" id="firstAxle_center" name="firstAxle_center" type="number"
+                    value="<% if (editing){ %><%= product.firstAxle_center %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
