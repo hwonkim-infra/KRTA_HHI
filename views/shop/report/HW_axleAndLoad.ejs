@@ -1,0 +1,262 @@
+<% 
+var GrossWeight=product.operating_weight + 65;
+var  gross_weight_load = product.operating_weight + 65 + 1290;
+
+%>
+<% 
+var rearAxle_center	= product.wheel_base - product.frontAxle_center;
+var axle_weight_front_unload = product.operating_weight * (rearAxle_center-product.COG_center_unload)/product.wheel_base; // 공차하중 1축
+var axle_weight_rear_unload	= product.operating_weight * (product.frontAxle_center+product.COG_center_unload)/product.wheel_base  // 공차하중 2축
+
+var axle_weight_front_load = gross_weight_load* (rearAxle_center - product.COG_center_load)/product.wheel_base
+var axle_weight_rear_load	= gross_weight_load* (product.frontAxle_center+product.COG_center_load)/product.wheel_base
+%>
+
+<!-- ===============================================-->
+<!--    총중량    -->
+<!-- ===============================================-->
+<div class="pages" id="Gross_Weight">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">자체중량 및 총중량</td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="innertable" height="90%" width="90%">
+                    <thead>
+                        <tr>
+                            <th colspan="5" height="350px">
+                                <img src="/images/ .png" width="80%" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                ① “자체중량”이란 연료, 냉각수 및 윤활유 등을 가득 채우고 휴대
+                                공구, 작업 용구 및 예비 타이어(예비 타이어를 장착하도록 한
+                                건설기계에만 해당한다)를 싣거나 부착하고, 즉시 작업할 수 있는
+                                상태에 있는 건설기계의 중량을 말한다. 이 경우 조종사의 체중은
+                                제외하며, 타워크레인은 보조적인 지지ㆍ고정 등의 수단 없이
+                                자체적인 힘으로 서 있을 수 있는 상태에서의 중량으로 한다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">자체중량</td>
+                            <td><%= product.operating_weight %> ㎏</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                19. “운전중량”이란 자체중량에 건설기계의 조종에 필요한 최소의
+                                조종사가 탑승한 상태의 중량을 말하며, 조종사 1명의 체중은
+                                65킬로그램으로 본다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>“운전중량”</td>
+                            <td><%= product.operating_weight %> + 65</td>
+                            <td><%= GrossWeight %> ㎏</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                21. “총중량”이란 자체중량에 최대적재중량과 조종사를 포함한
+                                승차인원의 체중을 합한 것을 말하며, 승차인원 1명의 체중은
+                                65킬로그램으로 본다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>“총중량”</td>
+                            <td><%= product.operating_weight %> + 65 +</td>
+                            <td><%= gross_weight_load %> ㎏</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<!-- ===============================================-->
+<!--    축별 허용하중    -->
+<!-- ===============================================-->
+<div class="pages" id="Axle_Load_unload">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">축별 하중</td>
+        </tr>
+
+        <tr>
+            <td class="head_description">
+                <p>○ 축별 하중 (공차)</p>
+                <table class="innertable" width="80%" height="300px">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>기호</th>
+                            <th>단위</th>
+                            <th>제원</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>장비 총 중량</td>
+                            <td>$$W_T$$</td>
+                            <td>㎏</td>
+                            <td><%= product.operating_weight %></td>
+                            <td>운전자 제외</td>
+                        </tr>
+                        <tr>
+                            <td>장비 무게 중심 (전후 방향)</td>
+                            <td>$$X_T$$</td>
+                            <td>㎜</td>
+                            <td><%= product.COG_center_unload %></td>
+                            <td>-값: 작업장치 방향</td>
+                        </tr>
+                        <tr>
+                            <td>축간 거리</td>
+                            <td>$$L$$</td>
+                            <td>㎜</td>
+                            <td><%= product.wheel_base %></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>1축에서 선회중심까지 거리</td>
+                            <td>$$L_1$$</td>
+                            <td>㎜</td>
+                            <td><%= product.frontAxle_center %></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2축에서 선회중심까지 거리</td>
+                            <td>$$L_2$$</td>
+                            <td>㎜</td>
+                            <td><%= rearAxle_center %></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>○ 축별 하중값 계산 (공차)</p>
+
+                <table class="innertable" width="90%" height="200px">
+                    <thead>
+                        <tr>
+                          <th>항목</th>
+                          <th>산식</th>
+                          <th></th>
+                          <th>제원</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1축 하중</td>
+                          <td>$$F_1 = \frac{W_T \cdot (L_2-X_T)}{L}$$</td>
+                          <td>$$ \frac{  <%= product.operating_weight %>  \cdot ( <%= rearAxle_center %> - <%= product.COG_center_unload %> )}{ <%= product.wheel_base %>  }$$</td>
+                          <td><%= axle_weight_front_unload %> </td>
+                        </tr>
+                        <tr>
+                          <td>2축 하중</td>
+                          <td>$$F_2 = \frac{W_T \cdot (L_1+X_T)}{L}$$</td>
+                          <td>$$ \frac{  <%= product.operating_weight %>  \cdot ( <%= product.frontAxle_center %> + <%= product.COG_center_unload %> )}{ <%= product.wheel_base %>  }$$</td>
+                          <td><%= axle_weight_rear_unload %> </td>
+                        </tr>
+                      </tbody>
+                      
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="pages" id="Axle_Load_load">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">축별 하중</td>
+        </tr>
+
+        <tr>
+            <td class="head_description">
+                <p>○ 축별 하중 (적재)</p>
+                <table class="innertable" width="80%" height="300px">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>기호</th>
+                            <th>단위</th>
+                            <th>제원</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>장비 총 중량</td>
+                            <td>$$W_T$$</td>
+                            <td>㎏</td>
+                            <td><%= gross_weight_load %></td>
+                            <td>적재 총 중량</td>
+                        </tr>
+                        <tr>
+                            <td>장비 무게 중심 (전후 방향)</td>
+                            <td>$$X_T$$</td>
+                            <td>㎜</td>
+                            <td><%= product.COG_center_load %></td>
+                            <td>-값: 작업장치 방향</td>
+                        </tr>
+                        <tr>
+                            <td>축간 거리</td>
+                            <td>$$L$$</td>
+                            <td>㎜</td>
+                            <td><%= product.wheel_base %></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>1축에서 선회중심까지 거리</td>
+                            <td>$$L_1$$</td>
+                            <td>㎜</td>
+                            <td><%= product.frontAxle_center %></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2축에서 선회중심까지 거리</td>
+                            <td>$$L_2$$</td>
+                            <td>㎜</td>
+                            <td><%= rearAxle_center %></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>○ 축별 하중값 계산 (공차)</p>
+
+                <table class="innertable" width="90%" height="200px">
+                    <thead>
+                        <tr>
+                          <th>항목</th>
+                          <th>산식</th>
+                          <th></th>
+                          <th>제원</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1축 하중</td>
+                          <td>$$F_1 = \frac{W_T \cdot (L_2-X_T)}{L}$$</td>
+                          <td>$$ \frac{  <%= gross_weight_load %>  \cdot ( <%= rearAxle_center %> - <%= product.COG_center_load %> )}{ <%= product.wheel_base %>  }$$</td>
+                          <td><%= axle_weight_front_load %> </td>
+                        </tr>
+                        <tr>
+                          <td>2축 하중</td>
+                          <td>$$F_2 = \frac{W_T \cdot (L_1+X_T)}{L}$$</td>
+                          <td>$$ \frac{  <%= gross_weight_load %>  \cdot ( <%= product.frontAxle_center %> + <%= product.COG_center_load %> )}{ <%= product.wheel_base %>  }$$</td>
+                          <td><%= axle_weight_rear_load %> </td>
+                        </tr>
+                      </tbody>
+                      
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

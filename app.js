@@ -12,6 +12,7 @@ const MONGODB_URI = "mongodb://localhost:27017/HHI_KRTA?retryWrites=true&w=major
 
 
 
+
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 app.use(bodyParser.json({ limit: "50mb" }));
 // app.use(
@@ -28,11 +29,11 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 
+
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use(error404.get404page);
-
 
 
 

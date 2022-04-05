@@ -10,20 +10,17 @@
         <div class="row gx-2">
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="swing_pump_flow">선회 펌프 유량 </label>
-                <input class="form-control" id="swing_pump_flow" name="swing_pump_flow" type="number"
-                    value="<% if (editing){ %><%= product.swing_pump_flow %><% } %>" placeholder="" />
+                <input class="form-control" id="swing_pump_flow" name="swing_pump_flow" type="number" step="any"  value="<% if (editing){ %><%= product.swing_pump_flow %><% } %>" placeholder="" />
             </div>
 
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="motor_displacement_swing">선회 모터 이론 용적 </label>
-                <input class="form-control" id="motor_displacement_swing" name="motor_displacement_swing" 
-                    value="<% if (editing){ %><%= product.motor_displacement_swing %><% } %>" placeholder="" />
+                <input class="form-control" id="motor_displacement_swing" name="motor_displacement_swing" type="number" step="any" value="<% if (editing){ %><%= product.motor_displacement_swing %><% } %>" placeholder="" />
             </div>
 
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="swing_motor_eff">선회 모터용적효율 (μ<sub>mv</sub>) </label>
-                <input class="form-control" id="swing_motor_eff" name="swing_motor_eff"  
-                    value="<% if (editing){ %><%= product.swing_motor_eff %><% } %>" placeholder="" />
+                <input class="form-control" id="swing_motor_eff" name="swing_motor_eff" type="number" step="any" min="0" max="1" value="<% if (editing){ %><%= product.swing_motor_eff %><% } %>" placeholder="" />
             </div>
 
 

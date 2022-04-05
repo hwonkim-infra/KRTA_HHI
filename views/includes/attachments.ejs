@@ -74,23 +74,35 @@
             </div>
 
             <div class="col-sm-6 mb-3">
-                <label class="form-label" for="quick_coupler">퀵 커플러 (모델명)</label>
-                <input class="form-control" id="quick_coupler" name="quick_coupler" type="text"
-                    value="<% if (editing){ %><%= product.quick_coupler %><% } %>" placeholder="RFQ??? / DMQ " />
+                <label class="form-label" for="quick_coupler_1">퀵 커플러 (모델명) (1)</label>
+                <input class="form-control" id="quick_coupler_1" name="quick_coupler_1" type="text"
+                    value="<% if (editing){ %><%= product.quick_coupler_1 %><% } %>" placeholder="RFQ??? / DMQ " />
             </div>
             <div class="col-sm-6 mb-3">
-                <label class="form-label" for="quick_coupler_weight">퀵 커플러 (중량)</label>
-                <input class="form-control" id="quick_coupler_weight" name="quick_coupler_weight" type="text"
-                    value="<% if (editing){ %><%= product.quick_coupler_weight %><% } %>" placeholder="kg" />
+                <label class="form-label" for="quick_coupler_weight_1">퀵 커플러 (중량) (1)</label>
+                <input class="form-control" id="quick_coupler_weight_1" name="quick_coupler_weight_1" type="number"
+                    value="<% if (editing){ %><%= product.quick_coupler_weight_1 %><% } %>" placeholder="kg" />
             </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="quick_coupler_2">퀵 커플러 (모델명) (2)</label>
+                <input class="form-control" id="quick_coupler_2" name="quick_coupler_2" type="text"
+                    value="<% if (editing){ %><%= product.quick_coupler_2 %><% } %>" placeholder="RFQ??? / DMQ " />
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="quick_coupler_weight_2">퀵 커플러 (중량) (2)</label>
+                <input class="form-control" id="quick_coupler_weight_2" name="quick_coupler_weight_2" type="number"
+                    value="<% if (editing){ %><%= product.quick_coupler_weight_2 %><% } %>" placeholder="kg" />
+            </div>
+
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="bucket_creep_before">버켓 침하량 (시작시 높이)</label>
-                <input class="form-control" id="bucket_creep_before" name="bucket_creep_before" type="text"
+                <input class="form-control" id="bucket_creep_before" name="bucket_creep_before" type="number"
                     value="<% if (editing){ %><%= product.bucket_creep_before %><% } %>" placeholder="㎜" />
             </div>
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="bucket_creep_after">버켓 침하량 (10분 뒤 높이)</label>
-                <input class="form-control" id="bucket_creep_after" name="bucket_creep_after" type="text"
+                <input class="form-control" id="bucket_creep_after" name="bucket_creep_after" type="number"
                     value="<% if (editing){ %><%= product.bucket_creep_after %><% } %>" placeholder="㎜" />
             </div>
 

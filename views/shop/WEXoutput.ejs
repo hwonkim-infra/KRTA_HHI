@@ -8,21 +8,7 @@
   <title>
     <%- pageTitle %> 형식신고
   </title>
-  <script id="MathJax-script" async src="../../venders/mathjax/tex-mml-chtml.js"></script>
-
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [
-          ["$", "$"],
-          ["\\(", "\\)"],
-        ],
-      },
-    };
-  </script>
-  {{!--
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script> --}}
-  <script id="MathJax-script" async src="../../venders/mathjax/tex-chtml.js"></script>
+  <script id="MathJax-script" async src="/vendors/mathjax/tex-mml-chtml.js"></script>
 
   <link rel="stylesheet" href="../../stylesheets/pages.css">
 
@@ -31,8 +17,24 @@
 </head>
 
 <body>
-  <% var GrossWeight=product.operating_weight + 65 // 운전중량 %>
+  <% 
+    var GrossWeight=product.operating_weight + 65;
+    var  gross_weight_load = product.operating_weight + 65 + 1290;
+  
+  %>
+  <% 
+    var rearAxle_center	= product.wheel_base - product.frontAxle_center;
+    var axle_weight_front_unload = product.operating_weight * (rearAxle_center-product.COG_center_unload)/product.wheel_base; // 공차하중 1축
+    var axle_weight_rear_unload	= product.operating_weight * (product.frontAxle_center+product.COG_center_unload)/product.wheel_base  // 공차하중 2축
 
+    var axle_weight_front_load = gross_weight_load* (rearAxle_center - product.COG_center_load)/product.wheel_base
+    var axle_weight_rear_load	= gross_weight_load* (product.frontAxle_center+product.COG_center_load)/product.wheel_base
+   %>
+  <%  %>
+  <%  %>
+  <%  %>
+  <%  %>
+  <%  %>
 
 
     <!-- ===============================================-->
@@ -49,12 +51,12 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2" width="32%">형식승인(신고)자</td>
-            <td colspan="4">현대건설기계</td>
+            <td colspan="2" width="25%">형식승인(신고)자</td>
+            <td colspan="4">현대건설기계㈜</td>
           </tr>
           <tr>
             <td colspan="2">건설기계명</td>
-            <td width="15%">굴착기</td>
+            <td width="25%">굴착기</td>
             <td colspan="2" width="30%">제작회사(제작국)</td>
             <td>현대건설기계 <br> (대한민국) </td>
           </tr>
@@ -80,7 +82,7 @@
           </tr>
           <tr>
             <td colspan="2">최고속도</td>
-            <td></td>
+            <td><%=  %></td>
             <td rowspan="12" width="4%" class="vertical_cell">타이어식</td>
             <td>회전반경</td>
             <td></td>
@@ -94,89 +96,93 @@
           <tr>
             <td rowspan="4" width="4%" class="vertical_cell">외 관</td>
             <td>길이 (㎜)</td>
-            <td></td>
+          <td id=""><%= product.overall_length %></td>
             <td>축거(1)&nbsp;&nbsp;(㎜)</td>
-            <td></td>
+          <td id=""><%= product.wheel_base %></td>
           </tr>
           <tr>
             <td>너비 (㎜)</td>
-            <td></td>
-            <td>윤거(1)&nbsp;&nbsp;(㎜)</td>
-            <td></td>
+          <td id=""><%= product.overall_width %> </td>
+            <td>윤거(1)/(2)(㎜)</td>
+          <td id=""><%= product.axle_track_front %> / <%= product.axle_track_rear %> </td>
           </tr>
           <tr>
             <td>높이 (㎜)</td>
-            <td></td>
+          <td id=""><%= product.overall_height %> </td>
             <td>타이어(1축)</td>
-            <td></td>
+          <td id=""><%= product.tire_frontAxle %></td>
+            
           </tr>
           <tr>
             <td>최저지상고 (㎜)</td>
-            <td></td>
+          <td id=""><%= product.ground_clearance %> </td>
             <td>타이어(2축)</td>
-            <td></td>
+          <td id=""><%= product.tire_rearAxle %></td>
+          
           </tr>
           <tr>
             <td rowspan="6" class="vertical_cell">엔 진</td>
             <td>엔진 형식</td>
-            <td></td>
+            <td><%= product.engine_name %></td>
             <td>공차 하중 (1축)</td>
-            <td></td>
+            <td><%= axle_weight_front_unload %></td>
           </tr>
           <tr>
             <td>출력 (정격)</td>
-            <td></td>
+            <td><%= product.engine_power %>ps @ <%= product.nominal_rev %>rpm</td>
             <td>공차 하중 (2축)</td>
-            <td></td>
+            <td><%= axle_weight_rear_unload %></td>
           </tr>
           <tr>
             <td>최대 토크</td>
-            <td></td>
+            <td><%= product.engine_torque %>㎏m @ <%= product.torque_rev %>rpm</td>
             <td>적재 하중 (1축)</td>
-            <td></td>
+            <td><%= axle_weight_front_load %></td>
           </tr>
           <tr>
             <td>기통수</td>
-            <td></td>
+          <td id=""><%= product.engine_cylinder %>기통</td>
             <td>적재 하중 (2축)</td>
-            <td></td>
+            <td><%= axle_weight_rear_load %></td>
           </tr>
           <tr>
             <td>연료 종류</td>
             <td>디젤</td>
             <td>한계 하중 (1축)</td>
-            <td></td>
+            <td id=""><%= product.axle_weight_front_limit %></td>
+
           </tr>
           <tr>
             <td>제작사</td>
-            <td></td>
+          <td id=""><%= product.engine_supplier %> </td>
             <td>한계 하중 (2축)</td>
-            <td></td>
+            <td id=""><%= product.axle_weight_rear_limit %></td>
+            
           </tr>
           <tr>
-            <td rowspan="5" class="vertical_cell">작업장치</td>
+            <td rowspan="6" class="vertical_cell">작업장치</td>
             <td>버켓용량(평적)</td>
-            <td></td>
+          <td id=""><%= product.bucket_struck %> </td>
             <td colspan="2">버켓용량(산적)</td>
-            <td></td>
+          <td id=""><%= product.bucket_heap %> </td>
           </tr>
           <tr>
             <td>붐의 길이</td>
-            <td></td>
+          <td id=""><%= product.boom_length %></td>
             <td colspan="2">암의 길이</td>
-            <td></td>
+          <td id=""><%= product.arm_length %> </td>
           </tr>
           <tr>
             <td>선회속도</td>
-            <td></td>
+          <td id=""><%=  %></td>
             <td colspan="2">최대굴착반지름</td>
             <td></td>
           </tr>
           <tr>
             <td>최대굴착깊이</td>
-            <td></td>
+          <td id=""><%= product.digging_depth %></td>
             <td colspan="2">최대덤프높이</td>
-            <td></td>
+          <td id=""><%= product.loading_height %> </td>
           </tr>
           <tr>
             <td>배토판너비 높이</td>
@@ -184,15 +190,14 @@
             <td></td>
           </tr>
           <tr>
-            <td></td>
             <td>퀵 커플러</td>
-            <td></td>
-            <td colspan="2">중량</td>
-            <td></td>
+          <td colspan="2" id=""><%= product.quick_coupler_1 %> <br> <%= product.quick_coupler_2 %></td>
+          <td >중량</td>
+          <td id=""><%= product.quick_coupler_weight_1 %> <br> <%= product.quick_coupler_weight_2 %></td>
           </tr>
           <tr>
             <td colspan="2">비고</td>
-            <td colspan="4"></td>
+          <td colspan="4" id=""><%= product.ETC %></td>
           </tr>
           <tr>
             <td colspan="2">형식승인연월일</td>
@@ -207,6 +212,9 @@
     </div>
 
     <%- include('./report/HW_WorkingRangeAndQC.ejs') %>
+
+    <%- include('./report/HW_axleAndLoad.ejs') %>
+
 
 
 

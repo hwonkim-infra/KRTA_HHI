@@ -6,8 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%- pageTitle %> 형식신고 </title>
-    {{!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> --}}
-    <script id="MathJax-script" async src="../../venders/mathjax/tex-mml-chtml.js"></script>
 
 <script>
         MathJax = {
@@ -19,8 +17,7 @@
             },
         };
     </script>
-    {{!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script> --}}
-    <script id="MathJax-script" async src="../../venders/mathjax/tex-chtml.js"></script>
+  <script id="MathJax-script" async src="/vendors/mathjax/tex-mml-chtml.js"></script>
 
   <link rel="stylesheet" href="../../stylesheets/pages.css">
   
@@ -85,12 +82,12 @@ var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * 
       </thead>
       <tbody>
         <tr>
-          <td colspan="2" width="32%">형식승인(신고)자</td>
-          <td colspan="4">현대건설기계</td>
+          <td colspan="2" width="25%">형식승인(신고)자</td>
+          <td colspan="4">현대건설기계㈜</td>
         </tr>
         <tr>
           <td colspan="2">건설기계명</td>
-          <td width="15%">굴착기</td>
+          <td width="25%">굴착기</td>
           <td colspan="2" width="30%">제작회사(제작국)</td>
           <td>현대건설기계 <br> (대한민국) </td>
         </tr>
@@ -111,20 +108,20 @@ var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * 
           <td id=""><%= travel_speed_out %> </td>
           <td rowspan="6" width="4%" class="vertical_cell">엔진</td>
           <td>형식</td>
-          <td id=""><%= product.engine_name %> </td>
+          <td id="">   </td>
         </tr>
         <tr>
           <td colspan="2">등판능력 (무부하)</td>
           <td id=""><%= product.greadability_ref %> </td>
           <td>출력(정격출력)</td>
-          <td id=""><%= product.engine_power %></td>
+            <td><%= product.engine_power %>ps @ <%= product.nominal_rev %>rpm</td>
         </tr>
         <tr>
           <td rowspan="4" width="4%" class="vertical_cell">외관</td>
           <td>길이 (㎜)</td>
           <td id=""><%= product.overall_length %></td>
           <td>최대토크(㎏ㆍm/rpm)</td>
-          <td id=""><%= product.engine_torque %></td>
+            <td><%= product.engine_torque %>㎏m @ <%= product.torque_rev %>rpm</td>
         </tr>
         <tr>
           <td>너비 (㎜)</td>
@@ -211,8 +208,8 @@ var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * 
         </tr>
         <tr>
           <td colspan="2">퀵 커플러 (모델명 / 중량(kg))</td>
-          <td colspan="2" id=""><%= product.quick_coupler %></td>
-          <td id=""><%= product.quick_coupler_weight %></td>
+          <td colspan="2" id=""><%= product.quick_coupler_1 %> <br> <%= product.quick_coupler_2 %></td>
+          <td id=""><%= product.quick_coupler_weight_1 %> <br> <%= product.quick_coupler_weight_2 %></td>
           <td></td>
         </tr>
         <tr>
