@@ -1,6 +1,6 @@
 <% 
 var GrossWeight=product.operating_weight + 65;
-var  gross_weight_load = product.operating_weight + 65 + 1290;
+var  gross_weight_load = product.operating_weight + 65 + 1500*product.bucket_heap;
 
 %>
 <% 
@@ -68,7 +68,7 @@ var axle_weight_rear_load	= gross_weight_load* (product.frontAxle_center+product
                         </tr>
                         <tr>
                             <td>“총중량”</td>
-                            <td><%= product.operating_weight %> + 65 +</td>
+                            <td><%= product.operating_weight %> + 65 + 1500 × <%= product.bucket_heap %> </td>
                             <td><%= gross_weight_load %> ㎏</td>
                         </tr>
                     </tbody>
@@ -229,7 +229,7 @@ var axle_weight_rear_load	= gross_weight_load* (product.frontAxle_center+product
                         </tr>
                     </tbody>
                 </table>
-                <p>○ 축별 하중값 계산 (공차)</p>
+                <p>○ 축별 하중값 계산 (적재)</p>
 
                 <table class="innertable" width="90%" height="200px">
                     <thead>
