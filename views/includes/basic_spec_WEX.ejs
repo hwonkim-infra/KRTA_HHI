@@ -126,32 +126,6 @@
         <div class="row gx-2">
 
             <div class="col-sm-6 mb-3">
-                <label class="form-label" for="tire_frontAxle">타이어 1축</label>
-                <input class="form-control" id="tire_frontAxle" name="tire_frontAxle" type=""
-                    value="<% if (editing){ %><%= product.tire_frontAxle %><% } %>" placeholder="타이어 규격" />
-                </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="tire_rearAxle">타이어 2축</label>
-                <input class="form-control" id="tire_rearAxle" name="tire_rearAxle" type=""
-                    value="<% if (editing){ %><%= product.tire_rearAxle %><% } %>" placeholder="타이어 규격" /> </td>
-            </div>
-
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="axle_weight_front_limit">허용 하중 1축 (축별 설계)</label>
-                <input class="form-control" id="axle_weight_front_limit" name="axle_weight_front_limit" type="number"
-                    value="<% if (editing){ %><%= product.axle_weight_front_limit %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="axle_weight_rear_limit">허용 하중 2축 (축별 설계)</label>
-                <input class="form-control" id="axle_weight_rear_limit" name="axle_weight_rear_limit" type="number"
-                    value="<% if (editing){ %><%= product.axle_weight_rear_limit %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
                 <label class="form-label" for="wheel_base">축거</label>
                 <input class="form-control" id="wheel_base" name="wheel_base" type="number"
                     value="<% if (editing){ %><%= product.wheel_base %><% } %>" placeholder="㎜" /> </td>
@@ -173,6 +147,51 @@
                 <label class="form-label" for="axle_track_rear">윤거 2 (rear)</label>
                 <input class="form-control" id="axle_track_rear" name="axle_track_rear" type="number"
                     value="<% if (editing){ %><%= product.axle_track_rear %><% } %>" placeholder="㎜" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tire_frontAxle">타이어 1축</label>
+                <input class="form-control" id="tire_frontAxle" name="tire_frontAxle" type=""
+                    value="<% if (editing){ %><%= product.tire_frontAxle %><% } %>" placeholder="타이어 규격" />
+                </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tire_rearAxle">타이어 2축</label>
+                <input class="form-control" id="tire_rearAxle" name="tire_rearAxle" type=""
+                    value="<% if (editing){ %><%= product.tire_rearAxle %><% } %>" placeholder="타이어 규격" /> </td>
+            </div>
+
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_weight_front_limit">허용 하중 1축 (축별 설계)</label>
+                <input class="form-control" id="axle_weight_front_limit" name="axle_weight_front_limit" type="number"
+                    value="<% if (editing){ %><%= product.axle_weight_front_limit %><% } %>" placeholder="㎏" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="axle_weight_rear_limit">허용 하중 2축 (축별 설계)</label>
+                <input class="form-control" id="axle_weight_rear_limit" name="axle_weight_rear_limit" type="number"
+                    value="<% if (editing){ %><%= product.axle_weight_rear_limit %><% } %>" placeholder="㎏" /> </td>
+            </div>
+
+            
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tire_load_limit">타이어 허용하중 (정지)</label>
+                <input class="form-control" id="tire_load_limit" name="tire_load_limit" type="number"
+                    value="<% if (editing){ %><%= product.tire_load_limit %><% } %>" placeholder="㎏" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="tire_load_limit_running">타이어 허용하중 (최고속)</label>
+                <input class="form-control" id="tire_load_limit_running" name="tire_load_limit_running" type="number"
+                    value="<% if (editing){ %><%= product.tire_load_limit_running %><% } %>" placeholder="㎏" /> </td>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+                <label class="form-label" for="no_tires">타이어의 갯수 (각 축당)</label>
+                <input class="form-control" id="no_tires" name="no_tires" type="number"
+                    value="<% if (editing){ %><%= product.no_tires %><% } %>" placeholder="ea" /> </td>
             </div>
 
 

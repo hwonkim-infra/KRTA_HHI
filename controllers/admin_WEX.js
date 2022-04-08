@@ -45,6 +45,7 @@ exports.postAddProduct = (req, res, next) => {
         wheel_base: req.body.wheel_base, // 축거와 윤거
         axle_track_front: req.body.axle_track_front,
         axle_track_rear: req.body.axle_track_rear,
+        no_tires: req.body.no_tires,
 
         tire_load_limit: req.body.tire_load_limit, // 타이어 허용하중
         tire_load_limit_running: req.body.tire_load_limit_running,
@@ -83,12 +84,7 @@ exports.postAddProduct = (req, res, next) => {
         swing_reduction: req.body.swing_reduction,
         gear_pinion: req.body.gear_pinion,
         gear_swing_bearing: req.body.gear_swing_bearing,
-        planetary_sun_gear_A1: req.body.planetary_sun_gear_A1,
-        planetary_planet_gear_B1: req.body.planetary_planet_gear_B1,
-        planetary_ring_gear_C1: req.body.planetary_ring_gear_C1,
-        planetary_sun_gear_A2: req.body.planetary_sun_gear_A2,
-        planetary_planet_gear_B2: req.body.planetary_planet_gear_B2,
-        planetary_ring_gear_C2: req.body.planetary_ring_gear_C2,
+
 
         // 주행성능 관련
         pump_displacement_travel: req.body.pump_displacement_travel,
@@ -97,9 +93,12 @@ exports.postAddProduct = (req, res, next) => {
         TM_reduction: req.body.TM_reduction,
         axle_reduction: req.body.axle_reduction,
         tire_rolling_radius: req.body.tire_rolling_radius,
+
+        // 등판능력
         traction_force: req.body.traction_force,
         friction_surface: req.body.friction_surface,
-        roadload: req.body.roadload,
+        running_resist: req.body.running_resist,
+        engine_slope: req.body.engine_slope,
 
         // 외관도 관련
         drawing_exterior: req.body.drawing_exterior,
@@ -189,6 +188,7 @@ exports.postEditProduct = (req, res, next) => {
             product.wheel_base = req.body.wheel_base;
             product.axle_track_front = req.body.axle_track_front;
             product.axle_track_rear = req.body.axle_track_rear;
+            product.no_tires = req.body.no_tires;
 
             product.tire_load_limit = req.body.tire_load_limit;
             product.tire_load_limit_running = req.body.tire_load_limit_running;
@@ -229,12 +229,7 @@ exports.postEditProduct = (req, res, next) => {
             product.swing_reduction = req.body.swing_reduction;
             product.gear_pinion = req.body.gear_pinion;
             product.gear_swing_bearing = req.body.gear_swing_bearing;
-            product.planetary_sun_gear_A1 = req.body.planetary_sun_gear_A1;
-            product.planetary_planet_gear_B1 = req.body.planetary_planet_gear_B1;
-            product.planetary_ring_gear_C1 = req.body.planetary_ring_gear_C1;
-            product.planetary_sun_gear_A2 = req.body.planetary_sun_gear_A2;
-            product.planetary_planet_gear_B2 = req.body.planetary_planet_gear_B2;
-            product.planetary_ring_gear_C2 = req.body.planetary_ring_gear_C2;
+
 
             // 주행 성능 관련
 
@@ -244,9 +239,20 @@ exports.postEditProduct = (req, res, next) => {
             product.TM_reduction = req.body.TM_reduction;
             product.axle_reduction = req.body.axle_reduction;
             product.tire_rolling_radius = req.body.tire_rolling_radius;
+            // 등판능력
             product.traction_force = req.body.traction_force;
             product.friction_surface = req.body.friction_surface;
-            product.roadload = req.body.roadload;
+            product.running_resist = req.body.running_resist;
+            product.engine_slope = req.body.engine_slope;
+            // 최소회전반경
+            product.kingpin_gap = req.body.kingpin_gap;
+            product.kingpin_offset = req.body.kingpin_offset;
+            product.wheel_angle = req.body.wheel_angle;
+            // 브레이크 제동력
+            product.brake_pressure = req.body.brake_pressure;
+            product.brake_eff = req.body.brake_eff;
+            product.axle_reduction = req.body.axle_reduction;
+            product.brake_torque_axle = req.body.brake_torque_axle;
 
             // 외관도 관련
             product.drawing_exterior = req.body.drawing_exterior;
