@@ -56,6 +56,7 @@ const WEXSchema = new Schema({
     wheel_base: { type: Number }, // 축거
     axle_track_front: { type: Number }, // 윤거
     axle_track_rear: { type: Number },
+    no_tires: { type: Number, }, // 타이어 갯수
 
     tire_load_limit: { type: Number },
     tire_load_limit_running: { type: Number },
@@ -67,6 +68,7 @@ const WEXSchema = new Schema({
     axle_weight_front_limit: { type: Number },
     axle_weight_rear_limit: { type: Number },
 
+
     // 선회성능 관련
     swing_pump_flow: { type: Number },
     motor_displacement_swing: { type: Number },
@@ -76,18 +78,24 @@ const WEXSchema = new Schema({
     swing_bearing: { type: Number },
     gear_pinion: { type: Number },
     gear_swing_bearing: { type: Number },
-    planetary_sun_gear_A1: { type: Number },
-    planetary_planet_gear_B1: { type: Number },
-    planetary_ring_gear_C1: { type: Number },
-    planetary_sun_gear_A2: { type: Number },
-    planetary_planet_gear_B2: { type: Number },
-    planetary_ring_gear_C2: { type: Number },
 
     // 경사지 전도안정성
     COG_lateral: { type: Number },
     COG_vertical: { type: Number },
     SwingCenter_axle: { type: Number },
 
+    // 주행성능 관련
+    pump_displacement_travel: { type: Number },
+    motor_displacement_travel: { type: Number },
+    motor_eff_travel: { type: Number },
+    TM_reduction: { type: Number },
+    tire_rolling_radius: { type: Number },
+
+    // 등판능력
+    traction_force: { type: Number, },
+    friction_surface: { type: Number, },
+    running_resist: { type: Number, },
+    engine_slope: { type: Number, },
     // 최소회전반경
     kingpin_gap: { type: Number },
     kingpin_offset: { type: Number },
@@ -99,17 +107,8 @@ const WEXSchema = new Schema({
     axle_reduction: { type: Number },
     brake_torque_axle: { type: Number },
 
-    // 주행성능 관련
-    pump_displacement_travel: { type: Number },
-    motor_displacement_travel: { type: Number },
-    motor_eff_travel: { type: Number },
-    TM_reduction: { type: Number },
-    axle_reduction: { type: Number },
-    tire_rolling_radius: { type: Number },
-    // 등판능력
-    traction_force: { type: Number },
-    friction_surface: { type: Number },
-    roadload: { type: Number },
+
+
 
     // 외관도 및 도면 관련
 
