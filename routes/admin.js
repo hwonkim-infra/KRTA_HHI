@@ -3,6 +3,8 @@ const path = require('path');
 const express = require('express');
 
 const adminController = require('../controllers/admin_HEX');
+const adminControllerHEXChange = require('../controllers/admin_HEXChange');
+
 const pagesController = require('../controllers/pages_Supple');
 
 const adminWEXController = require('../controllers/admin_WEX');
@@ -24,6 +26,22 @@ router.post('/edit-HEX', adminController.postEditProduct);
 router.post('/delete-HEX', adminController.postDeleteProduct);
 
 
+// HEX Change Model
+// /admin/add-HEX => GET
+router.get('/add-HEXChange/:originId', adminControllerHEXChange.getAddChangeModel);
+
+
+// /admin/add-HEX => POST
+router.post('/add-HEXChange', adminControllerHEXChange.postAddChangeModel);
+router.get('/edit-HEXChange/:Id', adminControllerHEXChange.getEditChangeModel);
+
+router.post('/edit-HEXChange', adminControllerHEXChange.postEditChangeModel);
+router.post('/delete-HEXChange', adminControllerHEXChange.postDeleteChangeModel);
+
+
+
+
+// Wheel Exca Routing
 // /admin/add-WEX => GET
 router.get('/add-WEX', adminWEXController.getAddProduct);
 

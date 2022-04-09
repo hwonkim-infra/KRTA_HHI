@@ -1,0 +1,138 @@
+<%- include('../includes/head.ejs') %>
+<script src="/vendors/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'save',
+            height : "960"
+
+        });
+</script>
+
+<%- include('../includes/navigation.ejs') %>
+<!-- ===============================================-->
+<!--    Main Contents    -->
+<!-- ===============================================-->
+<div class="row g-0">
+
+    <div class="col-lg-12 ps-lg-2 mb-3">
+        <div class="card h-lg-100">
+            <div class="card-header">
+                <div class="row flex-between-center">
+                    <div class="col-auto">
+                        <h6 class="mb-0">
+                            <% if (editing){ %>Edit ChangeModel
+                            <% } else { %>Add ChangeModel
+                            <% } %>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body h-100 pe-0">
+                <form class="product-form"
+                    action="/admin/<% if (adding){ %>add-HEXChange<% } else { %>edit-HEXChange<% } %>" method="POST">
+
+
+<!-- ===============================================-->
+<!--    제원표    -->
+<!-- ===============================================-->
+
+<%- include('../includes/basic_spec_HEXChange.ejs') %>
+
+
+<%- include('../includes/attachments.ejs') %>
+
+<%- include('../includes/travel.ejs') %>
+
+
+<%- include('../includes/swivel.ejs') %>
+
+
+
+
+                    <!-- ===============================================-->
+                    <!--    외관도    -->
+                    <!-- ===============================================-->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h5 class="mb-0">도면</h5>
+                        </div>
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_exterior">외관도 </label>
+                                    <textarea name="drawing_exterior" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_exterior %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_boom">붐 도면 </label>
+                                    <textarea name="drawing_boom" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_boom %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_arm">암 도면 </label>
+                                    <textarea name="drawing_arm" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_arm %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_bucket">버켓 도면 </label>
+                                    <textarea name="drawing_bucket" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_bucket %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_bucket_capa">버켓 용적 </label>
+                                    <textarea name="drawing_bucket_capa" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_bucket_capa %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_Qcouplr">퀵 커플러 </label>
+                                    <textarea name="drawing_Qcouplr" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Qcouplr %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_Emission_Certi">배출가스인증서 </label>
+                                    <textarea name="drawing_Emission_Certi" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Emission_Certi %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_Emission_Certi2">배출가스인증서 </label>
+                                    <textarea name="drawing_Emission_Certi2" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Emission_Certi2 %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_Engine_Curve">엔진 성능 곡선도 </label>
+                                    <textarea name="drawing_Engine_Curve" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Engine_Curve %><% } %></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <% if (editing){ %>
+                    <input type="hidden" value="<%= product.id %>" name="productId">
+                    <% } %>
+                    <button class="btn btn-link btn-sm btn p-0" type="submit"> <% if (editing){ %> Update ChangeModel
+                        <% } else { %>Add ChangeModel<% } %></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End of Main Content -->
+
+<%- include('../includes/end.ejs') %>
