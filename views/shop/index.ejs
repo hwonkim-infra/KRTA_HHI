@@ -39,9 +39,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="mt-3 mt-sm-0">
-                                        <a class="text-dark fs-0 fs-lg-1" href="">
-                                            <%= product.model_name %>
-                                        </a>
+                                        <%= product.model_name %> <% if (product.ChangeModel){ %> (변경) <% } %>                                         
                                     </h5>
                                     <ul class="list-unstyled d-none d-lg-block">
                                         <li><span>Boom <%= product.boom_length %></span></li>
@@ -56,18 +54,22 @@
                                     <div class="mt-2">
                                         <a class="btn btn-sm btn-outline-secondary border-300 d-lg-block me-2 me-lg-0"
                                             href="/admin/edit-HEX/<%= product.id %>?edit=true">
-                                            <span class="ms-2 d-none d-md-inline-block">Edit</span>
+                                            <span class="ms-2 d-none d-md-inline-block">수정</span>
                                         </a>                                        
                                         
 
-                                        <a class="btn btn-sm btn-primary  border-300 d-lg-block me-2 me-lg-0" href="/HEXs/<%= product._id %>" target="_blank">
-                                            <span class="ms-2 d-none d-md-inline-block">Print</span>
+                                        <a class="btn btn-sm btn-primary  border-300 d-lg-block me-2 me-lg-0" href="/HEXs/<%= product._id %>/<% if(product.ChangeModel){ %><%= product.origin %> <% } %>"  target="_blank">
+                                            <span class="ms-2 d-none d-md-inline-block">출력</span>
                                         </a>   
-
-                                        <a class="btn btn-sm btn-outline-secondary border-300 d-lg-block me-2 me-lg-0"
-                                            href="/admin/add-HEXChange/<%= product.id %>?change=true">
-                                            <span class="ms-2 d-none d-md-inline-block">Add ChangeModel</span>
+                                        
+                                        <% if (!product.ChangeModel){ %>
+                                            <a class="btn btn-sm btn-outline-secondary border-300 d-lg-block me-2 me-lg-0" 
+                                            href="/admin/add-HEXChange/<%= product.id %>?change=true" target="_blank">
+                                            
+                                            <span class=" d-none d-md-inline-block">변경형식</span>
+                                            
                                         </a> 
+                                        <% }  %>
 
                                     </div>
                                 </div>

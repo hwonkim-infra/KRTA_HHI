@@ -12,6 +12,7 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
     const product = new Product({
+        ChangeModel: false,
         // 제원 관련
         model_name: req.body.model_name,
         machine_grade: req.body.machine_grade,
@@ -138,7 +139,7 @@ exports.postEditProduct = (req, res, next) => {
     Product.findById(prodId)
         .then((product) => {
             // 제원 관련
-            product.model_name = req.body.model_name;
+            // product.model_name = req.body.model_name;
             product.machine_grade = req.body.machine_grade;
             product.operating_weight = req.body.operating_weight;
             product.gearbox = req.body.gearbox;

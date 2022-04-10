@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
 const Product = require("../models/product_HEX");
-// const ChangeModel = require("../models/product_HEXChange");
 
 exports.getAddChangeModel = (req, res, next) => {
     const originProdId = req.params.originId;
-    console.log("🚀 ~ file: admin_HEXChange.js ~ line 7 ~ originProdId", originProdId)
+    console.log("🚀 ~ file: admin_HEXChange.js ~ line 7 ~ originProdId", req.params)
         // console.log(product.id)
 
     const prodId = req.params.Id;
@@ -21,6 +20,8 @@ exports.getAddChangeModel = (req, res, next) => {
                 editing: true,
                 adding: true,
                 product: product,
+                origin: originProdId,
+                ChangeModel:true,
             });
 
         }).catch((err) => console.log(err));
@@ -28,7 +29,10 @@ exports.getAddChangeModel = (req, res, next) => {
 };
 
 exports.postAddChangeModel = (req, res, next) => {
+    console.log('params: ', req);
     const product = new Product({
+        ChangeModel: true,
+        origin: req.body.productId,
         // 제원 관련
         model_name: req.body.model_name,
         machine_grade: req.body.machine_grade,
@@ -144,6 +148,7 @@ exports.getEditChangeModel = (req, res, next) => {
                 path: "/admin/edit-HEXChange",
                 editing: editMode,
                 product: product,
+                ChangeModel:true,
             });
         })
         .catch((err) => console.log(err));

@@ -228,7 +228,10 @@ var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * 
 
   </div>
 
+<% if(product.ChangeModel) { %>
 
+  <%- include('./report/CompareChange.ejs') %>
+<% } %> 
 
 <%- include('./report/HX_WorkingRange.ejs') %>
 

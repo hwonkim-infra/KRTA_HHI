@@ -9,7 +9,7 @@
         <div class="row gx-2">
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="model_name">형식</label>
-                <input class="form-control" id="model_name" name="model_name" type="text"
+                <input class="form-control" <% if (editing){ %>  disabled <% } %>  id="model_name" name="model_name" type="text"
                     value="<% if (editing){ %><%= product.model_name %><% } %>" placeholder="HXㅇㅇㅇ" />
             </div>
             <div class="col-sm-6 mb-3">

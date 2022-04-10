@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const HEXChangeSchema = new Schema({
+    ChangeModel: {type: Boolean},
     // 제원 사양
     operating_weight: { type: Number },
     gearbox: { type: String },

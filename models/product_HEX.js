@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const HEXSchema = new Schema({
+    ChangeModel: {type: Boolean},
+    origin: { type: String },
+
     // 제원 사양
     model_name: { type: String },
     machine_grade: { type: String },
@@ -10,7 +13,7 @@ const HEXSchema = new Schema({
     gearbox: { type: String },
     overall_length: { type: Number },
     overall_width: { type: Number },
-
+    overall_height: { type: Number },
 
     ground_clearance: { type: Number },
     shoe_width: { type: Number },
@@ -35,6 +38,7 @@ const HEXSchema = new Schema({
     boom_length: { type: Number },
     dozer_size: { type: String },
     ETC: { type: String },
+        // 작업반경
     digging_reach: { type: Number },
     digging_reach_woqc: { type: Number },
     digging_depth: { type: Number },

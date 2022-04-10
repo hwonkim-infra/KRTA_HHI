@@ -1,0 +1,157 @@
+<% var GrossWeight = product.operating_weight + 65 // 운전중량 %>
+<% 
+var ground_Length = product.tumbler_distance+0.35*(product.track_length-product.tumbler_distance);
+var ground_pressure = (GrossWeight / (2 * product.shoe_width/10 * ground_Length/10));
+var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * product.shoe_width/10 * ground_Length/10));
+%> 
+
+
+<!-- ===============================================-->
+<!--    제원 비교    -->
+<!-- ===============================================-->
+
+<div class="pages" id="compareChange">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">형식 변경에 따른 제원 비교</td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="innertable" height="80%" width="80%">
+
+                    <tr height="10rem">
+                        <th width="25%">제원 항목</th>
+                        <th>변경 전</th>
+                        <th>변경 후</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% if(origin.boom_length !== product.boom_length) { %> <tr>
+                            <td>붐</td>
+                            <td><%= origin.boom_length %></td>
+                            <td><%= product.boom_length %>  </td>
+                        </tr><% } %> 
+                        <% if(origin.arm_length !== product.arm_length) { %> <tr>
+                            <td>암</td>
+                            <td><%= origin.arm_length %></td>
+                            <td><%= product.arm_length %>  </td>
+                        </tr><% } %>
+                        <% if(origin.bucket_struck !== product.bucket_struck) { %> <tr>
+                            <td>버켓</td>
+                            <td><%= origin.bucket_struck %></td>
+                            <td><%= product.bucket_struck %>  </td>
+                        </tr><% } %>
+                        <% if(origin.quick_coupler !== product.quick_coupler) { %> <tr>
+                            <td>퀵 커플러</td>
+                            <td><%= origin.quick_coupler %></td>
+                            <td><%= product.quick_coupler %>  </td>
+                        </tr><% } %>
+                        <% if(origin.operating_weight !== product.operating_weight) { %> <tr>
+                            <td>자체중량</td>
+                            <td><%= origin.operating_weight %></td>
+                            <td><%= product.operating_weight %>  </td>
+                        </tr><% } %>
+                        <% if(origin.overall_length !== product.overall_length) { %> <tr>
+                            <td>길이</td>
+                            <td><%= origin.overall_length %></td>
+                            <td><%= product.overall_length %>  </td>
+                        </tr><% } %>
+                        <% if(origin.overall_width !== product.overall_width) { %> <tr>
+
+                            <td>너비</td>
+                            <td><%= origin.overall_width %></td>
+                            <td><%= product.overall_width %>  </td>
+                        </tr><% } %>
+                        <% if(origin.overall_height !== product.overall_height) { %> <tr>
+
+                            <td>높이</td>
+                            <td><%= origin.overall_height %></td>
+                            <td><%= product.overall_height %>  </td>
+                        </tr><% } %>
+                        <% if(origin.digging_reach !== product.digging_reach) { %> <tr>
+
+                            <td>최대굴착반지름</td>
+                            <td><%= origin.digging_reach %></td>
+                            <td><%= product.digging_reach %>  </td>
+                        </tr><% } %>
+                        <% if(origin.digging_depth !== product.digging_depth) { %> <tr>
+
+                            <td>최대굴착깊이</td>
+                            <td><%= origin.digging_depth %></td>
+                            <td><%= product.digging_depth %>  </td>
+                        </tr><% } %>
+                        <% if(origin.loading_height !== product.loading_height) { %> <tr>
+
+                            <td>최대덤프높이</td>
+                            <td><%= origin.loading_height %></td>
+                            <td><%= product.loading_height %>  </td>
+                        </tr><% } %>
+                        <% if(origin.dozer_size !== product.dozer_size) { %> <tr>
+
+                            <td>배토판</td>
+                            <td><%= origin.dozer_size %></td>
+                            <td><%= product.dozer_size %>  </td>
+                        </tr><% } %>
+                        <% if(origin.ground_clearance !== product.ground_clearance) { %> <tr>
+
+                            <td>최저지상고</td>
+                            <td><%= origin.ground_clearance %></td>
+                            <td><%= product.ground_clearance %>  </td>
+                        </tr><% } %>
+                        <% if(origin.shoe_width !== product.shoe_width) { %> <tr>
+
+                            <td>슈폭</td>
+                            <td><%= origin.shoe_width %></td>
+                            <td><%= product.shoe_width %>  </td>
+                        </tr><% } %>
+                        <% if(origin.track_height !== product.track_height) { %> <tr>
+
+                            <td>트랙높이</td>
+                            <td><%= origin.track_height %></td>
+                            <td><%= product.track_height %>  </td>
+                        </tr><% } %>
+                        <% if(origin.track_gap !== product.track_gap) { %> <tr>
+
+                            <td>트랙중심간거리</td>
+                            <td><%= origin.track_gap %></td>
+                            <td><%= product.track_gap %>  </td>
+                        </tr><% } %>
+                        <% if(origin.tumbler_distance !== product.tumbler_distance) { %> <tr>
+
+                            <td>텀블라중심간거리</td>
+                            <td><%= origin.tumbler_distance %></td>
+                            <td><%= product.tumbler_distance %>  </td>                            
+                        </tr><% } %>
+                        <tr>
+
+                            <td>접지압</td>
+                            <td></td>
+                            <td><%= ground_pressure %> </td>
+                        </tr>
+                        <tr>
+
+                            <td>최고속도</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+
+                            <td>등판능력</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+
+                            <td>선회속도</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -14,6 +14,7 @@ router.get('/HEXs', shopController.getProducts);
 router.get('/HEXs/delete');
 
 router.get('/HEXs/:productId', shopController.getReport);
+router.get('/HEXs/:productId/:origin', shopController.getChangeModelReport);
 
 
 router.get('/index_WEX', shopWEXController.getIndex);
