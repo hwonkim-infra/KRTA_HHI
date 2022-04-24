@@ -66,6 +66,13 @@
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
+                                    <label class="form-label" for="drawing_exterior_after">외관도 (변경 후) </label>
+                                    <textarea name="drawing_exterior_after" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_exterior_after %><% } %></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
                                     <label class="form-label" for="drawing_boom">붐 도면 </label>
                                     <textarea name="drawing_boom" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_boom %><% } %></textarea>
                             </div>

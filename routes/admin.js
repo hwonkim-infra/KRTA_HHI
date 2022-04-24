@@ -5,7 +5,7 @@ const express = require('express');
 const adminController = require('../controllers/admin_HEX');
 const adminControllerHEXChange = require('../controllers/admin_HEXChange');
 
-const pagesController = require('../controllers/pages_Supple');
+const suppleFilesController = require('../controllers/admin_Supples');
 
 const adminWEXController = require('../controllers/admin_WEX');
 
@@ -36,7 +36,6 @@ router.post('/add-HEXChange', adminControllerHEXChange.postAddChangeModel);
 router.get('/edit-HEXChange/:Id', adminControllerHEXChange.getEditChangeModel);
 
 router.post('/edit-HEXChange', adminControllerHEXChange.postEditChangeModel);
-router.post('/delete-HEXChange', adminControllerHEXChange.postDeleteChangeModel);
 
 
 
@@ -59,25 +58,23 @@ router.post('/delete-WEX', adminWEXController.postDeleteProduct);
 
 
 
-/* Common PAGES */
-// /admin/add-page => GET
-router.get('/add-page', pagesController.getAddPage);
-router.get('/pagesOutput', pagesController.getReport);
+/* Supple Files */
+// /admin/add-file => GET
 
 
-// /admin/pages => GET
-router.get('/pages', pagesController.getPages);
+// /admin/files => GET
+router.get('/add-file', suppleFilesController.getAddFile);
 
-// /admin/add-page => POST
-router.post('/add-page', pagesController.postAddPage);
+// /admin/add-file => POST
+router.post('/add-Supple', suppleFilesController.postAddFile);
 
-router.get('/edit-page/:pageId', pagesController.getEditPage);
+router.get('/edit-File/:Id', suppleFilesController.getEditFile);
 
 
 
-router.post('/edit-page', pagesController.postEditPage);
+router.post('/edit-file', suppleFilesController.postEditFile);
 
-router.post('/delete-page', pagesController.postDeletePage);
+router.post('/delete-file', suppleFilesController.postDeleteFile);
 
 // router.get('/TCF/EUTCF', TCFController.getEUTCF);
 

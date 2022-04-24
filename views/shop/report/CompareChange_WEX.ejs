@@ -106,37 +106,6 @@ var ground_pressure_origin = (GrossWeight_origin / (2 * origin.shoe_width/10 * g
                             <td><%= origin.ground_clearance %></td>
                             <td><%= product.ground_clearance %>  </td>
                         </tr><% } %>
-                        <% if(origin.shoe_width !== product.shoe_width) { %> <tr height="50">
-
-                            <td>슈폭</td>
-                            <td><%= origin.shoe_width %></td>
-                            <td><%= product.shoe_width %>  </td>
-                        </tr><% } %>
-                        <% if(origin.track_height !== product.track_height) { %> <tr height="50">
-
-                            <td>트랙높이</td>
-                            <td><%= origin.track_height %></td>
-                            <td><%= product.track_height %>  </td>
-                        </tr><% } %>
-                        <% if(origin.track_gap !== product.track_gap) { %> <tr height="50">
-
-                            <td>트랙중심간거리</td>
-                            <td><%= origin.track_gap %></td>
-                            <td><%= product.track_gap %>  </td>
-                        </tr><% } %>
-                        <% if(origin.tumbler_distance !== product.tumbler_distance) { %> <tr height="50">
-
-                            <td>텀블라중심간거리</td>
-                            <td><%= origin.tumbler_distance %></td>
-                            <td><%= product.tumbler_distance %>  </td>                            
-                        </tr><% } %>
-                        <% if(ground_pressure_origin !== ground_pressure) { %> <tr height="50">
-
-
-                            <td>접지압</td>
-                            <td><%= ground_pressure_origin %> </td>
-                            <td><%= ground_pressure %> </td>
-                        </tr><% } %>
 
                         
                     </tbody>

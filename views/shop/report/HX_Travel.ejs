@@ -9,8 +9,8 @@
 
  %> 
 <%  // 주행 속도
-    var TM_rev_1 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_1 * travel_reduc)*1000).toFixed(2);
-    var TM_rev_2 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_2 * travel_reduc)*1000).toFixed(2);
+    var TM_rev_1 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_1 * product.travel_reduc)*1000).toFixed(2);
+    var TM_rev_2 = (product.motor_displacement_travel * product.TM_mv/(product.TM_flow_2 * product.travel_reduc)*1000).toFixed(2);
     var travel_speed_1 = (TM_rev_1 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);
     var travel_speed_2 = (TM_rev_2 * 2 * Math.PI*product.sprocket_radius * 60 / 10**6).toFixed(2);  
     var travel_speed_out = Math.max(travel_speed_1, travel_speed_2);
@@ -78,7 +78,7 @@
                                 <td>모터 이론 용적(2속)</td>
                                 <td>$$Q_{m2}$$</td>
                                 <td>cc/rev</td>
-                                <td><%= product.TM_flow_2 %></td>
+                                <td><%= product.TM_flow_2 || product.TM_flow_1 %></td>
                             </tr>
                             <tr>
                                 <td>스프로켓 반경</td>
@@ -184,11 +184,11 @@
                             </tr>
                             <tr>
                                 <td rowspan="2">$$SM = {Q \cdot \mu_{mv} \over {q \times i}} \times 1,000$$</td>
-                                <td>(1속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_1 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
+                                <td>(1속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_1 %> \times <%= product.travel_reduc %>}} \times 1,000$$</td>
                                 <td><%= TM_rev_1 %></td>
                             </tr>
                             <tr>
-                                <td>(2속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_2 %> \times <%= travel_reduc %>}} \times 1,000$$</td>
+                                <td>(2속) $${<%= product.motor_displacement_travel %> \cdot <%= product.TM_mv %> \over {<%= product.TM_flow_2 %> \times <%= product.travel_reduc %>}} \times 1,000$$</td>
 
                                 <td><%= TM_rev_2 %></td>
                             </tr>

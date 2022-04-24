@@ -16,7 +16,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.getReport = (req, res, next) => {
     const prodId = req.params.productId;
-    
+
     Product.findById(prodId)
         .then(product => {
             res.render('shop/HEXoutput', {
@@ -25,7 +25,6 @@ exports.getReport = (req, res, next) => {
                 path: '/HEXs',
             });
         })
-        .then(()=>{console.log(origin);})
         .catch(err => {
             console.log(err);
         })
@@ -35,7 +34,7 @@ exports.getChangeModelReport = (req, res, next) => {
     const prodId = req.params.productId;
     const originId = req.params.origin;
     const Ids = [prodId, originId];
-    
+
     Product.find().where('_id').in(Ids)
         .then(([originProd, product]) => {
             console.log('origin:', originProd);
@@ -55,11 +54,11 @@ exports.getChangeModelReport = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-    Product.find()
+    Product.find().sort({ _id: 1 })
         .then(products => {
             res.render('shop/index', {
                 prods: products,
-                pageTitle: 'Specs',
+                pageTitle: '한국 형식 인증 시스템',
                 path: '/'
             });
 

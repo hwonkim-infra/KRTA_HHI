@@ -3,8 +3,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const WEXSchema = new Schema({
+    _id: { type: String },
+    ChangeModel: { type: Boolean },
+    origin: { type: String },
+
     // 제원 사양
     model_name: { type: String },
+    serial_no: { type: Number },
     machine_grade: { type: String },
     operating_weight: { type: Number },
     gearbox: { type: String },

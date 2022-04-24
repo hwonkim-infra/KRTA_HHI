@@ -21,7 +21,7 @@ exports.getAddChangeModel = (req, res, next) => {
                 adding: true,
                 product: product,
                 origin: originProdId,
-                ChangeModel:true,
+                ChangeModel: true,
             });
 
         }).catch((err) => console.log(err));
@@ -35,6 +35,7 @@ exports.postAddChangeModel = (req, res, next) => {
         origin: req.body.productId,
         // 제원 관련
         model_name: req.body.model_name,
+        _id: req.body.model_name + '_' + Date.now(),
         machine_grade: req.body.machine_grade,
         operating_weight: req.body.operating_weight,
         gearbox: req.body.gearbox,
@@ -148,7 +149,7 @@ exports.getEditChangeModel = (req, res, next) => {
                 path: "/admin/edit-HEXChange",
                 editing: editMode,
                 product: product,
-                ChangeModel:true,
+                ChangeModel: true,
             });
         })
         .catch((err) => console.log(err));
@@ -160,7 +161,7 @@ exports.postEditChangeModel = (req, res, next) => {
     Product.findById(prodId)
         .then((product) => {
             // 제원 관련
-            product.model_name = req.body.model_name;
+            // product.model_name = req.body.model_name;
             product.machine_grade = req.body.machine_grade;
             product.operating_weight = req.body.operating_weight;
             product.gearbox = req.body.gearbox;

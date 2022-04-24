@@ -11,13 +11,20 @@
 table {
     /* border: 3px solid black; */
     border-collapse: collapse;
+    page-break-inside: auto;
 }
 
-tr,
 td,
 th {
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    page-break-inside: avoid;
+    page-break-after: auto;
 }
 
 .bordertable {

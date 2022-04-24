@@ -4,7 +4,10 @@
         tinymce.init({
             selector: 'textarea',
             plugins: 'save',
-            height: "960"
+            height: "960",
+            plugins: 'pagebreak',
+  menubar: 'insert',
+
 
         });
     </script>
@@ -30,24 +33,21 @@
                     </div>
                     <div class="card-body h-100 pe-0">
                         <form class="product-form"
-                            action="/admin/<% if (editing){ %>edit-Supple<% } else { %>add-Supple<% } %>" method="POST">
+                            action="/admin/<% if (editing){ %>edit-File<% } else { %>add-File<% } %>" method="POST">
 
                             <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="file_name">대상 기종 타입</label>
-                                <input class="form-control" id="file_name" name="file_name" type="text"
-                                    value="<% if (editing){ %><%= product.file_name %><% } %>" placeholder="Large Crawler / Mini Wheel Loader/ " />
+                                <label class="form-label" for="Filename">대상 기종 타입</label>
+                                <input class="form-control" id="Filename" name="Filename" type="text"
+                                    value="<% if (editing){ %><%= file.Filename %><% } %>" placeholder="Large Crawler / Mini Wheel Loader/ " />
                             </div>
 
-                            <!-- ===============================================-->
-                            <!--    외관도    -->
-                            <!-- ===============================================-->
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <h5 class="mb-0">건설기계 안전기준</h5>
                                 </div>
                                 <div class="card-body bg-light">
                                     <div class="row gx-2">
-                                        <label class="form-label article" for="at_12_6_Operator_Protection_1">제12조의6(조종사
+                                        <label class="form-label article" for="at_12_6_Operator_Protection">제12조의6(조종사
                                             보호구조)
                                         </label>
                                         <div class="article description">
@@ -62,8 +62,8 @@
 
                                         </div>
 
-                                        <textarea name="at_12_6_Operator_Protection_1"
-                                            class="form-control tinymce d-none"><% if (editing){ %><%= product.at_12_6_Operator_Protection_1 %><% } %></textarea>
+                                        <textarea name="at_12_6_Operator_Protection"
+                                            class="form-control tinymce d-none"><% if (editing){ %><%= file.at_12_6_Operator_Protection %><% } %></textarea>
                                     </div>
                                     <div class="row gx-2">
                                         <label class="form-label article" for="at_12_6_Operator_Protection_2">제12조의6(조종사
@@ -74,7 +74,7 @@
                                         </div>
                                         
                                         <textarea name="at_12_6_Operator_Protection_2"
-                                            class="form-control tinymce d-none"><% if (editing){ %><%= product.at_12_6_Operator_Protection_2 %><% } %></textarea>
+                                            class="form-control tinymce d-none"><% if (editing){ %><%= file.at_12_6_Operator_Protection_2 %><% } %></textarea>
                                     </div>
                                     <div class="row gx-2">
                                         <label class="form-label article" for="at_12_7_Swing_Brake">제12조의7(선회주차브레이크)
@@ -84,7 +84,7 @@
                                         ② 선회주차브레이크는 선회조작이 중립에 위치할 때 자동으로 제동되어야 하며, 엔진이 가동되는 상태나 정지된 상태에서도 제동기능을 유지하여야 한다.
                                         </div>                            
                                         <textarea name="at_12_7_Swing_Brake"
-                                            class="form-control tinymce d-none"><% if (editing){ %><%= product.at_12_7_Swing_Brake %><% } %></textarea>
+                                            class="form-control tinymce d-none"><% if (editing){ %><%= file.at_12_7_Swing_Brake %><% } %></textarea>
                                     </div>
                                     <div class="row gx-2">
                                         <label class="form-label article" for="at_12_8_CenterJoint">제12조의8(센터조인트)
@@ -93,7 +93,7 @@
                                             굴착기의 센터조인트는 회전부 중심에 설치하며, 상부 및 하부의 유압기기가 선회 중에도 송유(送油) 가능한 구조로서, 굴착 작업을 할 때 발생하는 하중 및 유압의 변동에 대하여 견딜 수 있는 구조여야 한다. 
                                         </div>                            
                                         <textarea name="at_12_8_CenterJoint"
-                                            class="form-control tinymce d-none"><% if (editing){ %><%= product.at_12_8_CenterJoint %><% } %></textarea>
+                                            class="form-control tinymce d-none"><% if (editing){ %><%= file.at_12_8_CenterJoint %><% } %></textarea>
                                     </div>
 
 
@@ -105,11 +105,11 @@
                             </div>
 
                             <% if (editing){ %>
-                                <input type="hidden" value="<%= product.id %>" name="productId">
+                                <input type="hidden" value="<%= file.id %>" name="fileId">
                                 <% } %>
                                     <button class="btn btn-link btn-sm btn p-0" type="submit">
-                                        <% if (editing){ %> Update Product
-                                            <% } else { %>Add Product<% } %>
+                                        <% if (editing){ %> Update File
+                                            <% } else { %>Add File<% } %>
                                     </button>
                         </form>
                     </div>

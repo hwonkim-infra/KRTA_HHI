@@ -4,7 +4,6 @@ const Product = require('../models/product_WEX');
 
 exports.getReport = (req, res, next) => {
     const prodId = req.params.productId;
-    console.log("🚀 ~ file: shop_WEX.js ~ line 19 ~ prodId", req.params)
     Product.findById(prodId)
         .then(product => {
 
@@ -22,7 +21,7 @@ exports.getReport = (req, res, next) => {
 
 
 exports.getIndex = (req, res, next) => {
-    Product.find()
+    Product.find().sort({ _id: 1 })
         .then(products => {
             res.render('shop/indexWEX', {
                 prods: products,

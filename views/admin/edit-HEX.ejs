@@ -1,12 +1,20 @@
 <%- include('../includes/head.ejs') %>
 <script src="/vendors/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'save',
-            height : "960"
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'save ',
+        height: "960",
+        resize: true,
 
-        });
+    });
+</script>
+<script>
+    const deleteConfirm = (event) => {
+        if (!confirm('이 모델을 삭제하시겠습니까?')) {
+            event.preventDefault();
+        }
+    }
 </script>
 
 <%- include('../includes/navigation.ejs') %>
@@ -21,31 +29,31 @@
                 <div class="row flex-between-center">
                     <div class="col-auto">
                         <h6 class="mb-0">
-                            <% if (editing){ %>Edit Product
-                            <% } else { %>Add Product
+                            <% if (editing){ %>Edit Crawler Excavator Spec
+                            <% } else { %>Add Crawler Excavator Spec
                             <% } %>
                         </h6>
                     </div>
                 </div>
             </div>
             <div class="card-body h-100 pe-0">
-                <form class="product-form"
-                    action="/admin/<% if (editing){ %>edit-HEX<% } else { %>add-HEX<% } %>" method="POST">
+                <form class="product-form" action="/admin/<% if (editing){ %>edit-HEX<% } else { %>add-HEX<% } %>"
+                    method="POST">
 
 
-<!-- ===============================================-->
-<!--    제원표    -->
-<!-- ===============================================-->
+                    <!-- ===============================================-->
+                    <!--    제원표    -->
+                    <!-- ===============================================-->
 
-<%- include('../includes/basic_spec.ejs') %>
-
-
-<%- include('../includes/attachments.ejs') %>
-
-<%- include('../includes/travel.ejs') %>
+                    <%- include('../includes/basic_spec.ejs') %>
 
 
-<%- include('../includes/swivel.ejs') %>
+                    <%- include('../includes/attachments.ejs') %>
+
+                    <%- include('../includes/travel.ejs') %>
+
+
+                    <%- include('../includes/swivel.ejs') %>
 
 
 
@@ -56,67 +64,93 @@
                     <div class="card mb-3">
                         <div class="card-header">
                             <h5 class="mb-0">도면</h5>
+                            <h6>(이미지 붙여넣기 및 설명 추가)</h6>
                         </div>
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_exterior">외관도 </label>
-                                    <textarea name="drawing_exterior" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_exterior %><% } %></textarea>
+                                <label class="form-label" for="drawing_exterior">외관도 <%  if (editing)  { %> (변경 전)
+                                    <% } %>
+                                </label>
+                                <textarea name="drawing_exterior"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_exterior %><% } %></textarea>
+                            </div>
+                        </div>
+                        <%  if (editing)  { %> <%  if (product.ChangeModel)  { %>
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                <label class="form-label" for="drawing_exterior_after">외관도 (변경
+                                    후) </label>
+                                <textarea name="drawing_exterior_after"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_exterior_after %><% } %></textarea>
+                            </div>
+                        </div>
+                        <% } %><% } %>
+
+                        <div class="card-body bg-light">
+                            <div class="row gx-2">
+                                <label class="form-label" for="drawing_boom">붐 도면 </label>
+                                <textarea name="drawing_boom"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_boom %><% } %></textarea>
                             </div>
                         </div>
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_boom">붐 도면 </label>
-                                    <textarea name="drawing_boom" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_boom %><% } %></textarea>
+                                <label class="form-label" for="drawing_arm">암 도면 </label>
+                                <textarea name="drawing_arm"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_arm %><% } %></textarea>
                             </div>
                         </div>
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_arm">암 도면 </label>
-                                    <textarea name="drawing_arm" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_arm %><% } %></textarea>
+                                <label class="form-label" for="drawing_bucket">버켓 도면 </label>
+                                <textarea name="drawing_bucket"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_bucket %><% } %></textarea>
                             </div>
                         </div>
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_bucket">버켓 도면 </label>
-                                    <textarea name="drawing_bucket" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_bucket %><% } %></textarea>
+                                <label class="form-label" for="drawing_bucket_capa">버켓 용적
+                                </label>
+                                <textarea name="drawing_bucket_capa"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_bucket_capa %><% } %></textarea>
                             </div>
                         </div>
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_bucket_capa">버켓 용적 </label>
-                                    <textarea name="drawing_bucket_capa" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_bucket_capa %><% } %></textarea>
+                                <label class="form-label" for="drawing_Qcouplr">퀵 커플러 </label>
+                                <textarea name="drawing_Qcouplr"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_Qcouplr %><% } %></textarea>
                             </div>
                         </div>
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Qcouplr">퀵 커플러 </label>
-                                    <textarea name="drawing_Qcouplr" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Qcouplr %><% } %></textarea>
+                                <label class="form-label" for="drawing_Emission_Certi">배출가스인증서
+                                </label>
+                                <textarea name="drawing_Emission_Certi"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_Emission_Certi %><% } %></textarea>
                             </div>
                         </div>
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Emission_Certi">배출가스인증서 </label>
-                                    <textarea name="drawing_Emission_Certi" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Emission_Certi %><% } %></textarea>
+                                <label class="form-label" for="drawing_Emission_Certi2">배출가스인증서
+                                </label>
+                                <textarea name="drawing_Emission_Certi2"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_Emission_Certi2 %><% } %></textarea>
                             </div>
                         </div>
 
                         <div class="card-body bg-light">
                             <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Emission_Certi2">배출가스인증서 </label>
-                                    <textarea name="drawing_Emission_Certi2" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Emission_Certi2 %><% } %></textarea>
-                            </div>
-                        </div>
-
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Engine_Curve">엔진 성능 곡선도 </label>
-                                    <textarea name="drawing_Engine_Curve" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Engine_Curve %><% } %></textarea>
+                                <label class="form-label" for="drawing_EngineCurve">엔진 성능 곡선도
+                                </label>
+                                <textarea name="drawing_EngineCurve"
+                                    class="form-control tinymce d-none"><% if (editing){ %><%= product.drawing_EngineCurve %><% } %></textarea>
                             </div>
                         </div>
 
@@ -125,9 +159,21 @@
                     <% if (editing){ %>
                     <input type="hidden" value="<%= product.id %>" name="productId">
                     <% } %>
-                    <button class="btn btn-link btn-sm btn p-0" type="submit"> <% if (editing){ %> Update Product
-                        <% } else { %>Add Product<% } %></button>
+                    <button class="btn btn-primary" type="submit">
+                        <% if (editing){ %> Update Product
+                        <% } else { %>Add Product<% } %>
+                    </button>
                 </form>
+
+                    <% if (editing){ %>
+                    <form action="/admin/delete-HEX" method="POST">
+                        <input type="hidden" value="<%= product._id %>" name="productId">
+                        <button class="btn btn-danger " type="submit" onClick="deleteConfirm(event)">
+                            Delete
+                        </button>
+
+                    </form>
+                    <% } %>
             </div>
         </div>
     </div>

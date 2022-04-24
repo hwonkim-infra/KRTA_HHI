@@ -15,6 +15,8 @@ exports.postAddProduct = (req, res, next) => {
         ChangeModel: false,
         // 제원 관련
         model_name: req.body.model_name,
+        _id: req.body.model_name + '_' + Date.now(),
+        serial_no: req.body.serial_no,
         machine_grade: req.body.machine_grade,
         operating_weight: req.body.operating_weight,
         gearbox: req.body.gearbox,
@@ -36,6 +38,7 @@ exports.postAddProduct = (req, res, next) => {
         engine_torque: req.body.engine_torque,
         torque_rev: req.body.torque_rev,
         engine_cylinder: req.body.engine_cylinder,
+
         // 작업장치 관련
         bucket_struck: req.body.bucket_struck,
         bucket_heap: req.body.bucket_heap,
@@ -49,10 +52,15 @@ exports.postAddProduct = (req, res, next) => {
         digging_depth_woqc: req.body.digging_depth_woqc,
         loading_height: req.body.loading_height,
         loading_height_woqc: req.body.loading_height_woqc,
-        quick_coupler: req.body.quick_coupler,
-        quick_coupler_weight: req.body.quick_coupler_weight,
-        bucket_creep_before: req.body.bucket_creep_before,
-        bucket_creep_after: req.body.bucket_creep_after,
+        quick_coupler_1: req.body.quick_coupler_1,
+        quick_coupler_weight_1: req.body.quick_coupler_weight_1,
+        quick_coupler_2: req.body.quick_coupler_2,
+        quick_coupler_weight_2: req.body.quick_coupler_weight_2,
+        // 전도안정성
+        bucket_COS: req.body.bucket_COS,
+        COG_COS: req.body.COG_COS,
+        tipping_line: req.body.tipping_line,
+
         // 선회성능 관련
         swing_pump_flow: req.body.swing_pump_flow,
         motor_displacement_swing: req.body.motor_displacement_swing,
@@ -68,6 +76,7 @@ exports.postAddProduct = (req, res, next) => {
         planetary_sun_gear_A2: req.body.planetary_sun_gear_A2,
         planetary_planet_gear_B2: req.body.planetary_planet_gear_B2,
         planetary_ring_gear_C2: req.body.planetary_ring_gear_C2,
+
         // 주행성능 관련
         pump_displacement_travel: req.body.pump_displacement_travel,
         motor_displacement_travel: req.body.motor_displacement_travel,
@@ -80,6 +89,7 @@ exports.postAddProduct = (req, res, next) => {
         surface_drag: req.body.surface_drag,
         sprocket_radius: req.body.sprocket_radius,
         travel_drag: req.body.travel_drag,
+        travel_reduc: req.body.travel_reduc,
         travel_sun_gear_S1: req.body.travel_sun_gear_S1,
         travel_ring_gear_R1: req.body.travel_ring_gear_R1,
         travel_sun_gear_S2: req.body.travel_sun_gear_S2,
@@ -89,6 +99,7 @@ exports.postAddProduct = (req, res, next) => {
 
         // 외관도 관련
         drawing_exterior: req.body.drawing_exterior,
+        drawing_exterior_after: req.body.drawing_exterior_after,
         drawing_boom: req.body.drawing_boom,
         drawing_arm: req.body.drawing_arm,
         drawing_bucket: req.body.drawing_bucket,
@@ -96,7 +107,7 @@ exports.postAddProduct = (req, res, next) => {
         drawing_Qcouplr: req.body.drawing_Qcouplr,
         drawing_Emission_Certi: req.body.drawing_Emission_Certi,
         drawing_Emission_Certi2: req.body.drawing_Emission_Certi2,
-        drawing_Engine_Curve: req.body.drawing_Engine_Curve,
+        drawing_EngineCurve: req.body.drawing_EngineCurve,
     });
     product
         .save()
@@ -112,7 +123,6 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.getEditProduct = (req, res, next) => {
     const editMode = req.query.edit;
-
 
     if (!editMode) {
         return res.redirect("/");
@@ -139,7 +149,8 @@ exports.postEditProduct = (req, res, next) => {
     Product.findById(prodId)
         .then((product) => {
             // 제원 관련
-            // product.model_name = req.body.model_name;
+            product.model_name = req.body.model_name;
+            product.serial_no = req.body.serial_no;
             product.machine_grade = req.body.machine_grade;
             product.operating_weight = req.body.operating_weight;
             product.gearbox = req.body.gearbox;
@@ -175,10 +186,14 @@ exports.postEditProduct = (req, res, next) => {
             product.digging_depth_woqc = req.body.digging_depth_woqc;
             product.loading_height = req.body.loading_height;
             product.loading_height_woqc = req.body.loading_height_woqc;
-            product.quick_coupler = req.body.quick_coupler;
-            product.quick_coupler_weight = req.body.quick_coupler_weight;
-            product.bucket_creep_before = req.body.bucket_creep_before;
-            product.bucket_creep_after = req.body.bucket_creep_after;
+            product.quick_coupler_1 = req.body.quick_coupler_1;
+            product.quick_coupler_weight_1 = req.body.quick_coupler_weight_1;
+            product.quick_coupler_2 = req.body.quick_coupler_2;
+            product.quick_coupler_weight_2 = req.body.quick_coupler_weight_2;
+            // 전도안정성
+            product.bucket_COS = req.body.bucket_COS;
+            product.COG_COS = req.body.COG_COS;
+            product.tipping_line = req.body.tipping_line;
 
             // 선회 성능 관련
 
@@ -209,6 +224,7 @@ exports.postEditProduct = (req, res, next) => {
             product.TM_r = req.body.TM_r;
             product.surface_drag = req.body.surface_drag;
             product.sprocket_radius = req.body.sprocket_radius;
+            product.travel_reduc = req.body.travel_reduc;
             product.travel_drag = req.body.travel_drag;
             product.travel_sun_gear_S1 = req.body.travel_sun_gear_S1;
             product.travel_ring_gear_R1 = req.body.travel_ring_gear_R1;
@@ -219,6 +235,7 @@ exports.postEditProduct = (req, res, next) => {
 
             // 외관도 관련
             product.drawing_exterior = req.body.drawing_exterior;
+            product.drawing_exterior_after = req.body.drawing_exterior_after;
             product.drawing_boom = req.body.drawing_boom;
             product.drawing_arm = req.body.drawing_arm;
             product.drawing_bucket = req.body.drawing_bucket;
@@ -226,7 +243,7 @@ exports.postEditProduct = (req, res, next) => {
             product.drawing_Qcouplr = req.body.drawing_Qcouplr;
             product.drawing_Emission_Certi = req.body.drawing_Emission_Certi;
             product.drawing_Emission_Certi2 = req.body.drawing_Emission_Certi2;
-            product.drawing_Engine_Curve = req.body.drawing_Engine_Curve;
+            product.drawing_EngineCurve = req.body.drawing_EngineCurve;
 
             return product.save();
         })
@@ -238,7 +255,9 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    Product.find()
+    Product.find().sort({
+            "model_name": -1
+        })
         .then((products) => {
             res.render("admin/HEXs", {
                 prods: products,
@@ -254,7 +273,7 @@ exports.postDeleteProduct = (req, res, next) => {
     Product.findByIdAndRemove(prodId)
         .then(() => {
             console.log("DESTROYED PRODUCT");
-            res.redirect("/admin/HEXs");
+            res.redirect("/");
         })
         .catch((err) => console.log(err));
 };
