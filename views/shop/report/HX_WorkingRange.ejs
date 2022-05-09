@@ -1,7 +1,13 @@
 
 <% var GrossWeight = product.operating_weight + 65 // 운전중량 
-var quick_coupler_weight = Math.max(product.quick_coupler_weight_1, product.quick_coupler_weight_2)|| 0;
+var quick_coupler_weight = Math.max(product.attachments.quick_coupler_weight_1, product.attachments.quick_coupler_weight_2)|| 0;
 %>
+
+<% 
+var ground_Length = product.undercarriage.tumbler_distance+0.35*(product.undercarriage.track_length-product.undercarriage.tumbler_distance);
+var ground_pressure = (GrossWeight / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
+var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
+%> 
     
 <!-- ===============================================-->
 <!--    작업반경과 퀵 커플러    -->
@@ -28,15 +34,15 @@ var quick_coupler_weight = Math.max(product.quick_coupler_weight_1, product.quic
               
               <tr>
                 <td>최대덤프높이 D </td>
-                <td id=""><%= product.loading_height %></td>
+                <td id=""><%= product.attachments.loading_height %></td>
               </tr>
               <tr>
                 <td>최대굴착반지름 A </td>
-                <td id=""><%= product.digging_reach %></td>
+                <td id=""><%= product.attachments.digging_reach %></td>
               </tr>
               <tr>
                 <td>최대굴착깊이 C </td>
-                <td id=""><%= product.digging_depth %></td>
+                <td id=""><%= product.attachments.digging_depth %></td>
               </tr>
             </tbody>
 
@@ -88,38 +94,38 @@ var quick_coupler_weight = Math.max(product.quick_coupler_weight_1, product.quic
               </tr>
               <tr>
                 <td>최대굴착 반지름 (㎜)</td>
-                <td id=""><%= product.digging_reach %></td>
-                <td id=""><%= product.digging_reach_woqc %></td>
+                <td id=""><%= product.attachments.digging_reach %></td>
+                <td id=""><%= product.attachments.digging_reach_woqc %></td>
                 <td> </td>
               </tr>
               <tr>
                 <td>덤프높이 (㎜)</td>
-                <td id=""><%= product.loading_height %></td>
-                <td id=""><%= product.loading_height_woqc %></td>
+                <td id=""><%= product.attachments.loading_height %></td>
+                <td id=""><%= product.attachments.loading_height_woqc %></td>
                 <td> </td>
               </tr>
               <tr>
                 <td>굴착깊이 (㎜)</td>
-                <td id=""><%= product.digging_depth %></td>
-                <td id=""><%= product.digging_depth_woqc %></td>
+                <td id=""><%= product.attachments.digging_depth %></td>
+                <td id=""><%= product.attachments.digging_depth_woqc %></td>
                 <td> </td>
               </tr>
               <tr>
                 <td>전축중(공차시) (kg)</td>
-                <td id=""><%= product.front_axle_load %></td>
-                <td id=""><%= product.front_axle_load_woqc %></td>
+                <td id=""><%= product.attachments.front_axle_load %></td>
+                <td id=""><%= product.attachments.front_axle_load_woqc %></td>
                 <td> </td>
               </tr>
               <tr>
                 <td>후축중(공차시) (kg)</td>
-                <td id=""><%= product.rear_axle_load %></td>
-                <td id=""><%= product.rear_axle_load_woqc %></td>
+                <td id=""><%= product.attachments.rear_axle_load %></td>
+                <td id=""><%= product.attachments.rear_axle_load_woqc %></td>
                 <td> </td>
               </tr>
               <tr>
                 <td>접지압 (㎏/㎠)</td>
-                <td id=""> </td>
-                <td id=""> </td>
+                <td id=""><%= ground_pressure.toFixed(2) %></td>
+                <td id=""><%= ground_pressure_woqc.toFixed(2) %></td>
                 <td> </td>
               </tr>
               <tr>

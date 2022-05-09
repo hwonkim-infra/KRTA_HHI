@@ -3,79 +3,107 @@
 <!-- ===============================================-->
 <div class="card mb-3">
     <div class="card-header">
-        <h5 class="mb-0">주행, 등판 능력</h5>
+        <h4 class="mb-5">주행, 등판 능력</h4>
+
     </div>
     <div class="card-body bg-light">
 
-        <div class="row gx-2">
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="kingpin_gap">킹핀 (스티어링 핀) 간 거리</label>
-                <input class="form-control" id="kingpin_gap" name="kingpin_gap" type="number"  value="<% if (editing){ %><%= product.kingpin_gap %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="kingpin_offset">킹핀과 타이어 중심 간 거리</label>
-                <input class="form-control" id="kingpin_offset" name="kingpin_offset" type="number"  value="<% if (editing){ %><%= product.kingpin_offset %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="wheel_angle">외륜최대조향각</label>
-                <input class="form-control" id="wheel_angle" name="wheel_angle" type="number" step="any" min="0" max="90" value="<% if (editing){ %><%= product.wheel_angle %><% } %>" placeholder="°" />
-            </div>
-            
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="pump_displacement_travel">주행 펌프 유량 (Q)</label>
-                <input class="form-control" id="pump_displacement_travel" name="pump_displacement_travel" type="number" step="any" 
-                    value="<% if (editing){ %><%= product.pump_displacement_travel %><% } %>" placeholder="" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="motor_displacement_travel">주행 모터 이론 용적 </label>
-                <input class="form-control" id="motor_displacement_travel" name="motor_displacement_travel" type="number" step="any" 
-                    value="<% if (editing){ %><%= product.motor_displacement_travel %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="motor_eff_travel">주행 모터 용적 효율 </label>
-                <input class="form-control" id="motor_eff_travel" name="motor_eff_travel" type="number" step="any" min="0" max="1"
-                    value="<% if (editing){ %><%= product.motor_eff_travel %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="TM_reduction">트랜스미션 감속비</label>
-                <input class="form-control" id="TM_reduction" name="TM_reduction" 
-                    value="<% if (editing){ %><%= product.TM_reduction %><% } %>" placeholder="" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="axle_reduction">액슬 감속비 </label>
-                <input class="form-control" id="axle_reduction" name="axle_reduction"   
-                    value="<% if (editing){ %><%= product.axle_reduction %><% } %>" placeholder="" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="tire_rolling_radius">타이어 동하중 반경</label>
-                <input class="form-control" id="tire_rolling_radius" name="tire_rolling_radius"  
-                    value="<% if (editing){ %><%= product.tire_rolling_radius %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="traction_force">견인력</label>
-                <input class="form-control" id="traction_force" name="traction_force" type="number" value="<% if (editing){ %><%= product.traction_force %><% } %>" placeholder="" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="engine_slope">오일 팬 기준등판각도 (θ<sub>ref</sub>)</label>
-                <input class="form-control" id="engine_slope" name="engine_slope" type="number" min="0" max="90"
-                    value="<% if (editing){ %><%= product.engine_slope %><% } %>" placeholder="" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="friction_surface">지면마찰계수</label>
-                <input class="form-control" id="friction_surface" name="friction_surface" type="number" step="any" min="0" max="1"
-                    value="<% if (editing){ %><%= product.friction_surface %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="running_resist">주행저항계수</label>
-                <input class="form-control" id="running_resist" name="running_resist" type="number" step="any" min="0" max="1" value="<% if (editing){ %><%= product.running_resist %><% } %>" placeholder="" />
-            </div>
-
+        <div class="card-header">
+            <h5 class="mb-2">주행 속도 관련</h5>
         </div>
+
+        <div class="input-group  mb-3">
+
+            <span class="input-group-text">주행 펌프 </span>
+            <input class="form-control" id="pump_displacement_travel" name="pump_displacement_travel" type="number"
+                step="any" value="<% if (editing){ %><%= product.travel.pump_displacement_travel %><% } %>"
+                placeholder="유량 (Q. l/min)" />
+            <span class="input-group-text">타이어 반경</span>
+
+            <input class="form-control" id="tire_rolling_radius" name="tire_rolling_radius"
+                value="<% if (editing){ %><%= product.travel.tire_rolling_radius %><% } %>" placeholder="타이어 동하중 반경()" />
+        </div>
+
+        <div class="input-group  mb-3">
+            <span class="input-group-text">주행 모터 용적</span>
+            <input class="form-control" id="motor_displacement_travel" name="motor_displacement_travel" type="number"
+                step="any" value="<% if (editing){ %><%= product.travel.motor_displacement_travel %><% } %>"
+                placeholder="용적 (q. cc/rev)" />
+            <span class="input-group-text">주행 모터 효율</span>
+
+            <input class="form-control" id="motor_eff_travel" name="motor_eff_travel" type="number" step="any" min="0"
+                max="1" value="<% if (editing){ %><%= product.travel.motor_eff_travel %><% } %>" placeholder="주행모터 효율" />
+        </div>
+
+        <div class="input-group  mb-3">
+            <span class="input-group-text">감속비: 미션</span>
+            <input class="form-control" id="TM_reduction" name="TM_reduction"
+                value="<% if (editing){ %><%= product.travel.TM_reduction %><% } %>" placeholder="TM 감속비" />
+            <span class="input-group-text">감속비: 액슬</span>
+
+            <input class="form-control" id="axle_reduction" name="axle_reduction"
+                value="<% if (editing){ %><%= product.travel.axle_reduction %><% } %>" placeholder="Axle 감속비" />
+        </div>
+        <div class="card-header">
+            <h5 class="mb-2">주행 최소 회전 반경 관련</h5>
+        </div>
+        <div class="input-group  mb-3">
+            <span class="input-group-text">킹핀 간격 (L)</span>
+            <input class="form-control" id="kingpin_gap" name="kingpin_gap" type="number"
+                value="<% if (editing){ %><%= product.travel.kingpin_gap %><% } %>" placeholder="㎜" />
+            <span class="input-group-text">타이어 중심 간격 (d) </span>
+            <input class="form-control" id="kingpin_offset" name="kingpin_offset" type="number"
+                value="<% if (editing){ %><%= product.travel.kingpin_offset %><% } %>" placeholder="㎜" />
+            <span class="input-group-text">외륜최대조향각 </span>
+            <input class="form-control" id="wheel_angle" name="wheel_angle" type="number" step="any" min="0" max="90"
+                value="<% if (editing){ %><%= product.travel.wheel_angle %><% } %>" placeholder="°" />
+        </div>
+
+        <div class="input-group  mb-3">
+        </div>
+
+
+        <div class="card-header">
+            <h5 class="mb-2">등판 주행 제동 능력 관련</h5>
+        </div>
+
+        <div class="input-group  mb-3">
+            <span class="input-group-text">견인력 </span>
+            <input class="form-control" id="traction_force" name="traction_force" type="number"
+                value="<% if (editing){ %><%= product.travel.traction_force %><% } %>" placeholder="" />
+                <span class="input-group-text">브레이크 토크 </span>
+            <input class="form-control" id="brake_torque_axle" name="brake_torque_axle" type="number"
+                value="<% if (editing){ %><%= product.travel.brake_torque_axle %><% } %>" placeholder="" />
+            <span class="input-group-text">기준등판각도</span>
+
+            <input class="form-control" id="engine_slope" name="engine_slope" type="number" min="0" max="90"
+                value="<% if (editing){ %><%= product.travel.engine_slope %><% } %>" placeholder="오일 팬 기준 등판 각도" />
+        </div>
+
+        <div class="input-group  mb-3">
+            <span class="input-group-text">지면마찰 계수</span>
+
+            <input class="form-control" id="friction_surface" name="friction_surface" type="number" step="any" min="0"
+                max="1" value="<% if (editing){ %><%= product.travel.friction_surface %><% } %>" placeholder="지면마찰계수" />
+            <span class="input-group-text">주행저항 계수</span>
+
+            <input class="form-control" id="running_resist" name="running_resist" type="number" step="any" min="0"
+                max="1" value="<% if (editing){ %><%= product.travel.running_resist %><% } %>" placeholder="주행저항계수" />
+        </div>
+
+
+
+        <div class="row gx-2">
+            <label class="form-label" for="braking_description">제동 성능 관련 자료
+            </label>
+            <textarea name="braking_description"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.travel.braking_description %><% } %></textarea>
+        </div>
+
+
+
+
+
     </div>
+</div>
 </div>

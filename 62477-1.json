@@ -1,0 +1,123 @@
+{
+    "4 Protection against hazards ": {
+        "4.1 General ": ["PECS 수명주기 동안 설계 구성 최소 요구사항 규정"],
+        "4.2 Fault and abnormal conditions .25": ["위험 고장 조건 동작 방지"],
+        "4.3 Short circuit and overload protection": {
+            "4.3.1 General ": ["과전류 보호장치 차단 능력"],
+            "4.3.2 Specification of input short-circuit withstand strength and output short circuit current ability ": {},
+            "4.3.3 Short-circuit coordination (backup protection)": {},
+            "4.3.4 Protection by several devices": {},
+            "4.3.5 Input ports short time withstand current, Icw ": {}
+        },
+        "4.4 Protection against electric shock ": {
+            "4.4.1 General ": ["감전 보호 절연 요구사항"],
+            "4.4.2 Decisive voltage class ": {},
+            "4.4.3 Provision for basic protection ": {},
+            "4.4.4 Provision for fault protection ": {},
+            "4.4.5 Enhanced protection ": {},
+            "4.4.6 Protective measures ": {},
+            "4.4.7 Insulation. ": {},
+            "4.4.8 Compatibility with residual current-operated protective devices (RCD)": {},
+            "4.4.9 Capacitor discharge ": {}
+        },
+        "4.5 Protection against electrical energy hazards ": {
+
+            "4.5.1 Operator access areas": {},
+            "4.5.2 Service access areas ": {}
+        },
+        "4.6 Protection against fire and thermal hazards ": {
+
+            "4.6.1 Circuits representing a fire hazard ": {},
+            "4.6.2 Components representing a fire hazard ": {},
+            "4.6.3 Fire enclosures ": {},
+            "4.6.4 Temperature limits ": {},
+            "4.6.5 Limited power sources ": {}
+        },
+        "4.7 Protection against mechanical hazards ": {
+
+            "4.7.1 General ": {},
+            "4.7.2 Specific requirements for liquid cooled PECS ": {}
+        },
+        "4.8 Equipment with multiple sources of supply ": {},
+        "4.9 Protection against environmental stresses ": {},
+        "4.10 Protection against sonic pressure hazards ": {
+
+            "4.10.1 General ": {},
+            "4.10.2 Sonic pressure and sound level ": {}
+        },
+        "4.11 Wiring and connections ": {
+
+            "4.11.1 General ": {},
+            "4.11.2 Routing": {},
+            "4.11.3 Colour coding ": {},
+            "4.11.4 Splices and connections ": {},
+            "4.11.5 Accessible connections": {},
+            "4.11.6 Interconnections between parts of the PECS": {},
+            "4.11.7 Supply connections": {},
+            "4.11.8 Terminals ": {}
+        },
+        "4.12 Enclosures ": {
+
+            "4.12.1 General ": {},
+            "4.12.2 Handles and manual controls ": {},
+            "4.12.3 Cast metal ": {},
+            "4.12.4 Sheet metal ": {},
+            "4.12.5 Stability test for enclosure": {}
+        }
+    },
+    "5 Test requirements ": {
+
+        "5.1 General ": {},
+        "5.1.1 Test objectives and classification ": {},
+        "5.1.2 Selection of test samples ": {},
+        "5.1.3 Sequence of tests ": {},
+        "5.1.4 Earthing conditions ": {},
+        "5.1.5 General conditions for tests ": {},
+        "5.1.6 Compliance ": {},
+        "5.1.7 Test overview ": {}
+    },
+    "5.2 Test specifications": {},
+    "5.2.1 Visual inspections (type test, sample test and routine test) ": {},
+    "5.2.2 Mechanical tests ": {},
+    "5.2.3 Electrical tests ": {},
+    "5.2.4 Abnormal operation and simulated faults tests": {},
+    "5.2.5 Material tests ": {},
+    "5.2.6 Environmental tests (type tests) ": {},
+    "5.2.7 Hydrostatic pressure test (type test and routine test) ": {},
+    "6 Information and marking requirements ": {},
+    "6.1 General ": {},
+    "6.2 Information for selection ": {},
+    "6.3 Information for installation and commissioning ": {},
+    "6.3.1 General . ": {},
+    "6.3.2 Mechanical considerations ": {},
+    "6.3.3 Environment ": {},
+    "6.3.4 Handling and mounting ": {},
+    "6.3.5 Enclosure temperature": {},
+    "6.3.6 Connections ": {},
+    "6.3.7 Protection requirements ": {},
+    "6.3.8 Commissioning ": {},
+    "6.4 Information for use ": {},
+    "6.4.1 General .": {},
+    "6.4.2 Adjustment ": {},
+    "6.4.3 Labels, signs and signals ": {},
+    "6.5 Information for maintenance ": {},
+    "6.5.1 General .": {},
+    "6.5.2 Capacitor discharge ": {},
+    "6.5.3 Auto restart/bypass connection ": {},
+    "6.5.4 Other hazards": {},
+    "6.5.5 Equipment with multiple sources of supply ": {},
+    "Annex A (normative) Additional information for protection against electric shock ": {},
+    "Annex B (informative) Considerations for the reduction of the pollution degree ": {},
+    "Annex C (informative) Symbols referred to in IEC 4-1 ": {},
+    "Annex D (normative) Evaluation of clearance and creepage distances": {},
+    "Annex E (informative) Altitude correction for clearances": {},
+    "Annex F (normative) Clearance and creepage distance determination for frequencies greater than  kHz 1": {},
+    "Annex G (informative) Cross-sections of round conductors": {},
+    "Annex H (informative) Guidelines for RCD compatibility ": {},
+    "Annex I (informative) Examples of overvoltage category reduction": {},
+    "Annex J (informative) Burn thresholds for touchable surfaces": {},
+    "Annex K (informative) Table of electrochemical potentials ": {},
+    "Annex L (informative) Measuring instrument for touch current measurements ": {},
+    "Annex M (informative) Test probes for determining access ": {},
+    "Annex N (informative) Guidance regarding short-circuit current ": {}
+}

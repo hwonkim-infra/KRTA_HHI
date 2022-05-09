@@ -1,0 +1,27 @@
+<!-- ===============================================-->
+<!--    전도하중과 무게중심    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+
+    <div class="card-body bg-light">
+
+        <h5 class="mb-3">좌우 안정도</h5>
+        <div class="row gx-2">
+            <div class="input-group mb-3">
+                <span class="input-group-text">무게중심 (Y)</span>
+                <input class="form-control" id="COG_lateral" name="COG_lateral" type="text"
+                    value="<% if (editing){ %><%= product.stability.COG_lateral %><% } %>" placeholder="Y축 방향 무게중심" />
+                <span class="input-group-text">무게중심 (Z)</span>
+                <input class="form-control" id="COG_vertical" name="COG_vertical" type="text"
+                    value="<% if (editing){ %><%= product.stability.COG_vertical %><% } %>" placeholder="Z축 방향 무게중심" />
+                <span class="input-group-text">전도지선</span>
+                <input class="form-control" id="tipping_line" name="tipping_line" type="number"
+                    value="<% if (editing){ %><%= product.stability.tipping_line %><% } %>" placeholder="전도지선 (㎜)" />
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

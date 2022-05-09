@@ -1,13 +1,13 @@
 
 <% var GrossWeight = product.operating_weight + 65 // 운전중량 
-var quick_coupler_weight = Math.max(product.quick_coupler_weight_1, product.quick_coupler_weight_2)|| 0;
-var  gross_weight_load = product.operating_weight + 65 + 1500*product.bucket_heap;
+var quick_coupler_weight = Math.max(product.attachments.quick_coupler_weight_1, product.attachments.quick_coupler_weight_2)|| 0;
+var  gross_weight_load = product.operating_weight + 65 + 1500*product.attachments.bucket_heap;
 
 %>
 <% 
-var ground_Length = product.tumbler_distance+0.35*(product.track_length-product.tumbler_distance);
-var ground_pressure = (GrossWeight / (2 * product.shoe_width/10 * ground_Length/10));
-var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.shoe_width/10 * ground_Length/10));
+var ground_Length = product.undercarriage.tumbler_distance+0.35*(product.undercarriage.track_length-product.undercarriage.tumbler_distance);
+var ground_pressure = (GrossWeight / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
+var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
 %> 
 
 
@@ -67,7 +67,7 @@ var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.
                         </tr>
                         <tr>
                             <td>“총중량”</td>
-                            <td><%= product.operating_weight %> + 65 + 1500 × <%= product.bucket_heap %> </td>
+                            <td><%= product.operating_weight %> + 65 + 1500 × <%= product.attachments.bucket_heap %> </td>
                             <td><%= gross_weight_load %> ㎏</td>
                         </tr>
                     </tbody>
@@ -107,14 +107,14 @@ var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.
               <tr>
                 <td width="28%">텀블러 중심거리</td>
                 <td width="5%">l</td>
-                <td width="15%" id=""><%= product.tumbler_distance/10 %></td>
+                <td width="15%" id=""><%= product.undercarriage.tumbler_distance/10 %></td>
                 <td width="10%">(㎝)</td>
                 <td> </td>
               </tr>
               <tr>
                 <td>무한궤도길이</td>
                 <td>Lt</td>
-                <td id=""><%= product.track_length/10 %></td>
+                <td id=""><%= product.undercarriage.track_length/10 %></td>
                 <td>(㎝)</td>
                 <td>　</td>
               </tr>
@@ -135,7 +135,7 @@ var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.
               <tr>
                 <td>슈폭</td>
                 <td>B</td>
-                <td id=""><%= product.shoe_width %></td>
+                <td id=""><%= product.undercarriage.shoe_width %></td>
                 <td>(㎝)</td>
                 <td>　</td>
               </tr>

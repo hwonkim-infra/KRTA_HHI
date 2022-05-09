@@ -1,0 +1,87 @@
+<!-- ===============================================-->
+<!--    외관도    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">도면</h5>
+        <h6>(이미지 붙여넣기 및 설명 추가)</h6>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_exterior">외관도
+            </label>
+            <textarea name="drawing_exterior"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.exterior %><% } %></textarea>
+        </div>
+    </div>
+
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_boom">붐 도면 </label>
+            <textarea name="drawing_boom"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.boom %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_arm">암 도면 </label>
+            <textarea name="drawing_arm"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.arm %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_bucket">버켓 도면 </label>
+            <textarea name="drawing_bucket"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.bucket %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_bucket_capa">버켓 용적
+            </label>
+            <textarea name="drawing_bucket_capa"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.bucket_capa %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_Qcouplr">퀵 커플러 </label>
+            <textarea name="drawing_Qcouplr"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.Qcouplr %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_Emission_Certi">배출가스인증서
+            </label>
+            <textarea name="drawing_Emission_Certi"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.Emission_Certi2 %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_Emission_Certi2">배출가스인증서
+            </label>
+            <textarea name="drawing_Emission_Certi2"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.EngineCurve %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawing_EngineCurve">엔진 성능 곡선도
+            </label>
+            <textarea name="drawing_EngineCurve"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.EngineCurve %><% } %></textarea>
+        </div>
+    </div>
+
+</div>

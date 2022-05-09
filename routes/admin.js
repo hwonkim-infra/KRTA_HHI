@@ -8,6 +8,7 @@ const adminControllerHEXChange = require('../controllers/admin_HEXChange');
 const suppleFilesController = require('../controllers/admin_Supples');
 
 const adminWEXController = require('../controllers/admin_WEX');
+const adminControllerWEXChange = require('../controllers/admin_WEXChange');
 
 
 const router = express.Router();
@@ -53,6 +54,16 @@ router.get('/edit-WEX/:Id', adminWEXController.getEditProduct);
 
 router.post('/edit-WEX', adminWEXController.postEditProduct);
 router.post('/delete-WEX', adminWEXController.postDeleteProduct);
+
+// /admin/add-WEX => GET
+router.get('/add-WEXChange/:originId', adminControllerWEXChange.getAddChangeModel);
+
+
+// /admin/add-WEX => POST
+router.post('/add-WEXChange', adminControllerWEXChange.postAddChangeModel);
+router.get('/edit-WEXChange/:Id', adminControllerWEXChange.getEditChangeModel);
+
+router.post('/edit-WEXChange', adminControllerWEXChange.postEditChangeModel);
 
 
 

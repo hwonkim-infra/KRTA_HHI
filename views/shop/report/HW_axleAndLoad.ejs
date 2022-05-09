@@ -1,23 +1,23 @@
 <% 
 var GrossWeight=product.operating_weight + 65;
-var  gross_weight_load = product.operating_weight + 65 + 1500*product.bucket_heap;
+var  gross_weight_load = product.operating_weight + 65 + 1500*product.attachments.bucket_heap;
 
 %>
 <% 
-var rearAxle_center	= product.wheel_base - product.frontAxle_center;
-var axle_weight_front_unload = (product.operating_weight * (rearAxle_center-product.COG_center_unload)/product.wheel_base).toFixed(); // 공차하중 1축
-var axle_weight_rear_unload	= (product.operating_weight * (product.frontAxle_center+product.COG_center_unload)/product.wheel_base).toFixed(); // 공차하중 2축
+var rearAxle_center	= product.undercarriage.wheel_base - product.undercarriage.frontAxle_center;
+var axle_weight_front_unload = (product.operating_weight * (rearAxle_center-product.undercarriage.COG_center_unload)/product.undercarriage.wheel_base).toFixed(); // 공차하중 1축
+var axle_weight_rear_unload	= (product.operating_weight * (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_unload)/product.undercarriage.wheel_base).toFixed(); // 공차하중 2축
 
-var axle_weight_front_load = (gross_weight_load* (rearAxle_center - product.COG_center_load)/product.wheel_base).toFixed();
-var axle_weight_rear_load = (gross_weight_load* (product.frontAxle_center+product.COG_center_load)/product.wheel_base).toFixed();
+var axle_weight_front_load = (gross_weight_load* (rearAxle_center - product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
+var axle_weight_rear_load = (gross_weight_load* (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
 %>
 <% 
-var	tire_load_front_unload = (axle_weight_front_unload/product.no_tires/product.tire_load_limit * 100).toFixed(1);
-var	tire_load_rear_unload = (axle_weight_rear_unload/product.no_tires/product.tire_load_limit * 100).toFixed(1);
-var	tire_load_front_load = (axle_weight_front_load/product.no_tires/product.tire_load_limit * 100).toFixed(1);
-var	tire_load_rear_load = (axle_weight_rear_load/product.no_tires/product.tire_load_limit * 100).toFixed(1);
-var	tire_load_front_unload_running = (axle_weight_front_unload/product.no_tires/product.tire_load_limit_running * 100).toFixed(1);
-var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/product.tire_load_limit_running * 100).toFixed(1);
+var	tire_load_front_unload = (axle_weight_front_unload/product.undercarriage.no_tires/product.undercarriage.tire_load_limit * 100).toFixed(1);
+var	tire_load_rear_unload = (axle_weight_rear_unload/product.undercarriage.no_tires/product.undercarriage.tire_load_limit * 100).toFixed(1);
+var	tire_load_front_load = (axle_weight_front_load/product.undercarriage.no_tires/product.undercarriage.tire_load_limit * 100).toFixed(1);
+var	tire_load_rear_load = (axle_weight_rear_load/product.undercarriage.no_tires/product.undercarriage.tire_load_limit * 100).toFixed(1);
+var	tire_load_front_unload_running = (axle_weight_front_unload/product.undercarriage.no_tires/product.undercarriage.tire_load_limit_running * 100).toFixed(1);
+var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarriage.no_tires/product.undercarriage.tire_load_limit_running * 100).toFixed(1);
  %>
 
 <!-- ===============================================-->
@@ -76,7 +76,7 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                         </tr>
                         <tr>
                             <td>“총중량”</td>
-                            <td><%= product.operating_weight %> + 65 + 1500 × <%= product.bucket_heap %> </td>
+                            <td><%= product.operating_weight %> + 65 + 1500 × <%= product.attachments.bucket_heap %> </td>
                             <td><%= gross_weight_load %> ㎏</td>
                         </tr>
                     </tbody>
@@ -121,21 +121,21 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                             <td>장비 무게 중심 (전후 방향)</td>
                             <td>$$X_T$$</td>
                             <td>㎜</td>
-                            <td><%= product.COG_center_unload %></td>
+                            <td><%= product.undercarriage.COG_center_unload %></td>
                             <td>-값: 작업장치 방향</td>
                         </tr>
                         <tr>
                             <td>축간 거리</td>
                             <td>$$L$$</td>
                             <td>㎜</td>
-                            <td><%= product.wheel_base %></td>
+                            <td><%= product.undercarriage.wheel_base %></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>1축에서 선회중심까지 거리</td>
                             <td>$$L_1$$</td>
                             <td>㎜</td>
-                            <td><%= product.frontAxle_center %></td>
+                            <td><%= product.undercarriage.frontAxle_center %></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -149,14 +149,14 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                             <td>타이어 허용하중 (정지)</td>
                             <td>$$P_{static}$$</td>
                             <td>㎏</td>
-                            <td> <%= product.tire_load_limit %> </td>
+                            <td> <%= product.undercarriage.tire_load_limit %> </td>
                             <td>타이어 사양</td>
                         </tr>
                         <tr>
                             <td>타이어 허용하중 (최고속)</td>
                             <td>$$P_{dynamic}$$</td>
                             <td>㎏</td>
-                            <td> <%= product.tire_load_limit_running %> </td>
+                            <td> <%= product.undercarriage.tire_load_limit_running %> </td>
                             <td>타이어 사양</td>
                         </tr>
                     </tbody>
@@ -177,14 +177,14 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                             <td>1축 하중</td>
                             <td>$$F_1 = \frac{W_T \cdot (L_2-X_T)}{L}$$</td>
                             <td>$$ \frac{ <%= product.operating_weight %> \cdot ( <%= rearAxle_center %> -
-                                <%= product.COG_center_unload %> )}{ <%= product.wheel_base %> }$$</td>
+                                <%= product.undercarriage.COG_center_unload %> )}{ <%= product.undercarriage.wheel_base %> }$$</td>
                             <td>$$<%= axle_weight_front_unload %> $$</td>
                         </tr>
                         <tr>
                             <td>2축 하중</td>
                             <td>$$F_2 = \frac{W_T \cdot (L_1+X_T)}{L}$$</td>
-                            <td>$$ \frac{ <%= product.operating_weight %> \cdot ( <%= product.frontAxle_center %> +
-                                <%= product.COG_center_unload %> )}{ <%= product.wheel_base %> }$$</td>
+                            <td>$$ \frac{ <%= product.operating_weight %> \cdot ( <%= product.undercarriage.frontAxle_center %> +
+                                <%= product.undercarriage.COG_center_unload %> )}{ <%= product.undercarriage.wheel_base %> }$$</td>
                             <td>$$<%= axle_weight_rear_unload %>$$ </td>
                         </tr>
                     </tbody>
@@ -227,21 +227,21 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                             <td>장비 무게 중심 (전후 방향)</td>
                             <td>$$X_T$$</td>
                             <td>㎜</td>
-                            <td><%= product.COG_center_load %></td>
+                            <td><%= product.undercarriage.COG_center_load %></td>
                             <td>-값: 작업장치 방향</td>
                         </tr>
                         <tr>
                             <td>축간 거리</td>
                             <td>$$L$$</td>
                             <td>㎜</td>
-                            <td><%= product.wheel_base %></td>
+                            <td><%= product.undercarriage.wheel_base %></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>1축에서 선회중심까지 거리</td>
                             <td>$$L_1$$</td>
                             <td>㎜</td>
-                            <td><%= product.frontAxle_center %></td>
+                            <td><%= product.undercarriage.frontAxle_center %></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -269,14 +269,14 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                             <td>1축 하중</td>
                             <td>$$F_1 = \frac{W_T \cdot (L_2-X_T)}{L}$$</td>
                             <td>$$ \frac{ <%= gross_weight_load %> \cdot ( <%= rearAxle_center %> -
-                                <%= product.COG_center_load %> )}{ <%= product.wheel_base %> }$$</td>
+                                <%= product.undercarriage.COG_center_load %> )}{ <%= product.undercarriage.wheel_base %> }$$</td>
                             <td><%= axle_weight_front_load %> </td>
                         </tr>
                         <tr>
                             <td>2축 하중</td>
                             <td>$$F_2 = \frac{W_T \cdot (L_1+X_T)}{L}$$</td>
-                            <td>$$ \frac{ <%= gross_weight_load %> \cdot ( <%= product.frontAxle_center %> +
-                                <%= product.COG_center_load %> )}{ <%= product.wheel_base %> }$$</td>
+                            <td>$$ \frac{ <%= gross_weight_load %> \cdot ( <%= product.undercarriage.frontAxle_center %> +
+                                <%= product.undercarriage.COG_center_load %> )}{ <%= product.undercarriage.wheel_base %> }$$</td>
                             <td><%= axle_weight_rear_load %> </td>
                         </tr>
                     </tbody>
@@ -307,15 +307,15 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                         <tr>
                             <td>타이어 부하율 (전축. %)</td>
                             <td>$$\epsilon_f = \frac{R_f}{N \times P} \times 100$$</td>
-                            <td>$$ \frac{<%= axle_weight_front_unload %> }{ <%= product.no_tires %> \times
-                                <%= product.tire_load_limit %>} \times 100$$</td>
+                            <td>$$ \frac{<%= axle_weight_front_unload %> }{ <%= product.undercarriage.no_tires %> \times
+                                <%= product.undercarriage.tire_load_limit %>} \times 100$$</td>
                             <td>$$<%= tire_load_front_unload %> %$$</td>
                         </tr>
                         <tr>
                             <td>타이어 부하율 (후축. %)</td>
                             <td>$$\epsilon_r = \frac{R_f}{N \times P } \times 100$$</td>
-                            <td>$$ \frac{<%= axle_weight_rear_unload %>}{ <%= product.no_tires %> \times
-                                <%= product.tire_load_limit %>} \times 100$$</td>
+                            <td>$$ \frac{<%= axle_weight_rear_unload %>}{ <%= product.undercarriage.no_tires %> \times
+                                <%= product.undercarriage.tire_load_limit %>} \times 100$$</td>
                             <td>$$<%= tire_load_rear_unload %> $$ </td>
                         </tr>
                     </tbody>
@@ -328,15 +328,15 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                         <tr>
                             <td>타이어 부하율 (전축. %)</td>
                             <td>$$\epsilon_f = \frac{R_f}{N \times P} \times 100$$</td>
-                            <td>$$ \frac{<%= axle_weight_front_load %> }{ <%= product.no_tires %> \times
-                                <%= product.tire_load_limit %>} \times 100$$</td>
+                            <td>$$ \frac{<%= axle_weight_front_load %> }{ <%= product.undercarriage.no_tires %> \times
+                                <%= product.undercarriage.tire_load_limit %>} \times 100$$</td>
                             <td>$$<%= tire_load_front_load %> %$$</td>
                         </tr>
                         <tr>
                             <td>타이어 부하율 (후축. %)</td>
                             <td>$$\epsilon_r = \frac{R_f}{N \times P } \times 100$$</td>
-                            <td>$$ \frac{<%= axle_weight_rear_load %>}{ <%= product.no_tires %> \times
-                                <%= product.tire_load_limit %>} \times 100$$</td>
+                            <td>$$ \frac{<%= axle_weight_rear_load %>}{ <%= product.undercarriage.no_tires %> \times
+                                <%= product.undercarriage.tire_load_limit %>} \times 100$$</td>
                             <td>$$<%= tire_load_rear_load %> $$ </td>
                         </tr>
                     </tbody>
@@ -348,15 +348,15 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.no_tires/pr
                         <tr>
                             <td>타이어 부하율 (전축. %)</td>
                             <td>$$\epsilon_f = \frac{R_f}{N \times P} \times 100$$</td>
-                            <td>$$ \frac{<%= axle_weight_front_unload %> }{ <%= product.no_tires %> \times
-                                <%= product.tire_load_limit_running %>} \times 100$$</td>
+                            <td>$$ \frac{<%= axle_weight_front_unload %> }{ <%= product.undercarriage.no_tires %> \times
+                                <%= product.undercarriage.tire_load_limit_running %>} \times 100$$</td>
                             <td>$$<%= tire_load_front_unload_running %> %$$</td>
                         </tr>
                         <tr>
                             <td>타이어 부하율 (후축. %)</td>
                             <td>$$\epsilon_r = \frac{R_f}{N \times P } \times 100$$</td>
-                            <td>$$ \frac{<%= axle_weight_rear_unload %>}{ <%= product.no_tires %> \times
-                                <%= product.tire_load_limit_running %>} \times 100$$</td>
+                            <td>$$ \frac{<%= axle_weight_rear_unload %>}{ <%= product.undercarriage.no_tires %> \times
+                                <%= product.undercarriage.tire_load_limit_running %>} \times 100$$</td>
                             <td>$$<%= tire_load_rear_unload_running %> $$ </td>
                         </tr>
                     </tbody>

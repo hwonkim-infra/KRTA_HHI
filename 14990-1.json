@@ -1,0 +1,124 @@
+{
+    "4 General requirements": {
+        "4.1 General": {},
+        "4.2 Provisions for handling": {},
+        "4.3 Provisions for transportation and storage": {},
+        "4.4 Components and devices": {},
+        "4.5 Intended operating environment": {},
+        "4.6 Electrical source": {}
+    },
+    "5 Protection against electric shock hazards": {
+        "5.1 General": {},
+        "5.2 Protection by enclosures": {},
+        "5.3 Protection by insulation": {},
+        "5.4 Protection against residual voltages": {},
+        "5.5 Protection by barriers": {},
+        "5.6 Protection by inaccessibility": {},
+        "5.7 Special considerations for low voltage energy storage devices and related buses": {},
+        "5.8 Prevention of touch voltage": {},
+        "5.9 Protection by automatic disconnection of source": {},
+        "5.10 Protection by equipotential bonding": {},
+        "5.11 Protection by use of PELV": {}
+    },
+    "6 Protection against electrical fire hazards": {
+        "6.1 General": {},
+        "6.2 Fire hazard assessment": {},
+        "6.3 Prevention of ignition": {},
+        "6.4 Minimizing the spread of fire": {}
+    },
+    "7 Protection against thermal hazards": {},
+    "8 Protection against mechanical hazards": {},
+    "9 Protection against abnormal operation hazards": {
+        "9.1 General": {},
+        "9.3 Abnormal temperature protection": {},
+        "9.4 Earth (or chassis in the case of self-powered machines) fault/residual current protection": {},
+        "9.5 Protection against overvoltages due to lightning and to switching surges": {},
+        "9.6 Protection against other abnormal operation hazards": {}
+    },
+    "10 Electric power source": {
+        "10.1 Disconnection of source": {},
+        "10.2 Prevention of unintended start-up": {},
+        "10.3 External electrical charging": {}
+    },
+    "11 Wiring": {
+        "11.1 General": {},
+        "11.2 Conductors": {},
+        "11.3 Insulation": {},
+        "11.4 Conductor and cable ampacity": {},
+        "11.5 Flexible cables": {},
+        "11.6 Assemblies having sliding contacts": {},
+        "11.7 Connections and routing": {},
+        "11.8 Identification of conductors": {},
+        "11.9 Wiring inside enclosures": {},
+        "11.10 Wiring outside enclosures": {},
+        "11.11 Ducts and boxes": {}
+    },
+    "12 Electric motors and generators": {
+        "12.1 General": {},
+        "12.2 Enclosures": {},
+        "12.3 Dimensions": {},
+        "12.4 Mounting and compartments": {},
+        "12.5 Criteria for motor selection or design": {},
+        "12.6 Overheating protection": {},
+        "12.7 Overspeed protection": {}
+    },
+
+    "13 Non-motor loads": {
+        
+        "13.2.1General": {},
+        "13.2.2Source": {},
+        "13.2.3Protection": {},
+        "13.2.4Fittings": {}
+    },
+
+    "14 Controls": {
+        "14.1 Control circuits": {},
+        "14.2 Control functions": {},
+        "14.3 Protective interlocks": {},
+        "14.4 Control functions in the event of failure": {},
+        "14.5 Operator interface and machine-mounted control devices": {},
+        "14.6 Controlgear: location, mounting, and enclosures": {},
+        "14.7 Access to low and high‑voltage equipment": {}
+    },
+    "15 Manuals and technical documentation": {
+        "15.1 General": {},
+        "15.2 Information to be provided": {},
+        "15.3 Documentation": {},
+        "15.4 Overview diagrams and function diagrams": {},
+        "15.5 Circuit diagrams": {},
+        "15.6 Operator’s manual": {},
+        "15.7 Maintenance manual and service literature": {},
+        "15.8 Parts list": {}
+    },
+    "16 Marking": {
+        "16.1 General": {},
+        "16.2 Warning signs": {},
+        "16.3 Functional identification": {},
+        "16.4 Marking of equipment": {},
+        "16.5 Reference designations": {},
+        "16.6 Protective equipotential bonding terminals": {}
+    },
+    "17 Tests": {
+        "17.1 General": {"저용량 장비": "형식 및 정기시험 통합 가능", "접지":"자주식 토공기계에서 접지는 섀시 연결"},
+        "17.2 Protective equipotential bonding circuit continuity": {
+            "보호 등전위 본딩 회로 저항" : "0.2 ~ 10A 전류 측정",
+            "시험 전류": "최대 24V 무부하 격리 전원 SELV"
+        },
+        "17.3 Conditions for protection by automatic disconnection of source": {
+            "자동 차단으로 간접접촉 보호 제공": "차단 조건 검증. 2차 위험 방지",
+            "17.3.2 Fault loop impedance verification and suitability of the associated overcurrent protective device in TN systems": "보호 등전위 본딩 선행. PE 단자 인입 도체 연결 검증"
+        },
+        "17.4 Insulation resistance tests": {
+            "surge protection device": "절연 시험 중 차단 혹은 중성선 피크 이하 전압 저감 가능",
+            "17.4.1 Low-voltage insulation resistance test" : {"500 VDC" :"1MΩ+"},
+            "17.4.2 High-voltage insulation resistance test17.5 Voltage withstand tests": {"정격 | 5kV smaller" :"1MΩ+"}
+        },
+        "17.5 Voltage withstand tests": {
+            "nominal frequency": "50~60 Hz 또는 피크 동등 직류 전압"
+        },
+        "17.6 Protection against residual voltages": {"60μC 초과 구성품": "잔류 전압 검증"},
+        "17.7 Functional tests": {"기능 시험": "안전관련 회로 등"},
+        "17.8 Retesting": {"변경": "변경 사항 반영과 검증"},
+        "17.9 IP test for high‑voltage equipment": {"고압 기기 IP 등급": "IEC 60529"}
+    }
+}
