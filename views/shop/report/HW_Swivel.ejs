@@ -1,0 +1,121 @@
+
+<% 
+var swing_reduction_rev	= (product.swivel.pump_flow * product.swivel.motor_eff/product.swivel.motor_displacement*1000).toFixed(1);
+var swing_speed	= (swing_reduction_rev/product.swivel.reduction).toFixed(1); 
+%>
+
+
+<!-- ===============================================-->
+<!--    선회 속도    -->
+<!-- ===============================================-->
+<div class="pages" id="Swing_Speed">
+    <table class="bordertable">
+    <tr class="borderheader">
+        <td height="30mm">
+        선회 속도
+        </td>
+    </tr>
+
+    <tr>
+        <td class="head_description">
+        <p>▷ 아래 계산 결과에 따라 <strong> 최고 선회 속도는 <%= swing_speed %> rpm </strong></p>
+        <p>○ 선회 성능 관련 사양</p>
+            <table class="innertable" width="80%">
+            <thead>
+            <tr>
+                <th>항목</th>
+                <th>기호</th>
+                <th>단위</th>
+                <th>제원</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>선회 펌프 유량</td>
+                <td>$$Q$$</td>
+                <td>l/min</td>
+                <td> <%= product.swivel.pump_flow %> </td>
+            </tr>
+            <tr>
+                <td>선회 모터 이론 용적</td>
+                <td>$$q_m$$</td>
+                <td>cc.rev</td>
+                <td> <%= product.swivel.motor_displacement %> </td>
+            </tr>
+            <tr>
+                <td>선회모터 용적효율</td>
+                <td>$$i$$</td>
+                <td></td>
+                <td> <%= product.swivel.motor_eff %> </td>
+            </tr>
+            <tr>
+                <td>선회 감속비</td>
+                <td>$$\eta_{mv}$$</td>
+                <td>%</td>
+                <td> <%= product.swivel.reduction %> </td>
+            </tr>
+            </tbody>
+            </table>
+        <p>○ 선회감속기 축 회전수</p>
+
+        <table class="innertable" width="90%" height="">
+            <thead>
+            <tr>
+                <th colspan="2">산식</th>
+                <th>결과</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>$$SM=\frac{Q \times \eta_{mv}}{q_m} \times 1000$$</td>
+                <td>$$\frac{<%= product.swivel.pump_flow %> \times <%= product.swivel.reduction %>}{<%= product.swivel.motor_displacement %>} \times 1000$$</td>
+                <td>$$<%= swing_reduction_rev %>$$</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <p>○ 선회속도</p>
+
+               <table class="innertable" width="90%" height="">
+            <thead>
+            <tr>
+                <th colspan="2">산식</th>
+                <th>결과</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>$$SM=\frac{SM}{i}$$</td>
+                <td>$$\frac{<%= swing_reduction_rev %>}{<%= product.swivel.reduction %>} $$</td>
+                <td>$$<%= swing_speed %>$$</td>
+            </tr>
+            </tbody>
+        </table>
+                  
+                </tr>
+              </table>
+            </div>
+
+            
+    <div class="pages" id="Swing_Reduction">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">선회 속도</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    
+                    <p>○ 치차 비율에 따른 감속비 계산</p>
+          <%- product.description.swing_reduction %> 
+
+                    <table class="innertable" width="90%" >                        
+                        
+                    </table>
+
+                  </td>
+                </td>
+            </tr>
+        </table>
+    </div>

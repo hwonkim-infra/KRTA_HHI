@@ -8,102 +8,78 @@
     <div class="card-body bg-light">
 
         <div class="row gx-2">
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="bucket_struck">버킷용량(평적) (㎥)</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">버켓 용량 (평적)</span>
                 <input class="form-control" id="bucket_struck" name="bucket_struck" type="text"
-                    value="<% if (editing){ %><%= product.bucket_struck %><% } %>" placeholder="㎥" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="bucket_heap">버킷용량(산적) (㎥)</label>
+                    value="<% if (editing){ %><%= product.attachments.bucket_struck %><% } %>" placeholder="평적 ㎥" />
+                <span class="input-group-text">버켓 용량 (산적)</span>
                 <input class="form-control" id="bucket_heap" name="bucket_heap" type="text"
-                    value="<% if (editing){ %><%= product.bucket_heap %><% } %>" placeholder="㎥" />
+                    value="<% if (editing){ %><%= product.attachments.bucket_heap %><% } %>" placeholder="산적 ㎥" />
             </div>
 
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="arm_length">암의길이 (㎜)</label>
-                <input class="form-control" id="arm_length" name="arm_length" type="text"
-                    value="<% if (editing){ %><%= product.arm_length %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="boom_length">붐의길이 (㎜)</label>
+            <div class="input-group  mb-3">
+                <span class="input-group-text">붐 (㎜)</span>
                 <input class="form-control" id="boom_length" name="boom_length" type="text"
-                    value="<% if (editing){ %><%= product.boom_length %><% } %>" placeholder="㎜" />
+                    value="<% if (editing){ %><%= product.attachments.boom_length %><% } %>" placeholder="붐 (㎜)" />
+                <span class="input-group-text">암 (㎜)</span>
+                <input class="form-control" id="arm_length" name="arm_length" type="text"
+                    value="<% if (editing){ %><%= product.attachments.arm_length %><% } %>" placeholder="암 (㎜)" />
             </div>
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="digging_reach">최대굴착반지름 (㎜)</label>
+            <div class="input-group  mb-3">
+                <span class="input-group-text">최대굴착반경 (㎜)</span>
                 <input class="form-control" id="digging_reach" name="digging_reach" type="text"
-                    value="<% if (editing){ %><%= product.digging_reach %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="digging_reach_woqc">최대굴착반지름 WO/QC (㎜)</label>
+                    value="<% if (editing){ %><%= product.attachments.digging_reach %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">최대굴착반경 woQC (㎜)</span>
                 <input class="form-control" id="digging_reach_woqc" name="digging_reach_woqc" type="text"
-                    value="<% if (editing){ %><%= product.digging_reach_woqc %><% } %>" placeholder="㎜" />
+                    value="<% if (editing){ %><%= product.attachments.digging_reach_woqc %><% } %>" placeholder="without Q.C ㎜" />
             </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="digging_height">최대굴착높이 (㎜)</label>
-                <input class="form-control" id="digging_height" name="digging_height" type="text"
-                    value="<% if (editing){ %><%= product.digging_height %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="digging_height_woqc">최대굴착높이 WO/QC (㎜)</label>
-                <input class="form-control" id="digging_height_woqc" name="digging_height_woqc" type="text"
-                    value="<% if (editing){ %><%= product.digging_height_woqc %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="digging_depth">최대굴착깊이 (㎜)</label>
+
+            <div class="input-group  mb-3">
+                <span class="input-group-text">최대굴착깊이 (㎜)</span>
                 <input class="form-control" id="digging_depth" name="digging_depth" type="text"
-                    value="<% if (editing){ %><%= product.digging_depth %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="digging_depth_woqc">최대굴착깊이 WO/QC (㎜)</label>
+                    value="<% if (editing){ %><%= product.attachments.digging_depth %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">최대굴착깊이 woQC (㎜)</span>
                 <input class="form-control" id="digging_depth_woqc" name="digging_depth_woqc" type="text"
-                    value="<% if (editing){ %><%= product.digging_depth_woqc %><% } %>" placeholder="㎜" />
+                    value="<% if (editing){ %><%= product.attachments.digging_depth_woqc %><% } %>" placeholder="without Q.C ㎜" />
             </div>
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="loading_height">최대덤프높이 (㎜)</label>
+            <div class="input-group  mb-3">
+                <span class="input-group-text">최대덤프높이 (㎜)</span>
                 <input class="form-control" id="loading_height" name="loading_height" type="text"
-                    value="<% if (editing){ %><%= product.loading_height %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="loading_height_woqc">최대덤프높이 WO/QC (㎜)</label>
+                    value="<% if (editing){ %><%= product.attachments.loading_height %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">최대덤프높이 woQC (㎜)</span>
                 <input class="form-control" id="loading_height_woqc" name="loading_height_woqc" type="text"
-                    value="<% if (editing){ %><%= product.loading_height_woqc %><% } %>" placeholder="㎜" />
+                    value="<% if (editing){ %><%= product.attachments.loading_height_woqc %><% } %>" placeholder="without Q.C ㎜" />
             </div>
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="quick_coupler_1">퀵 커플러 (모델명) (1)</label>
+            <div class="input-group  mb-3">
+                <span class="input-group-text">전체높이 (woQC, ㎜)</span>
+                <input class="form-control" id="height_woqc" name="height_woqc" type="text"
+                    value="<% if (editing){ %><%= product.attachments.height_woqc %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">전체길이 (woQC, ㎜)</span>
+                <input class="form-control" id="length_woqc" name="length_woqc" type="text"
+                    value="<% if (editing){ %><%= product.attachments.length_woqc %><% } %>" placeholder="without Q.C ㎜" />
+            </div>
+
+
+            <div class="input-group">
+                <span class="input-group-text">퀵 커플러 (1)</span>
                 <input class="form-control" id="quick_coupler_1" name="quick_coupler_1" type="text"
-                    value="<% if (editing){ %><%= product.quick_coupler_1 %><% } %>" placeholder="RFQ??? / DMQ " />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="quick_coupler_weight_1">퀵 커플러 (중량) (1)</label>
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_1 %><% } %>" placeholder="모델명 " />
+                <span class="input-group-text">커플러 중량</span>
                 <input class="form-control" id="quick_coupler_weight_1" name="quick_coupler_weight_1" type="number"
-                    value="<% if (editing){ %><%= product.quick_coupler_weight_1 %><% } %>" placeholder="kg" />
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_weight_1 %><% } %>" placeholder="중량(kg)" />
             </div>
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="quick_coupler_2">퀵 커플러 (모델명) (2)</label>
+            <div class="input-group  mb-3">
+                <span class="input-group-text">퀵 커플러 (2)</span>
                 <input class="form-control" id="quick_coupler_2" name="quick_coupler_2" type="text"
-                    value="<% if (editing){ %><%= product.quick_coupler_2 %><% } %>" placeholder="RFQ??? / DMQ " />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="quick_coupler_weight_2">퀵 커플러 (중량) (2)</label>
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_2 %><% } %>" placeholder="모델명 " />
+                <span class="input-group-text">커플러 중량</span>
                 <input class="form-control" id="quick_coupler_weight_2" name="quick_coupler_weight_2" type="number"
-                    value="<% if (editing){ %><%= product.quick_coupler_weight_2 %><% } %>" placeholder="kg" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="bucket_creep_before">버켓 침하량 (시작시 높이)</label>
-                <input class="form-control" id="bucket_creep_before" name="bucket_creep_before" type="number"
-                    value="<% if (editing){ %><%= product.bucket_creep_before %><% } %>" placeholder="㎜" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="bucket_creep_after">버켓 침하량 (10분 뒤 높이)</label>
-                <input class="form-control" id="bucket_creep_after" name="bucket_creep_after" type="number"
-                    value="<% if (editing){ %><%= product.bucket_creep_after %><% } %>" placeholder="㎜" />
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_weight_2 %><% } %>" placeholder="중량(kg)" />
             </div>
 
         </div>

@@ -1,0 +1,120 @@
+
+  <!-- ===============================================-->
+  <!--    외관도    -->
+  <!-- ===============================================-->
+   <% if(product.ChangeModel) { %>
+  <div class="pages" id="drawing_exterior">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+           외관도 (변경 전) 
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- origin.drawings.exterior %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+<% } %> 
+
+  <div class="pages" id="drawing_exterior_changeModel">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          외관도 <% if(product.ChangeModel) { %> (변경 후) <% } %> 
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.exterior %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <!-- ===============================================-->
+  <!--    외관 제원    -->
+  <!-- ===============================================-->
+<div class="pages" id="Dimensions">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm" colspan="2">외관 제원</td>
+        </tr>
+
+        <tr>
+          <td width="80%"><%- product.drawings.exterior %> </td>
+            <td style="padding-bottom: 40%; ">
+                <table class="table table-striped innertable" height="350px" width="100px">
+
+<tbody>
+  <tr>
+    <td>길이</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.overall_length %></td>
+  </tr>
+  <tr>
+    <td>너비</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.overall_width %></td>
+  </tr>
+  <tr>
+    <td>높이</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.overall_height %></td>
+  </tr>
+  <tr>
+    <td>트랙높이</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.track_height %></td>
+  </tr>
+  <tr>
+    <td>최저지상고</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.ground_clearance %></td>
+  </tr>
+  <tr>
+    <td>후단 선회반경</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.rear_swing_radius %></td>
+  </tr>
+  <tr>
+    <td>텀블러 간격</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.tumbler_distance %></td>
+  </tr>
+  <tr>
+    <td>트랙 길이</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.track_length %></td>
+  </tr>
+  <tr>
+    <td>트랙 간격</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.track_gap %></td>
+  </tr>
+  <tr>
+    <td>슈 폭</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.shoe_width %></td>
+  </tr>
+</tbody>
+</table>
+            </td>
+        </tr>
+    </table>
+</div>

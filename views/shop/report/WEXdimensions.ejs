@@ -1,0 +1,291 @@
+
+  <!-- ===============================================-->
+  <!--    외관도    -->
+  <!-- ===============================================-->
+   <% if(product.ChangeModel) { %>
+  <div class="pages" id="drawing_exterior">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+           외관도 (변경 전) 
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- origin.drawings.exterior %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+<% } %> 
+
+  <div class="pages" id="drawing_exterior_changeModel">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          외관도 <% if(product.ChangeModel) { %> (변경 후) <% } %> 
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.exterior %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <!-- ===============================================-->
+  <!--    외관 제원    -->
+  <!-- ===============================================-->
+<div class="pages" id="Dimensions">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm" colspan="2">외관 제원</td>
+        </tr>
+
+        <tr>
+          <td width="80%"><img src="/images/dimensions_WEX.png" alt="" srcset=""></td>
+            <td style="padding-bottom: 40%; ">
+                <table class="table table-striped innertable" height="350px" width="100px">
+
+<tbody>
+  <tr>
+    <td>길이</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.overall_length %></td>
+  </tr>
+  <tr>
+    <td>너비</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.overall_width %></td>
+  </tr>
+  <tr>
+    <td>높이</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.overall_height %></td>
+  </tr>
+    <tr>
+    <td>후단 선회반경</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.rear_swing_radius %></td>
+  </tr>
+  <tr>
+    <td>축거</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.wheel_base %></td>
+  </tr>
+  
+
+  <tr>
+    <td>윤거</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.axle_track_front %></td>
+  </tr>
+  <tr>
+    <td>최저지상고</td>
+  </tr>
+  <tr align="right">
+    <td><%= product.undercarriage.ground_clearance %></td>
+  </tr>
+</tbody>
+</table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+  <!-- ===============================================-->
+  <!--    붐 도면    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawing_boom">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          붐 도면
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.boom %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+
+  <!-- ===============================================-->
+  <!--    암 도면    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawing_arm">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          암 도면
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.arm %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+  <!-- ===============================================-->
+  <!--    버켓 도면    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawing_bucket">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          버켓 도면
+        </td>
+      </tr>
+      <tr>
+        <td class="drawing_bucket">
+          <%- product.drawings.bucket %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+
+  <!-- ===============================================-->
+  <!--    버켓 용적    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawing_bucket_capa">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          버켓 용적
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.bucket_capa %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+
+  <!-- ===============================================-->
+  <!--    퀵 커플러    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawing_Qcouplr">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          퀵 커플러
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.Qcouplr %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+<% if (product.drawings.dozer) { %> 
+
+  <!-- ===============================================-->
+  <!--    배토판    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawing_dozer">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          배토판
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.dozer %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+<% } %> 
+
+
+
+  <!-- ===============================================-->
+  <!--    배출가스 인증서    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawings_Emission_Certi">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          배출가스 인증서
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.Emission_Certi %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <!-- ===============================================-->
+  <!--    배출가스 인증서    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawings_Emission_Certi2">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          배출가스 인증서
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.Emission_Certi2 %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+  <!-- ===============================================-->
+  <!--    엔진 커브    -->
+  <!-- ===============================================-->
+  <div class="pages" id="drawings_EngineCurve">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          엔진 성능 곡선
+        </td>
+      </tr>
+      <tr>
+        <td class="head_description">
+          <%- product.drawings.EngineCurve %> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+      
+

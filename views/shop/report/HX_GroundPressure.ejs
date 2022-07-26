@@ -1,10 +1,81 @@
 
-<% var GrossWeight = product.operating_weight + 65 // 운전중량 %>
 <% 
-var ground_Length = product.tumbler_distance+0.35*(product.track_length-product.tumbler_distance);
-var ground_pressure = (GrossWeight / (2 * product.shoe_width/10 * ground_Length/10));
-var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * product.shoe_width/10 * ground_Length/10));
+
+var  gross_weight_load = product.operating_weight + 65 + 1500*product.attachments.bucket_heap;
+
+%>
+<% 
+var ground_Length = product.undercarriage.tumbler_distance+0.35*(product.undercarriage.track_length-product.undercarriage.tumbler_distance);
+var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
 %> 
+
+
+<!-- ===============================================-->
+<!--    총중량    -->
+<!-- ===============================================-->
+<div class="pages" id="Gross_Weight">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">자체중량 및 총중량</td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="innertable" height="90%" width="90%">
+                    <thead>
+                        <tr>
+                            <th colspan="5" height="350px">
+                                <img src="/images/ .png" width="80%" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                ① “자체중량”이란 연료, 냉각수 및 윤활유 등을 가득 채우고 휴대
+                                공구, 작업 용구 및 예비 타이어(예비 타이어를 장착하도록 한
+                                건설기계에만 해당한다)를 싣거나 부착하고, 즉시 작업할 수 있는
+                                상태에 있는 건설기계의 중량을 말한다. 이 경우 조종사의 체중은
+                                제외하며, 타워크레인은 보조적인 지지ㆍ고정 등의 수단 없이
+                                자체적인 힘으로 서 있을 수 있는 상태에서의 중량으로 한다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">자체중량</td>
+                            <td><%= product.operating_weight %> ㎏</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                19. “운전중량”이란 자체중량에 건설기계의 조종에 필요한 최소의
+                                조종사가 탑승한 상태의 중량을 말하며, 조종사 1명의 체중은
+                                65킬로그램으로 본다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>“운전중량”</td>
+                            <td><%= product.operating_weight %> + 65</td>
+                            <td><%= GrossWeight %> ㎏</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                21. “총중량”이란 자체중량에 최대적재중량과 조종사를 포함한
+                                승차인원의 체중을 합한 것을 말하며, 승차인원 1명의 체중은
+                                65킬로그램으로 본다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>“총중량”</td>
+                            <td><%= product.operating_weight %> + 65 + 1500 × <%= product.attachments.bucket_heap %> </td>
+                            <td><%= gross_weight_load %> ㎏</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
   <!-- ===============================================-->
   <!--    접지압    -->
@@ -35,14 +106,14 @@ var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * 
               <tr>
                 <td width="28%">텀블러 중심거리</td>
                 <td width="5%">l</td>
-                <td width="15%" id=""><%= product.tumbler_distance/10 %></td>
+                <td width="15%" id=""><%= product.undercarriage.tumbler_distance/10 %></td>
                 <td width="10%">(㎝)</td>
                 <td> </td>
               </tr>
               <tr>
                 <td>무한궤도길이</td>
                 <td>Lt</td>
-                <td id=""><%= product.track_length/10 %></td>
+                <td id=""><%= product.undercarriage.track_length/10 %></td>
                 <td>(㎝)</td>
                 <td>　</td>
               </tr>
@@ -63,7 +134,7 @@ var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * 
               <tr>
                 <td>슈폭</td>
                 <td>B</td>
-                <td id=""><%= product.shoe_width %></td>
+                <td id=""><%= product.undercarriage.shoe_width %></td>
                 <td>(㎝)</td>
                 <td>　</td>
               </tr>
@@ -75,13 +146,13 @@ var ground_pressure_woqc = ((GrossWeight - product.quick_coupler_weight) / (2 * 
                 <td> 운전중량 / <br>(트랙의 수 × 슈폭 × 접지길이) </td>
               </tr>
               <tr>
-                <td colspan="5">접지압 (퀵커플러 제외)</td>
+                <td colspan="5">접지압 (퀵커플러 <%= quick_coupler_weight %>kg 제외)</td>
               </tr>
 
               <tr>
                 <td>장비전중량</td>
                 <td>W</td>
-                <td id=""><%= GrossWeight - product.quick_coupler_weight %></td>
+                <td id=""><%= GrossWeight - quick_coupler_weight %></td>
                 <td>(㎏)</td>
                 <td>퀵 커플러 중량 제외</td>
               </tr>

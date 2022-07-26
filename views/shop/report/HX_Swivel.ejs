@@ -1,15 +1,4 @@
 
-<% 
-var planet_reduct_1 = 1+product.planetary_ring_gear_C1/product.planetary_sun_gear_A1;
-var planet_reduct_2 = 1+product.planetary_ring_gear_C2/product.planetary_sun_gear_A2;
-var planet_reduct_tot = (planet_reduct_1 * planet_reduct_2).toFixed(2)
-var swing_reduction_rev =  (product.swing_pump_flow*product.swing_motor_eff/product.motor_displacement_swing*1000).toFixed(2)
-
-var i_B = (product.gear_swing_bearing / product.gear_pinion).toFixed(2) // 7.07
-var i_T = (planet_reduct_tot * i_B).toFixed(2) // 148.14
-var swing_rev = (swing_reduction_rev/i_T).toFixed(1);
-%>
-
 
             <!-- ===============================================-->
             <!--    선회 속도    -->
@@ -41,152 +30,32 @@ var swing_rev = (swing_reduction_rev/i_T).toFixed(1);
                           <td>선회 펌프 유량</td>
                           <td>$$Q$$</td>
                           <td>l/min</td>
-                          <td><%= product.swing_pump_flow %></td>
+                          <td><%= product.swivel.pump_flow %></td>
                           <td>선회 rpm</td>
                         </tr>
                         <tr>
                           <td>모터이론용적</td>
                           <td>$$q_m$$</td>
                           <td>cc/rev</td>
-                          <td><%= product.motor_displacement_swing %></td>
+                          <td><%= product.swivel.pump_flow %></td>
                           <td></td>
                         </tr>
                         <tr>
                           <td>감속기의 감속비</td>
                           <td>$$i$$</td>
                           <td></td>
-                          <td>18.675</td>
+                          <td><%= product.swivel.reduction %></td>
                           <td></td>
                         </tr>
                         <tr>
                           <td>선회모터용적효율</td>
                           <td>$$\eta_{mv}$$</td>
                           <td></td>
-                          <td><%= product.swing_motor_eff %></td>
+                          <td><%= product.swivel.motor_eff %></td>
                           <td></td>
                         </tr>
-                        <tr>
-                          <td>피니언 기어</td>
-                          <td>$$P_g$$</td>
-                          <td></td>
-                          <td><%= product.gear_pinion %></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>선회베어링 기어</td>
-                          <td>$$S_b$$</td>
-                          <td></td>
-                          <td><%= product.gear_swing_bearing %></td>
-                          <td></td>
-                        </tr>
+                        
                       </tbody>
-                    </table>
-                    <p>○ 선회 감속비 제원 사양</p>
-
-                    <table class="innertable" width="90%" height="400px">
-                        <thead>
-                            <tr>
-                                <th>항목</th>
-                                <th>기어</th>
-                                <th>사양</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="6">유성치차부</td>
-                                <td>선기어(A)</td>
-                                <td><%= product.planetary_sun_gear_A1 %></td>
-                            </tr>
-                            <tr>
-                                <td>유성기어(B)</td>
-                                <td><%= product.planetary_planet_gear_B1 %></td>
-                            </tr>
-                            <tr>
-                                <td>링기어(C)</td>
-                                <td><%= product.planetary_ring_gear_C1 %></td>
-                            </tr>
-                            <tr>
-                                <td>선기어(A')</td>
-                                <td><%= product.planetary_sun_gear_A2 %></td>
-                            </tr>
-                            <tr>
-                                <td>유성기어(B')</td>
-                                <td><%= product.planetary_planet_gear_B2 %></td>
-                            </tr>
-                            <tr>
-                                <td>링기어(C')</td>
-                                <td><%= product.planetary_ring_gear_C2 %></td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">피니언 - 선회베어링</td>
-                                <td>피니언(D)</td>
-                                <td><%= product.gear_pinion %></td>
-
-                            </tr>
-                            <tr>
-                                <td>선회베어링(E)</td>
-                                <td><%= product.gear_swing_bearing %></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                  
-                </tr>
-              </table>
-            </div>
-
-            
-    <div class="pages" id="Swing_Reduction">
-        <table class="bordertable">
-            <tr class="borderheader">
-                <td height="30mm">선회 속도</td>
-            </tr>
-
-            <tr>
-                <td class="head_description">
-                    
-                    <p>○ 치차 비율에 따른 감속비 계산</p>
-
-                    <table class="innertable" width="90%" >                        
-                        <tbody>
-                            <tr>
-                                <td class="item-headers" colspan="3">유성치차부(i_A)</td>
-                            </tr>
-                            <tr>
-                                <td>$$i_1 = 1 + {C \over A}$$</td>
-                                <td>$$1 + {<%= product.planetary_ring_gear_C1 %> \over <%= product.planetary_sun_gear_A1 %>}$$</td>
-                                <td>$$<%= planet_reduct_1.toFixed(2) %>$$</td>
-                            </tr>
-                            <tr>
-                                <td>$$i_2 = 1 + {C' \over A'}$$</td>
-                                <td>$$1 + {<%= product.planetary_ring_gear_C2 %> \over <%= product.planetary_sun_gear_A2 %>}$$</td>
-                                <td>$$<%= planet_reduct_2.toFixed(2) %>$$</td>
-                            </tr>
-                            <tr>
-                                <td>$$i_A = i_1 \times i_2$$</td>
-                                <td>$$<%= planet_reduct_1.toFixed(2) %> \times <%= planet_reduct_2.toFixed(2) %>$$</td>
-                                <td>$$<%= planet_reduct_tot %>$$</td>
-                            </tr>
-                            <tr>
-                                <td class="item-headers" colspan="3">피니언 - 선회베어링</td>
-                            </tr>
-                            <tr>
-                                <td>$$i_B = i_3 = {E \over D}$$</td>
-                                <td>$${<%= product.gear_swing_bearing %> \over <%= product.gear_pinion %>}$$</td>
-                                <td>$$<%= i_B %>$$</td>
-                            </tr>
-                            <tr>
-                                <td class="item-headers" colspan="3">총 감속비</td>
-                            </tr>
-                            <tr>
-                                <td>$$i_T = i_A \times i_B$$</td>
-                                <td>$$<%= planet_reduct_tot %> \times <%= i_B %>$$</td>
-                                <td>$$<%= i_T %>$$</td>
-                            </tr>
-
-                            
-
-                        </tbody>
                     </table>
                     <p>○ 선회 속도 계산</p>
                     <table class="innertable" width="80%">
@@ -197,7 +66,7 @@ var swing_rev = (swing_reduction_rev/i_T).toFixed(1);
                         </tr>
                         <tr>
                           <td>$$SM = {Q \times \eta_{mv} \over q_m} \times 1000$$</td>
-                          <td>$${<%= product.swing_pump_flow %> \times <%= product.swing_motor_eff %> \over <%= product.motor_displacement_swing %>} \times 1000$$</td>
+                          <td>$${<%= product.swivel.pump_flow %> \times <%= product.swivel.motor_eff %> \over <%= product.swivel.motor_displacement %>} \times 1000$$</td>
                           <td>$$<%= swing_reduction_rev %>$$</td>
                         </tr>
                         <tr>
@@ -205,11 +74,32 @@ var swing_rev = (swing_reduction_rev/i_T).toFixed(1);
                         </tr>
                         <tr>
                           <td>$$S = {SM \over i} $$</td>
-                          <td>$${<%= swing_reduction_rev %> \over <%= i_T %>} $$</td>
+                          <td>$${<%= swing_reduction_rev %> \over <%= product.swivel.reduction %>} $$</td>
                           <td>$$<%= swing_rev %>$$</td>
                         </tr>
                       </tbody>
                     </table>
+                    
+
+                  
+                </tr>
+              </table>
+            </div>
+
+            
+    <div class="pages" id="Swing_Reduction">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">선회 감속비</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    
+<p>○ 선회 감속비 제원 사양</p>
+
+          <%- product.description.swing_reduction %> 
+
                   </td>
                 </td>
             </tr>

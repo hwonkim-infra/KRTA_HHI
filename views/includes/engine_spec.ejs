@@ -1,0 +1,74 @@
+
+<!-- ===============================================-->
+<!--    엔진 사양    -->
+<!-- ===============================================-->
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">엔진 사양</h5>
+    </div>
+    <div class="card-body bg-light">
+
+        <div class="row gx-2">
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">엔진명 </span>
+                <input class="form-control" id="engine_name" name="engine_name" type="text"
+                    value="<% if (editing){ %><%= product.engine.engine_name %><% } %>" placeholder="인증엔진명" />
+                <span class="input-group-text">제작사 </span>
+                <input class="form-control" id="engine_supplier" name="engine_supplier" type="text"
+                    value="<% if (editing){ %><%= product.engine.supplier %><% } %>" placeholder="엔진제작사" />
+                <span class="input-group-text">규격 </span>
+                    <input class="form-control" id="engine_cylinder" name="engine_cylinder" type="number"
+                    value="<% if (editing){ %><%= product.engine.cylinder %><% } %>" placeholder="기통" /></td>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">정격 출력 </span>
+                <input class="form-control" id="engine_power" name="engine_power" type="number" step="any"
+                    value="<% if (editing){ %><%= product.engine.power %><% } %>" placeholder="ps" />
+                <span class="input-group-text">@</span>
+                <input class="form-control" id="nominal_rev" name="nominal_rev" type="number"
+                    value="<% if (editing){ %><%= product.engine.nominal_rev %><% } %>" placeholder="rpm" />
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">최대 토크 </span>
+                <input class="form-control" id="engine_torque" name="engine_torque" type="number" step="any"
+                    value="<% if (editing){ %><%= product.engine.torque %><% } %>" placeholder="㎏ㆍm" /></td>
+                <span class="input-group-text">@</span>
+
+                <label class="form-label" for="torque_rev"> </label>
+                <input class="form-control" id="torque_rev" name="torque_rev" type="number"
+                    value="<% if (editing){ %><%= product.engine.torque_rev %><% } %>" placeholder="rpm" />
+            </div>
+            
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_Emission_Certi">배출가스인증서
+            </label>
+            <textarea name="drawings_Emission_Certi"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.Emission_Certi2 %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_Emission_Certi2">배출가스인증서
+            </label>
+            <textarea name="drawings_Emission_Certi2"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.EngineCurve %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_EngineCurve">엔진 성능 곡선도
+            </label>
+            <textarea name="drawings_EngineCurve"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.EngineCurve %><% } %></textarea>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>

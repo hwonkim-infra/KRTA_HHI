@@ -7,54 +7,49 @@
     </div>
     <div class="card-body bg-light">
         <div class="row gx-2">
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="model_name">형식</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">형식 </span>
                 <input class="form-control" id="model_name" name="model_name" type="text"
-                    value="<% if (editing){ %><%= product.model_name %><% } %>" placeholder="HWㅇㅇㅇ" />
+                    value="<% if (editing){ %><%= product.model_name %><% } %>" placeholder="기종명" />
+                <span class="input-group-text">형식 번호</span>
+                <input class="form-control" id="serial_no" name="serial_no" type="number"
+                    value="<% if (editing){ %><%= product.serial_no %><% } %>" placeholder="serial No." />
             </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="machine_grade">규격</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text"> 자체중량 </span>
+                <input class="form-control" id="operating_weight" name="operating_weight" type="number" step="1"
+                    value="<% if (editing){ %><%= product.operating_weight %><% } %>" placeholder="kg" />
+                <span class="input-group-text"> 규격</span>
                 <input class="form-control" id="machine_grade" name="machine_grade" type="text"
                     value="<% if (editing){ %><%= product.machine_grade %><% } %>" placeholder="OOton" />
             </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="operating_weight">자체중량 (㎏)</label>
-                <input class="form-control" id="operating_weight" name="operating_weight" type="number" step="1"
-                    value="<% if (editing){ %><%= product.operating_weight %><% } %>" placeholder="kg" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="gearbox">변속기</label>
-                <input class="form-control" id="gearbox" name="gearbox" type="text"
-                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="전진 2단/ 후진 2단" />
-            </div>
 
-
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="overall_length">길이 (㎜)</label>
-                <input class="form-control" id="overall_length" name="overall_length" type="number" step="1"
-                    value="<% if (editing){ %><%= product.overall_length %><% } %>" placeholder="㎜" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="overall_width">너비 (㎜)</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">길이</span>
+                <input class="form-control" id="overall_length" name="overall_length" type="number"
+                    value="<% if (editing){ %><%= product.overall_length %><% } %>" placeholder="길이(㎜)" />
+                <span class="input-group-text">너비</span>
                 <input class="form-control" id="overall_width" name="overall_width" type="number"
-                    value="<% if (editing){ %><%= product.overall_width %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="overall_height">높이 (㎜)</label>
+                    value="<% if (editing){ %><%= product.overall_width %><% } %>" placeholder="너비(㎜)" /> </td>
+                <span class="input-group-text">높이</span>
                 <input class="form-control" id="overall_height" name="overall_height" type="number"
-                    value="<% if (editing){ %><%= product.overall_height %><% } %>" placeholder="㎜" />
+                    value="<% if (editing){ %><%= product.overall_height %><% } %>" placeholder="높이(㎜)" />
             </div>
 
-            
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="ETC">비고 (㎜)</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text"> 변속기 </span>
+                <input class="form-control" id="gearbox" name="gearbox" type="text"
+                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="전진2단 후진2단" />
+                <span class="input-group-text"> 기타 사항</span>
                 <input class="form-control" id="ETC" name="ETC" type="text"
-                    value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="비고" />
+                    value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="특수사양 등" />
             </div>
+
+
+
+
+
 
         </div>
     </div>
@@ -72,152 +67,38 @@
 
         <div class="row gx-2">
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="engine_name">엔진 형식</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">엔진명 </span>
                 <input class="form-control" id="engine_name" name="engine_name" type="text"
-                    value="<% if (editing){ %><%= product.engine_name %><% } %>" placeholder="인증엔진명" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="engine_supplier">엔진제작사</label>
+                    value="<% if (editing){ %><%= product.engine.engine_name %><% } %>" placeholder="인증엔진명" />
+                <span class="input-group-text">제작사 </span>
                 <input class="form-control" id="engine_supplier" name="engine_supplier" type="text"
-                    value="<% if (editing){ %><%= product.engine_supplier %><% } %>" placeholder="엔진제작사" />
+                    value="<% if (editing){ %><%= product.engine.supplier %><% } %>" placeholder="엔진제작사" />
+                <span class="input-group-text">규격 </span>
+                    <input class="form-control" id="engine_cylinder" name="engine_cylinder" type="number"
+                    value="<% if (editing){ %><%= product.engine.cylinder %><% } %>" placeholder="기통" /></td>
             </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="engine_power">출력(정격) </label>
-                <input class="form-control" id="engine_power" name="engine_power" type="number"
-                    value="<% if (editing){ %><%= product.engine_power %><% } %>" placeholder="ps" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="nominal_rev">회전수(정격출력) </label>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">정격 출력 </span>
+                <input class="form-control" id="engine_power" name="engine_power" type="number" step="any"
+                    value="<% if (editing){ %><%= product.engine.power %><% } %>" placeholder="ps" />
+                <span class="input-group-text">@</span>
                 <input class="form-control" id="nominal_rev" name="nominal_rev" type="number"
-                    value="<% if (editing){ %><%= product.nominal_rev %><% } %>" placeholder="rpm" />
+                    value="<% if (editing){ %><%= product.engine.nominal_rev %><% } %>" placeholder="rpm" />
             </div>
 
+            <div class="input-group mb-3">
+                <span class="input-group-text">최대 토크 </span>
+                <input class="form-control" id="engine_torque" name="engine_torque" type="number" step="any"
+                    value="<% if (editing){ %><%= product.engine.torque %><% } %>" placeholder="㎏ㆍm" /></td>
+                <span class="input-group-text">@</span>
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="engine_torque">최대토크</label>
-                <input class="form-control" id="engine_torque" name="engine_torque" type=""
-                    value="<% if (editing){ %><%= product.engine_torque %><% } %>" placeholder="㎏ㆍm" /></td>
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="torque_rev">회전수(최대토크) </label>
+                <label class="form-label" for="torque_rev"> </label>
                 <input class="form-control" id="torque_rev" name="torque_rev" type="number"
-                    value="<% if (editing){ %><%= product.torque_rev %><% } %>" placeholder="rpm" />
+                    value="<% if (editing){ %><%= product.engine.torque_rev %><% } %>" placeholder="rpm" />
             </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="engine_cylinder">기통수</label>
-                <input class="form-control" id="engine_cylinder" name="engine_cylinder" type="number"
-                    value="<% if (editing){ %><%= product.engine_cylinder %><% } %>" placeholder="기통" /></td>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<!-- ===============================================-->
-<!--    하부체와 축중량    -->
-<!-- ===============================================-->
-<div class="card mb-3">
-    <div class="card-header">
-        <h5 class="mb-0">하부체와 축중량</h5>
-    </div>
-    <div class="card-body bg-light">
-        <div class="row gx-2">
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="wheel_base">축거</label>
-                <input class="form-control" id="wheel_base" name="wheel_base" type="number"
-                    value="<% if (editing){ %><%= product.wheel_base %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="ground_clearance">최저지상고 (㎜)</label>
-                <input class="form-control" id="ground_clearance" name="ground_clearance" type="number"
-                    value="<% if (editing){ %><%= product.ground_clearance %><% } %>" placeholder="㎜" />
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="axle_track_front">윤거 1 (front)</label>
-                <input class="form-control" id="axle_track_front" name="axle_track_front" type="number"
-                    value="<% if (editing){ %><%= product.axle_track_front %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="axle_track_rear">윤거 2 (rear)</label>
-                <input class="form-control" id="axle_track_rear" name="axle_track_rear" type="number"
-                    value="<% if (editing){ %><%= product.axle_track_rear %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="tire_frontAxle">타이어 1축</label>
-                <input class="form-control" id="tire_frontAxle" name="tire_frontAxle" type=""
-                    value="<% if (editing){ %><%= product.tire_frontAxle %><% } %>" placeholder="타이어 규격" />
-                </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="tire_rearAxle">타이어 2축</label>
-                <input class="form-control" id="tire_rearAxle" name="tire_rearAxle" type=""
-                    value="<% if (editing){ %><%= product.tire_rearAxle %><% } %>" placeholder="타이어 규격" /> </td>
-            </div>
-
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="axle_weight_front_limit">허용 하중 1축 (축별 설계)</label>
-                <input class="form-control" id="axle_weight_front_limit" name="axle_weight_front_limit" type="number"
-                    value="<% if (editing){ %><%= product.axle_weight_front_limit %><% } %>" placeholder="㎏" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="axle_weight_rear_limit">허용 하중 2축 (축별 설계)</label>
-                <input class="form-control" id="axle_weight_rear_limit" name="axle_weight_rear_limit" type="number"
-                    value="<% if (editing){ %><%= product.axle_weight_rear_limit %><% } %>" placeholder="㎏" /> </td>
-            </div>
-
             
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="tire_load_limit">타이어 허용하중 (정지)</label>
-                <input class="form-control" id="tire_load_limit" name="tire_load_limit" type="number"
-                    value="<% if (editing){ %><%= product.tire_load_limit %><% } %>" placeholder="㎏" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="tire_load_limit_running">타이어 허용하중 (최고속)</label>
-                <input class="form-control" id="tire_load_limit_running" name="tire_load_limit_running" type="number"
-                    value="<% if (editing){ %><%= product.tire_load_limit_running %><% } %>" placeholder="㎏" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="no_tires">타이어의 갯수 (각 축당)</label>
-                <input class="form-control" id="no_tires" name="no_tires" type="number"
-                    value="<% if (editing){ %><%= product.no_tires %><% } %>" placeholder="ea" /> </td>
-            </div>
-
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="COG_center_unload">공차무게중심-선회중심 간 거리</label>
-                <input class="form-control" id="COG_center_unload" name="COG_center_unload" type="number"
-                    value="<% if (editing){ %><%= product.COG_center_unload %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="COG_center_load">적재무게중심-선회중심 간 거리</label>
-                <input class="form-control" id="COG_center_load" name="COG_center_load" type="number"
-                    value="<% if (editing){ %><%= product.COG_center_load %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="frontAxle_center">1축(전축)-선회중심 간 거리0</label>
-                <input class="form-control" id="frontAxle_center" name="frontAxle_center" type="number"
-                    value="<% if (editing){ %><%= product.frontAxle_center %><% } %>" placeholder="㎜" /> </td>
-            </div>
-
-
-
-
         </div>
     </div>
 </div>
-

@@ -40,7 +40,7 @@ app.use(error404.get404page);
 mongoose
     .connect(MONGODB_URI)
     .then(result => {
-        app.listen(3000);
+        app.listen(4000);
     })
     .catch(error => {
         console.log(error);

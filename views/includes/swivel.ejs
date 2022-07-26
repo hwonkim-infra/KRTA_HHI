@@ -8,65 +8,33 @@
     <div class="card-body bg-light">
 
         <div class="row gx-2">
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="swing_pump_flow">선회 펌프 유량 </label>
-                <input class="form-control" id="swing_pump_flow" name="swing_pump_flow" type="number" step="any"  value="<% if (editing){ %><%= product.swing_pump_flow %><% } %>" placeholder="" />
+            <div class="input-group  mb-3">
+                <span class="input-group-text">선회펌프 유량</span>
+                <input class="form-control" id="pump_displacement_swing" name="pump_displacement_swing" type="number" step="any"
+                    value="<% if (editing){ %><%= product.swivel.pump_flow %><% } %>" placeholder="l/min" />
+                <span class="input-group-text">선회 감속비</span>
+                <input class="form-control" id="swing_reduction" name="swing_reduction" type="number" step="any"
+                    value="<% if (editing){ %><%= product.swivel.reduction %><% } %>" placeholder="" />
             </div>
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="motor_displacement_swing">선회 모터 이론 용적 </label>
-                <input class="form-control" id="motor_displacement_swing" name="motor_displacement_swing" type="number" step="any" value="<% if (editing){ %><%= product.motor_displacement_swing %><% } %>" placeholder="" />
+            <div class="input-group  mb-3">
+                <span class="input-group-text">선회모터 용적</span>
+                <input class="form-control" id="motor_displacement_swing" name="motor_displacement_swing" type="number" step="any"
+                    value="<% if (editing){ %><%= product.swivel.motor_displacement %><% } %>" placeholder="cc/rev" />
+                <span class="input-group-text">선회모터 용적 효율</span>
+                <input class="form-control" id="swing_motor_eff" name="swing_motor_eff" type="number" step="any" min="0" max="1"
+                    value="<% if (editing){ %><%= product.swivel.motor_eff %><% } %>" placeholder="" />
             </div>
 
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="swing_motor_eff">선회 모터용적효율 (μ<sub>mv</sub>) </label>
-                <input class="form-control" id="swing_motor_eff" name="swing_motor_eff" type="number" step="any" min="0" max="1" value="<% if (editing){ %><%= product.swing_motor_eff %><% } %>" placeholder="" />
+
+            
+            <div class="row gx-2">
+                <label class="form-label" for="swing_reduction_description">선회 감속비 계산 자료
+                </label>
+                <textarea name="swing_reduction_description"
+                    class="form-control tinymce d-none"><% if (editing){ %><%= product.description.swing_reduction %><% } %></textarea>
             </div>
 
-
-            <div class="card-header">
-        <h5 class="mb-0">선회 감속비 계산</h5>
-    </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="gear_pinion">피니언 기어</label>
-                <input class="form-control" id="gear_pinion" name="gear_pinion" type="number"
-                    value="<% if (editing){ %><%= product.gear_pinion %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="gear_swing_bearing">선회 베어링 기어</label>
-                <input class="form-control" id="gear_swing_bearing" name="gear_swing_bearing" type="number"
-                    value="<% if (editing){ %><%= product.gear_swing_bearing %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="planetary_sun_gear_A1">유성치차_선기어(A<sub>1</sub>)</label>
-                <input class="form-control" id="planetary_sun_gear_A1" name="planetary_sun_gear_A1" type="number"
-                    value="<% if (editing){ %><%= product.planetary_sun_gear_A1 %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="planetary_planet_gear_B1">유성치차_유성기어(B<sub>1</sub>)</label>
-                <input class="form-control" id="planetary_planet_gear_B1" name="planetary_planet_gear_B1" type="number"
-                    value="<% if (editing){ %><%= product.planetary_planet_gear_B1 %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="planetary_ring_gear_C1">유성치차_링기어(C<sub>1</sub>)</label>
-                <input class="form-control" id="planetary_ring_gear_C1" name="planetary_ring_gear_C1" type="number"
-                    value="<% if (editing){ %><%= product.planetary_ring_gear_C1 %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="planetary_sun_gear_A2">유성치차_선기어(A<sub>2</sub>)</label>
-                <input class="form-control" id="planetary_sun_gear_A2" name="planetary_sun_gear_A2" type="number"
-                    value="<% if (editing){ %><%= product.planetary_sun_gear_A2 %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="planetary_planet_gear_B2">유성치차_유성기어(B<sub>2</sub>)</label>
-                <input class="form-control" id="planetary_planet_gear_B2" name="planetary_planet_gear_B2" type="number"
-                    value="<% if (editing){ %><%= product.planetary_planet_gear_B2 %><% } %>" placeholder="" />
-            </div>
-            <div class="col-sm-6 mb-3">
-                <label class="form-label" for="planetary_ring_gear_C2">유성치차_링기어(C<sub>2</sub>)</label>
-                <input class="form-control" id="planetary_ring_gear_C2" name="planetary_ring_gear_C2" type="number"
-                    value="<% if (editing){ %><%= product.planetary_ring_gear_C2 %><% } %>" placeholder="" />
-            </div>           
 
 
         </div>

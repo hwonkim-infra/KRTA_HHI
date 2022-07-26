@@ -1,18 +1,25 @@
 <%- include('../includes/head.ejs') %>
-<script src="/vendors/tinymce/tinymce.min.js"></script>
-<script type="text/javascript">
+    <script src="/vendors/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
         tinymce.init({
             selector: 'textarea',
             plugins: 'save',
-            height : "960"
+            height: "960"
 
         });
-</script>
+    </script>
+    <script>
+        const deleteConfirm = (event) => {
+            if (!confirm('이 모델을 삭제하시겠습니까?')) {
+                event.preventDefault();
+            }
+        }
+    </script>
 
-<%- include('../includes/navigation.ejs') %>
-<!-- ===============================================-->
-<!--    Main Contents    -->
-<!-- ===============================================-->
+    <%- include('../includes/navigation.ejs') %>
+        <!-- ===============================================-->
+        <!--    Main Contents    -->
+        <!-- ===============================================-->
 <div class="row g-0">
 
     <div class="col-lg-12 ps-lg-2 mb-3">
@@ -22,9 +29,9 @@
                     <div class="col-auto">
                         <h5 class="mb-0">
                             <% if (editing){ %>Edit Wheel Excavator Spec
-                            <% } else { %>Add Wheel Excavator Spec
-                            <% } %>
-                        </h6>
+                                <% } else { %>Add Wheel Excavator Spec
+                                    <% } %>
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -32,107 +39,116 @@
                 <form class="product-form"
                     action="/admin/<% if (editing){ %>edit-WEX<% } else { %>add-WEX<% } %>" method="POST">
 
+                    <%- include('../includes/basic_spec.ejs') %>
 
 <!-- ===============================================-->
-<!--    제원표    -->
+<!--    제원 사양 입력    -->
 <!-- ===============================================-->
 
-<%- include('../includes/basic_spec_WEX.ejs') %>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active btn-falcon-default" id="dimension-tab"
+                data-bs-toggle="tab" data-bs-target="#dimension" type="button" role="tab"
+                aria-controls="dimension" aria-selected="true">외관 제원</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn-falcon-default" id="axleLoad-tab"
+                data-bs-toggle="tab" data-bs-target="#axleLoad" type="button" role="tab"
+                aria-controls="axleLoad" aria-selected="false">축하중</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn-falcon-default" id="travel-tab" data-bs-toggle="tab"
+                data-bs-target="#travel" type="button" role="tab" aria-controls="travel"
+                aria-selected="false">주행 선회</button>
+        </li>
+        <li class="nav-item btn-falcon-default" role="presentation">
+            <button class="nav-link" id="drawings-tab" data-bs-toggle="tab"
+                data-bs-target="#drawings" type="button" role="tab" aria-controls="drawings"
+                aria-selected="false">외관도</button>
+        </li>
+        <li class="nav-item btn-falcon-default" role="presentation">
+            <button class="nav-link" id="stability-tab" data-bs-toggle="tab"
+                data-bs-target="#stability" type="button" role="tab"
+                aria-controls="stability" aria-selected="false">안정도</button>
+        </li>
+        <li class="nav-item btn-falcon-default" role="presentation">
+            <button class="nav-link" id="engine-tab" data-bs-toggle="tab"
+                data-bs-target="#engine" type="button" role="tab" aria-controls="engine"
+                aria-selected="false">엔진 사양</button>
+        </li>
+    </ul>
 
 
-<%- include('../includes/attachments.ejs') %>
 
-<%- include('../includes/travel_WEX.ejs') %>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="dimension" role="tabpanel"
+            aria-labelledby="dimension-tab">
+            <%- include('../includes/dimensions_WEX.ejs') %>
+                <%- include('../includes/workingRange.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="axleLoad" role="tabpanel"
+            aria-labelledby="axleLoad-tab">
+
+            <%- include('../includes/axleAndLoad_WEX.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="travel" role="tabpanel" aria-labelledby="travel-tab">
+
+            <%- include('../includes/travel_WEX.ejs') %>
+
+                <%- include('../includes/swivel.ejs') %>
+        </div>
+        <div class="tab-pane fade" id="drawings" role="tabpanel"
+            aria-labelledby="drawings-tab">
+            <%- include('../includes/drawings.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="stability" role="tabpanel"
+            aria-labelledby="stability-tab">
+            <%- include('../includes/stability_WEX.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="engine" role="tabpanel" aria-labelledby="engine-tab">
+            <%- include('../includes/engine_spec.ejs') %>
+
+        </div>
+    </div>
 
 
-<%- include('../includes/swivel_WEX.ejs') %>
 
 
 
 
-                    <!-- ===============================================-->
-                    <!--    외관도    -->
-                    <!-- ===============================================-->
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <h5 class="mb-0">도면</h5>
-                        </div>
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_exterior">외관도 </label>
-                                    <textarea name="drawing_exterior" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_exterior %><% } %></textarea>
-                            </div>
-                        </div>
 
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_boom">붐 도면 </label>
-                                    <textarea name="drawing_boom" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_boom %><% } %></textarea>
-                            </div>
-                        </div>
 
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_arm">암 도면 </label>
-                                    <textarea name="drawing_arm" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_arm %><% } %></textarea>
-                            </div>
-                        </div>
 
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_bucket">버켓 도면 </label>
-                                    <textarea name="drawing_bucket" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_bucket %><% } %></textarea>
-                            </div>
-                        </div>
 
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_bucket_capa">버켓 용적 </label>
-                                    <textarea name="drawing_bucket_capa" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_bucket_capa %><% } %></textarea>
-                            </div>
-                        </div>
-
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Qcouplr">퀵 커플러 </label>
-                                    <textarea name="drawing_Qcouplr" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Qcouplr %><% } %></textarea>
-                            </div>
-                        </div>
-
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Emission_Certi">배출가스인증서 </label>
-                                    <textarea name="drawing_Emission_Certi" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Emission_Certi %><% } %></textarea>
-                            </div>
-                        </div>
-
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Emission_Certi2">배출가스인증서 </label>
-                                    <textarea name="drawing_Emission_Certi2" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Emission_Certi2 %><% } %></textarea>
-                            </div>
-                        </div>
-
-                        <div class="card-body bg-light">
-                            <div class="row gx-2">
-                                    <label class="form-label" for="drawing_Engine_Curve">엔진 성능 곡선도 </label>
-                                    <textarea name="drawing_Engine_Curve" class="form-control tinymce d-none" ><% if (editing){ %><%= product.drawing_Engine_Curve %><% } %></textarea>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <% if (editing){ %>
-                    <input type="hidden" value="<%= product.id %>" name="productId">
-                    <% } %>
-                    <button class="btn btn-link btn-sm btn p-0" type="submit"> <% if (editing){ %> Update Product
-                        <% } else { %>Add Product<% } %></button>
+                        <% if (editing){ %>
+                            <input type="hidden" value="<%= product.id %>" name="productId">
+                            <% } %>
+                                <button class="btn btn-primary" type="submit">
+                                    <% if (editing){ %> Update Product
+                                        <% } else { %>Add Product<% } %>
+                                </button>
                 </form>
+
+                <% if (editing){ %>
+                    <form action="/admin/delete-WEX" method="POST">
+                        <input type="hidden" value="<%= product._id %>" name="productId">
+                        <button class="btn btn-danger " type="submit" onClick="deleteConfirm(event)">
+                            Delete
+                        </button>
+
+                    </form>
+                    <% } %>
+
             </div>
         </div>
     </div>
 </div>
 
-<!-- End of Main Content -->
+        <!-- End of Main Content -->
 
-<%- include('../includes/end.ejs') %>
+        <%- include('../includes/end.ejs') %>

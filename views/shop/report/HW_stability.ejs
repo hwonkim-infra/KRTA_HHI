@@ -1,0 +1,108 @@
+<% var gross_weight=product.operating_weight + 65; 
+const radians_to_degrees=(radians)=> {
+    var pi = Math.PI;
+    return radians * (180/pi);
+    }
+
+    const degrees_to_radians=(degrees)=> {
+    var pi = Math.PI;
+    return degrees / (180/pi);
+    };
+var lateral_slope_limit	= radians_to_degrees(Math.atan((product.stability.tipping_line + product.stability.COG_lateral)/product.stability.COG_vertical)).toFixed(1);
+    %>
+
+
+
+
+
+    <!-- ===============================================-->
+    <!--    경사지 전도안정성    -->
+    <!-- ===============================================-->
+    <div class="pages" id="Stability_Slope">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">좌우의 안정도</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    <p>
+                        타이어식 굴착기는 견고한 땅 위에서 자체중량 상태로 좌우로 25도까지 기울여도 넘어지지 않는 구조이어야 한다. 이 경우 굴착기의 자세는 주행자세로 한다.
+                    </p>
+                        <img src="/images/stability_Lateral.jpg" alt="" srcset="" width="40%">
+
+                    <p>○ 측방안정도 관련 제원</p>
+
+
+                    <table class="innertable" width="60%" height="300px">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>기호</th>
+                                <th>단위</th>
+                                <th>제원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>전장비중량</td>
+                                <td>$$W_T$$</td>
+                                <td>㎏</td>
+                                <td>
+                                    <%= gross_weight %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>무게중심 Y</td>
+                                <td>$$Y_T$$</td>
+                                <td>㎜</td>
+                                <td>
+                                    <%= product.stability.COG_lateral %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>무게중심 Z</td>
+                                <td>$$Z_T$$</td>
+                                <td>㎜</td>
+                                <td>
+                                    <%= product.stability.COG_vertical %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>선회중심 - 전도지선</td>
+                                <td>$$L_1$$</td>
+                                <td>㎜</td>
+                                <td>
+                                    <%= product.stability.tipping_line %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>○ 전도 한계각 계산</p>
+
+                    <table class="innertable" width="90%" height="">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>산식</th>
+                                <th></th>
+                                <th>제원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>전도최대각</td>
+                                <td>$$\theta = \tan ^{-1} (\frac{L_1 + Y_T}{Z_T})$$</td>
+                                <td>$$ \tan ^{-1} (\frac{<%= product.stability.tipping_line %> + <%= product.stability.COG_lateral %>}{<%= product.stability.COG_vertical %>})$$</td>
+                                <td>
+                                    $$<%= lateral_slope_limit %>$$
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+    </div>

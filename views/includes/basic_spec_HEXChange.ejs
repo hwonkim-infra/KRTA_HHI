@@ -16,7 +16,7 @@
             <div class="col-sm-6 mb-3">
                 <label class="form-label" for="gearbox">변속기</label>
                 <input class="form-control" id="gearbox" name="gearbox" type="text"
-                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="무단 2속" />
+                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="무변속" />
             </div>
 
 
@@ -41,9 +41,9 @@
 
 
             <div class="col-sm-6 mb-3">
-                <label class="form-label" for="ETC">비고 (㎜)</label>
+                <label class="form-label" for="ETC">비고 </label>
                 <input class="form-control" id="ETC" name="ETC" type="text"
-                    value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="비고" />
+                    value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="개조사항, 가변트랙 등" />
             </div>
 
         </div>
@@ -82,6 +82,13 @@
                 <input class="form-control" id="nominal_rev" name="nominal_rev" type="number"
                     value="<% if (editing){ %><%= product.nominal_rev %><% } %>" placeholder="rpm" />
             </div>
+
+            <div class="input-group mb-3">
+                <label class="form-label" for="engine_power">출력(정격) </label>
+  <input type="text" class="form-control" placeholder="ps" aria-label="Username">
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" placeholder="rpm" aria-label="Server">
+</div>
 
 
             <div class="col-sm-6 mb-3">

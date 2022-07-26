@@ -1,0 +1,145 @@
+<%- include('../includes/head.ejs') %>
+<script src="/vendors/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'save',
+        height: "960"
+
+    });
+</script>
+<script>
+    const deleteConfirm = (event) => {
+        if (!confirm('이 모델을 삭제하시겠습니까?')) {
+            event.preventDefault();
+        }
+    }
+</script>
+
+<%- include('../includes/navigation.ejs') %>
+<!-- ===============================================-->
+<!--    Main Contents    -->
+<!-- ===============================================-->
+<div class="row g-0">
+
+    <div class="col-lg-12 ps-lg-2 mb-3">
+        <div class="card h-lg-100">
+            <div class="card-header">
+                <div class="row flex-between-center">
+                    <div class="col-auto">
+                        <h5 class="mb-0">
+                            <% if (adding){ %>Add ChangeModel
+                            <% } else { %>Edit ChangeModel
+                            <% } %>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body h-100 pe-0">
+                <form class="product-form"
+                    action="/admin/<% if (adding){ %>add-WEXChange<% } else { %>edit-WEXChange<% } %>" method="POST">
+
+                    <%- include('../includes/basic_spec.ejs') %>
+
+<!-- ===============================================-->
+<!--    제원 사양 입력    -->
+<!-- ===============================================-->
+
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active btn-falcon-default" id="dimension-tab"
+                data-bs-toggle="tab" data-bs-target="#dimension" type="button" role="tab"
+                aria-controls="dimension" aria-selected="true">외관 제원</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn-falcon-default" id="axleLoad-tab"
+                data-bs-toggle="tab" data-bs-target="#axleLoad" type="button" role="tab"
+                aria-controls="axleLoad" aria-selected="false">축하중</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn-falcon-default" id="travel-tab" data-bs-toggle="tab"
+                data-bs-target="#travel" type="button" role="tab" aria-controls="travel"
+                aria-selected="false">주행 선회</button>
+        </li>
+        <li class="nav-item btn-falcon-default" role="presentation">
+            <button class="nav-link" id="drawings-tab" data-bs-toggle="tab"
+                data-bs-target="#drawings" type="button" role="tab" aria-controls="drawings"
+                aria-selected="false">외관도</button>
+        </li>
+        <li class="nav-item btn-falcon-default" role="presentation">
+            <button class="nav-link" id="stability-tab" data-bs-toggle="tab"
+                data-bs-target="#stability" type="button" role="tab"
+                aria-controls="stability" aria-selected="false">안정도</button>
+        </li>
+        <li class="nav-item btn-falcon-default" role="presentation">
+            <button class="nav-link" id="engine-tab" data-bs-toggle="tab"
+                data-bs-target="#engine" type="button" role="tab" aria-controls="engine"
+                aria-selected="false">엔진 사양</button>
+        </li>
+    </ul>
+
+
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="dimension" role="tabpanel"
+            aria-labelledby="dimension-tab">
+            <%- include('../includes/dimensions_WEX.ejs') %>
+                <%- include('../includes/workingRange.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="axleLoad" role="tabpanel"
+            aria-labelledby="axleLoad-tab">
+
+            <%- include('../includes/axleAndLoad_WEX.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="travel" role="tabpanel" aria-labelledby="travel-tab">
+
+            <%- include('../includes/travel_WEX.ejs') %>
+
+                <%- include('../includes/swivel.ejs') %>
+        </div>
+        <div class="tab-pane fade" id="drawings" role="tabpanel"
+            aria-labelledby="drawings-tab">
+            <%- include('../includes/drawings.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="stability" role="tabpanel"
+            aria-labelledby="stability-tab">
+            <%- include('../includes/stability_WEX.ejs') %>
+
+        </div>
+        <div class="tab-pane fade" id="engine" role="tabpanel" aria-labelledby="engine-tab">
+            <%- include('../includes/engine_spec.ejs') %>
+
+        </div>
+    </div>
+
+
+                    <% if (editing){ %>
+                    <input type="hidden" value="<%= product.id %>" name="productId">
+                    <% } %>
+                    <button class="btn btn-link btn-sm btn p-0" type="submit">
+                        <% if (adding){ %> Add ChangeModel
+                        <% } else { %>Edit ChangeModel<% } %>
+                    </button>
+                </form>
+
+                <% if (editing){ %>
+                <form action="/admin/delete-WEX" method="POST">
+                    <input type="hidden" value="<%= product._id %>" name="productId">
+                    <button class="btn btn-danger " type="submit" onClick="deleteConfirm(event)">
+                        Delete
+                    </button>
+
+                </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End of Main Content -->
+
+<%- include('../includes/end.ejs') %>

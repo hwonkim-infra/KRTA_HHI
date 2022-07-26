@@ -1,0 +1,90 @@
+<!-- ===============================================-->
+<!--    하부체와 축중량    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-5">하부체와 축중량</h5>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <div class="input-group mb-3">
+                <span class="input-group-text"> 축거</span>
+                <input class="form-control" id="wheel_base" name="wheel_base" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.wheel_base %><% } %>" placeholder="축거 (㎜)" />
+                <span class="input-group-text"> 최저지상고</span>
+                <input class="form-control" id="ground_clearance" name="ground_clearance" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.ground_clearance %><% } %>" placeholder="최저지상고 (㎜)" />
+
+            </div>
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">윤거 (front) </span>
+                <input class="form-control" id="axle_track_front" name="axle_track_front" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.axle_track_front %><% } %>" placeholder="1 (front)" />
+                <span class="input-group-text">윤거 (rear) </span>
+                <input class="form-control" id="axle_track_rear" name="axle_track_rear" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.axle_track_rear %><% } %>" placeholder="2 (rear)" />
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">타이어 규격 (front)</span>
+                <input class="form-control" id="tire_frontAxle" name="tire_frontAxle" type=""
+                    value="<% if (editing){ %><%= product.undercarriage.tire_frontAxle %><% } %>" placeholder="1축" />
+                <span class="input-group-text">타이어 규격 (rear)</span>
+                <input class="form-control" id="tire_rearAxle" name="tire_rearAxle" type=""
+                    value="<% if (editing){ %><%= product.undercarriage.tire_rearAxle %><% } %>" placeholder="2축" />
+            </div>
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">축별 허용 하중 (front) </span>
+                <input class="form-control" id="axle_weight_front_limit" name="axle_weight_front_limit" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.axle_weight_front_limit %><% } %>" placeholder="1축 (㎏)" />
+                <span class="input-group-text">축별 허용 하중 (rear) </span>
+                <input class="form-control" id="axle_weight_rear_limit" name="axle_weight_rear_limit" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.axle_weight_rear_limit %><% } %>" placeholder="2축 (㎏)" />
+            </div>
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">타이어 허용하중 (정지)</span>
+                <input class="form-control" id="tire_load_limit" name="tire_load_limit" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.tire_load_limit %><% } %>" placeholder="정지 허용 하중 (㎏)" />
+                <span class="input-group-text">타이어 허용하중 (주행)</span>
+                <input class="form-control" id="tire_load_limit_running" name="tire_load_limit_running" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.tire_load_limit_running %><% } %>"
+                    placeholder="최고속 허용 하중 (㎏)" />
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">타이어의 갯수</span>
+                <input class="form-control" id="no_tires" name="no_tires" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.no_tires %><% } %>" placeholder="각 축당 타이어 갯수 ea" />
+                <span class="input-group-text">전축 중심 간격 </span>
+                <input class="form-control" id="frontAxle_center" name="frontAxle_center" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.frontAxle_center %><% } %>" placeholder="전축과 선회중심간 간격 ㎜" />
+            </div>
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">무게중심 (공차) </span>
+                <input class="form-control" id="COG_center_unload" name="COG_center_unload" type="number" step="any"
+                    value="<% if (editing){ %><%= product.undercarriage.COG_center_unload %><% } %>" placeholder="무게중심과 선회중심 간 거리 (공차, ㎜)" />                
+                <span class="input-group-text">무게중심 (적재) </span>
+                <input class="form-control" id="COG_center_load" name="COG_center_load" type="number" step="any"
+                    value="<% if (editing){ %><%= product.undercarriage.COG_center_load %><% } %>" placeholder="무게중심과 선회중심 간 거리 (적재, ㎜)" />
+            </div>
+
+            <div class="row gx-2">
+                <label class="form-label" for="axle_limit_description">축별 허용 하중 관련 자료
+                </label>
+                <textarea name="axle_limit_description"
+                    class="form-control tinymce d-none"><% if (editing){ %><%= product.undercarriage.axle_limit_description %><% } %></textarea>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,213 @@
+<!-- ===============================================-->
+<!--    전도하중과 무게중심    -->
+<!-- ===============================================-->
+
+<% if (editing){ %>
+    <% var GrossWeight=product.operating_weight + 65;
+var GrossWeight_load = product.operating_weight + 65 + 1500 * product.attachments.bucket_heap;
+var attachments_load_weight = product.COG.attachments.weight + 1500 * product.attachments.bucket_heap;
+
+var upperStructure_weight=GrossWeight - product.COG.counterWeight.weight - product.COG.underCarriage.weight - product.COG.attachments.weight;
+
+// default Config.
+var COG_longitudinal=((upperStructure_weight*product.COG.upperStructure.longitudinal+product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+product.COG.attachments.weight*product.COG.attachments.longitudinal)/ GrossWeight).toFixed(1); 
+
+var COG_lateral=((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+product.COG.attachments.weight*product.COG.attachments.lateral)/
+GrossWeight).toFixed(1); 
+
+var COG_vertical=((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+product.COG.attachments.weight*product.COG.attachments.vertical)/ GrossWeight).toFixed(1); 
+
+// attachments_load
+var COG_longitudinal_load=((upperStructure_weight*product.COG.upperStructure.longitudinal+product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+attachments_load_weight*product.COG.attachments_load.longitudinal)/ GrossWeight_load).toFixed(1); 
+
+var COG_lateral_load =((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+attachments_load_weight*product.COG.attachments_load.lateral)/
+GrossWeight_load).toFixed(1); 
+
+var COG_vertical_load =((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+attachments_load_weight*product.COG.attachments_load.vertical)/ GrossWeight_load).toFixed(1); 
+
+
+// attachments_maxReach
+var COG_longitudinal_maxReach=((upperStructure_weight*product.COG.upperStructure.longitudinal+product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+attachments_load_weight*product.COG.attachments_maxReach.longitudinal)/ GrossWeight_load).toFixed(1); 
+
+var COG_lateral_maxReach =((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+attachments_load_weight*product.COG.attachments_maxReach.lateral)/
+GrossWeight_load).toFixed(1); 
+
+var COG_vertical_maxReach =((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+attachments_load_weight*product.COG.attachments_maxReach.vertical)/ GrossWeight_load).toFixed(1); 
+%>
+        <% } %>
+
+            <div class="card mb-3">
+                <div class="card-body bg-light">
+
+                    <hr />
+                    <img src="/images/WEX_stability.png" alt="stability_unload" srcset="">
+
+                    <table class="table table-bordered mt-2 bg-white dark__bg-1100">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 20%">Component</th>
+                                <th scope="col">중 량 (㎏)</th>
+                                <th scope="col">전후방향(X)</th>
+                                <th scope="col">좌우방향(Y)</th>
+                                <th scope="col">상하방향(Z)</th>
+                                <th scope="col" style="width: 20%">비고
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-1 text-5">상 부 체
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="kg" value="<% if (editing){ %><%= upperStructure_weight %><% } %>" disabled />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_upperStructure_longitudinal" placeholder="㎜" value="<% if (editing){ %><%= product.COG.upperStructure.longitudinal %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_upperStructure_lateral" placeholder="㎜" value="<% if (editing){ %><%= product.COG.upperStructure.lateral %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_upperStructure_vertical" placeholder="㎜" value="<% if (editing){ %><%= product.COG.upperStructure.vertical %><% } %>" />
+                                </td>
+                                <td>Operator: 65kg</td>
+                            </tr>
+                            <tr>
+                                <td>CounterWeight</td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_counterWeight_weight" placeholder="kg" value="<% if (editing){ %><%= product.COG.counterWeight.weight %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_counterWeight_longitudinal" placeholder="㎜" value="<% if (editing){ %><%= product.COG.counterWeight.longitudinal %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_counterWeight_lateral" placeholder="㎜" value="<% if (editing){ %><%= product.COG.counterWeight.lateral %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_counterWeight_vertical" placeholder="㎜" value="<% if (editing){ %><%= product.COG.counterWeight.vertical %><% } %>" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>하 부 체</td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_underCarriage_weight" placeholder="kg" value="<% if (editing){ %><%= product.COG.underCarriage.weight %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_underCarriage_longitudinal" placeholder="㎜" value="<% if (editing){ %><%= product.COG.underCarriage.longitudinal %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_underCarriage_lateral" placeholder="㎜" value="<% if (editing){ %><%= product.COG.underCarriage.lateral %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_underCarriage_vertical" placeholder="㎜" value="<% if (editing){ %><%= product.COG.underCarriage.vertical %><% } %>" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>작업장치</td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_weight" placeholder="kg" value="<% if (editing){ %><%= product.COG.attachments.weight %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_longitudinal" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments.longitudinal %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_lateral" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments.lateral %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_vertical" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments.vertical %><% } %>" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="kg" value="<% if (editing){ %><%= GrossWeight %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_longitudinal %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_lateral %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_vertical %><% } %>" disabled /></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <img src="/images/WEX_stability_load.png" alt="stability_load" srcset="">
+
+                    <table class="table table-bordered mt-2 bg-white dark__bg-1100">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 20%">Component</th>
+                                <th scope="col">중 량 (㎏)</th>
+                                <th scope="col">전후방향(X)</th>
+                                <th scope="col">좌우방향(Y)</th>
+                                <th scope="col">상하방향(Z)</th>
+                                <th scope="col" style="width: 20%">비고
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>작업장치 (주행 / 적재)</td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_load_weight" placeholder="kg" value="<% if (editing){ %><%= attachments_load_weight %><% } %>" disabled />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_load_longitudinal" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments_load.longitudinal %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_load_lateral" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments_load.lateral %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_load_vertical" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments_load.vertical %><% } %>" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="kg" value="<% if (editing){ %><%= GrossWeight_load %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_longitudinal_load %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_lateral_load %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_vertical_load %><% } %>" disabled /></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <img src="/images/WEX_maxReach.png" alt="" srcset="">
+
+                    <table class="table table-bordered mt-2 bg-white dark__bg-1100">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 20%">Component</th>
+                                <th scope="col">중 량 (㎏)</th>
+                                <th scope="col">전후방향(X)</th>
+                                <th scope="col">좌우방향(Y)</th>
+                                <th scope="col">상하방향(Z)</th>
+                                <th scope="col" style="width: 20%">비고
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>작업장치 (최대작업반경 / 적재)</td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_load_weight" placeholder="kg" value="<% if (editing){ %><%= attachments_load_weight %><% } %>" disabled />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_maxReach_longitudinal" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments_maxReach.longitudinal %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_maxReach_lateral" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments_maxReach.lateral %><% } %>" />
+                                </td>
+                                <td><input class="form-control form-control-sm" type="Number" name="COG_attachments_maxReach_vertical" placeholder="㎜" value="<% if (editing){ %><%= product.COG.attachments_maxReach.vertical %><% } %>" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="kg" value="<% if (editing){ %><%= GrossWeight_load %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_longitudinal_maxReach %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_lateral_maxReach %><% } %>" disabled /></td>
+                                <td><input class="form-control form-control-sm" type="Number" placeholder="㎜" value="<% if (editing){ %><%= COG_vertical_maxReach %><% } %>" disabled /></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-body bg-light">
+
+                    <h5 class="mb-3">전도하중과 무게중심</h5>
+                    <div class="row gx-2">
+
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">최대굴착거리</span>
+                            <input class="form-control" id="bucket_COS" name="bucket_COS" type="number" value="<% if (editing){ %><%= product.bucket_COS %><% } %>" placeholder="최대굴착시 버켓 반경 (㎜)" />
+                            <span class="input-group-text">전도지선</span>
+                            <input class="form-control" id="tipping_line" name="tipping_line" type="number" value="<% if (editing){ %><%= product.tipping_line %><% } %>" placeholder="전도지선 (㎜)" />
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>

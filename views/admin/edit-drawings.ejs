@@ -1,0 +1,70 @@
+<%- include('../includes/head.ejs') %>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'save',
+            height : "900"
+
+        });
+    </script>
+    <title>editing <%= product.model_name %></title>
+
+
+<%- include('../includes/navigation.ejs') %>
+<!-- ===============================================-->
+<!--    Main Contents    -->
+<!-- ===============================================-->
+<div class="row g-0">
+
+    <div class="col-lg-12 ps-lg-2 mb-3">
+        <div class="card h-lg-100">
+            <div class="card-header">
+                <div class="row flex-between-center">
+                    <div class="col-auto">
+                        <h6 class="mb-0">
+                            <% if (editing){ %>Edit Product
+                            <% } else { %>Add Product
+                            <% } %>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body h-100 pe-0">
+                <form class="product-form"
+                    action="/admin/<% if (editing){ %>edit-product<% } else { %>add-product<% } %>" method="POST">
+                    <!-- ===============================================-->
+                    <!--    제원표    -->
+                    <!-- ===============================================-->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h5 class="mb-0">도면 자료</h5>
+                        </div>
+
+                        <div class="card-body bg-light">
+
+                            <div class="row gx-2">
+                                    <label class="form-label" for="drawing_exterior">외관도 </label>
+                                    <textarea name="drawing_exterior" class="form-control tinymce d-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <% if (editing){ %>
+                    <input type="hidden" value="<%= product.id %>" name="productId">
+                    <% } %>
+                    <button class="btn btn-link btn-sm btn p-0" type="submit"> <% if (editing){ %> Update Product
+                        <% } else { %>Add Product<% } %></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End of Main Content -->
+
+<%- include('../includes/end.ejs') %>

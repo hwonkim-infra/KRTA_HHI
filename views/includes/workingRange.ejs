@@ -1,0 +1,69 @@
+<!-- ===============================================-->
+<!--    퀵 커플러와 작업반경    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">퀵 커플러와 작업반경</h5>
+    </div>
+    <div class="card-body bg-light">
+
+        <div class="row gx-2">
+            <div class="input-group">
+                <span class="input-group-text">퀵 커플러 (1)</span>
+                <input class="form-control" id="quick_coupler_1" name="quick_coupler_1" type="text"
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_1 %><% } %>" placeholder="모델명 " />
+                <span class="input-group-text">커플러 중량</span>
+                <input class="form-control" id="quick_coupler_weight_1" name="quick_coupler_weight_1" type="number"
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_weight_1 %><% } %>" placeholder="중량(kg)" />
+            </div>
+
+            <div class="input-group  mb-3">
+                <span class="input-group-text">퀵 커플러 (2)</span>
+                <input class="form-control" id="quick_coupler_2" name="quick_coupler_2" type="text"
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_2 %><% } %>" placeholder="모델명 " />
+                <span class="input-group-text">커플러 중량</span>
+                <input class="form-control" id="quick_coupler_weight_2" name="quick_coupler_weight_2" type="number"
+                    value="<% if (editing){ %><%= product.attachments.quick_coupler_weight_2 %><% } %>" placeholder="중량(kg)" />
+            </div>
+
+            <div class="input-group  mb-3">
+                <span class="input-group-text">최대굴착반경 (㎜)</span>
+                <input class="form-control" id="digging_reach" name="digging_reach" type="text"
+                    value="<% if (editing){ %><%= product.attachments.digging_reach %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">최대굴착반경 woQC (㎜)</span>
+                <input class="form-control" id="digging_reach_woqc" name="digging_reach_woqc" type="text"
+                    value="<% if (editing){ %><%= product.attachments.digging_reach_woqc %><% } %>" placeholder="without Q.C ㎜" />
+            </div>
+
+            <div class="input-group  mb-3">
+                <span class="input-group-text">최대굴착깊이 (㎜)</span>
+                <input class="form-control" id="digging_depth" name="digging_depth" type="text"
+                    value="<% if (editing){ %><%= product.attachments.digging_depth %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">최대굴착깊이 woQC (㎜)</span>
+                <input class="form-control" id="digging_depth_woqc" name="digging_depth_woqc" type="text"
+                    value="<% if (editing){ %><%= product.attachments.digging_depth_woqc %><% } %>" placeholder="without Q.C ㎜" />
+            </div>
+
+            <div class="input-group  mb-3">
+                <span class="input-group-text">최대덤프높이 (㎜)</span>
+                <input class="form-control" id="loading_height" name="loading_height" type="text"
+                    value="<% if (editing){ %><%= product.attachments.loading_height %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">최대덤프높이 woQC (㎜)</span>
+                <input class="form-control" id="loading_height_woqc" name="loading_height_woqc" type="text"
+                    value="<% if (editing){ %><%= product.attachments.loading_height_woqc %><% } %>" placeholder="without Q.C ㎜" />
+            </div>
+            <div class="input-group  mb-3">
+                <span class="input-group-text">전체높이 (woQC, ㎜)</span>
+                <input class="form-control" id="height_woqc" name="height_woqc" type="text"
+                    value="<% if (editing){ %><%= product.attachments.height_woqc %><% } %>" placeholder="with Q.C. ㎜" />
+                <span class="input-group-text">전체길이 (woQC, ㎜)</span>
+                <input class="form-control" id="length_woqc" name="length_woqc" type="text"
+                    value="<% if (editing){ %><%= product.attachments.length_woqc %><% } %>" placeholder="without Q.C ㎜" />
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

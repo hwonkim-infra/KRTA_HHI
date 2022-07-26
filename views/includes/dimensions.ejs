@@ -1,0 +1,75 @@
+<!-- ===============================================-->
+<!--    외관 제원    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">외관 제원 (crawler)</h5>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">길이</span>
+                <input class="form-control" id="overall_length" name="overall_length" type="number"
+                    value="<% if (editing){ %><%= product.overall_length %><% } %>" placeholder="길이(㎜)" />
+                <span class="input-group-text">너비</span>
+                <input class="form-control" id="overall_width" name="overall_width" type="number"
+                    value="<% if (editing){ %><%= product.overall_width %><% } %>" placeholder="너비(㎜)" /> </td>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">높이</span>
+                <input class="form-control" id="overall_height" name="overall_height" type="number"
+                    value="<% if (editing){ %><%= product.overall_height %><% } %>" placeholder="높이(㎜)" />
+                    <span class="input-group-text">후방 선회 반경</span>
+                <input class="form-control" id="rear_swing_radius" name="rear_swing_radius" type="number"
+                    value="<% if (editing){ %><%= product.rear_swing_radius %><% } %>" placeholder="높이(㎜)" />
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">트랙 높이 </span>
+                <input class="form-control" id="track_height" name="track_height" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.track_height %><% } %>"
+                    placeholder="트랙 높이 (㎜)" /> </td>
+                <span class="input-group-text">트랙 중심간 거리 </span>
+                <input class="form-control" id="track_gap" name="track_gap" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.track_gap %><% } %>"
+                    placeholder="트랙 중심간 거리 (㎜)" />
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">텀블러 간격 </span>
+                <input class="form-control" id="tumbler_distance" name="tumbler_distance" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.tumbler_distance %><% } %>"
+                    placeholder="텀블러 중심간 거리 (㎜)" />
+                <span class="input-group-text">트랙 길이 </span>
+                <input class="form-control" id="track_length" name="track_length" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.track_length %><% } %>"
+                    placeholder="트랙 길이 (㎜)" />
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text"> 슈 폭</span>
+                <input class="form-control" id="shoe_width" name="shoe_width" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.shoe_width %><% } %>" placeholder="슈 폭 (㎜)" />
+                <span class="input-group-text"> 최저지상고</span>
+                <input class="form-control" id="ground_clearance" name="ground_clearance" type="number"
+                    value="<% if (editing){ %><%= product.undercarriage.ground_clearance %><% } %>"
+                    placeholder="최저지상고 (㎜)" />
+                <span class="input-group-text">배토판너비x높이 (㎜ ㎜) </span>
+                <input class="form-control" id="dozer_size" name="dozer_size" type="text"
+                    value="<% if (editing){ %><%= product.undercarriage.dozer_size %><% } %>" placeholder="도저" />
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>

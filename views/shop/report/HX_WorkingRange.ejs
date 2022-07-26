@@ -1,4 +1,13 @@
 
+<% var GrossWeight = product.operating_weight + 65 // 운전중량 
+var quick_coupler_weight = Math.max(product.attachments.quick_coupler_weight_1, product.attachments.quick_coupler_weight_2)|| 0;
+%>
+
+<% 
+var ground_Length = product.undercarriage.tumbler_distance+0.35*(product.undercarriage.track_length-product.undercarriage.tumbler_distance);
+var ground_pressure = (GrossWeight / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
+var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
+%> 
     
 <!-- ===============================================-->
 <!--    작업반경과 퀵 커플러    -->
@@ -15,25 +24,32 @@
       <tr>
         <td>
           
-              <img src="/images/workingRange.jpg" width = "70%">
+              <img src="/images/workingRange_HX.png" width = "70%">
           
 
           <table class="innertable" height="20%" width="60%">
             <thead>
             </thead>
-              <tbody>
-              
-              <tr>
-                <td>최대덤프높이 D </td>
-                <td id=""><%= product.loading_height %></td>
-              </tr>
+              <tbody>             
+                <tr>
+                  <td>작업범위</td>
+                  <td id="">퀵커플러 장착</td>
+                  <td id="">퀵커플러 미장착</td>
+                </tr>
               <tr>
                 <td>최대굴착반지름 A </td>
-                <td id=""><%= product.digging_reach %></td>
+                <td id=""><%= product.attachments.digging_reach %></td>
+                <td id=""><%= product.attachments.digging_reach_woqc %></td>
               </tr>
               <tr>
                 <td>최대굴착깊이 C </td>
-                <td id=""><%= product.digging_depth %></td>
+                <td id=""><%= product.attachments.digging_depth %></td>
+                <td id=""><%= product.attachments.digging_depth_woqc %></td>
+              </tr>
+              <tr>
+                <td>최대덤프높이 D </td>
+                <td id=""><%= product.attachments.loading_height %></td>
+                <td id=""><%= product.attachments.loading_height_woqc %></td>                
               </tr>
             </tbody>
 
@@ -44,5 +60,116 @@
       </tr>
     </table>
 
+  </div>
+
+
+  <!-- ===============================================-->
+  <!--    퀵 커플러 탈착    -->
+  <!-- ===============================================-->
+  <div class="pages" id="Quick_Coupler_detach">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          퀵 커플러 탈착에 따른 제원
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+
+          <table class="table table-striped innertable"  width="80%">
+            <thead>
+              <tr>
+                <th width="30%" rowspan="3">구분</th>
+                <th colspan="2">굴착기</th>
+                <th rowspan="2">비고</th>
+              </tr>
+              <tr>
+                <th width="20%">커플러장착</th>
+                <th width="20%" rowspan="2">커플러 탈거</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr>
+                <td>자체중량 (㎏)</td>
+                <td id=""><%= product.operating_weight %></td>
+                <td id=""><%= product.operating_weight - quick_coupler_weight %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>높이 (㎜)</td>
+                <td id=""><%= product.overall_height %></td>
+                <td id=""><%= product.attachments.height_woqc %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>길이 (㎜)</td>
+                <td id=""><%= product.overall_length %></td>
+                <td id=""><%= product.attachments.length_woqc %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>최대굴착 반지름 (㎜)</td>
+                <td id=""><%= product.attachments.digging_reach %></td>
+                <td id=""><%= product.attachments.digging_reach_woqc %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>덤프높이 (㎜)</td>
+                <td id=""><%= product.attachments.loading_height %></td>
+                <td id=""><%= product.attachments.loading_height_woqc %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>굴착깊이 (㎜)</td>
+                <td id=""><%= product.attachments.digging_depth %></td>
+                <td id=""><%= product.attachments.digging_depth_woqc %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>전축중(공차시) (kg)</td>
+                <td id=""><%= product.attachments.front_axle_load %></td>
+                <td id=""><%= product.attachments.front_axle_load_woqc %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>후축중(공차시) (kg)</td>
+                <td id=""><%= product.attachments.rear_axle_load %></td>
+                <td id=""><%= product.attachments.rear_axle_load_woqc %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>접지압 (㎏/㎠)</td>
+                <td id=""><%= ground_pressure.toFixed(2) %></td>
+                <td id=""><%= ground_pressure_woqc.toFixed(2) %></td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>버킷잠금장치</td>
+                <td>2중</td>
+                <td>-</td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td>경고음장치</td>
+                <td>설치</td>
+                <td>-</td>
+                <td>유압잠금장치가 해제된 경우 조종사가 알 수 있는 충분한 크기</td>
+              </tr>
+              <tr>
+                <td>과전류차단</td>
+                <td>설치</td>
+                <td>-</td>
+                <td>조종석에 퓨즈박스 및 스위치 설치</td>
+              </tr>
+            </tbody>
+
+          </table>
+
+
+        </td>
+      </tr>
+    </table>
   </div>
 

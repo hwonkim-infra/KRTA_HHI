@@ -1,0 +1,68 @@
+<!-- ===============================================-->
+<!--    외관도    -->
+<!-- ===============================================-->
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="mb-0">도면</h5>
+        <h6>(이미지 붙여넣기 및 설명 추가)</h6>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_exterior">외관도
+            </label>
+            <textarea name="drawings_exterior"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.exterior %><% } %></textarea>
+        </div>
+    </div>
+
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_boom">붐 도면 </label>
+            <textarea name="drawings_boom"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.boom %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_arm">암 도면 </label>
+            <textarea name="drawings_arm"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.arm %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_bucket">버켓 도면 </label>
+            <textarea name="drawings_bucket"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.bucket %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_bucket_capa">버켓 용적
+            </label>
+            <textarea name="drawings_bucket_capa"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.bucket_capa %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_Qcouplr">퀵 커플러 </label>
+            <textarea name="drawings_Qcouplr"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.Qcouplr %><% } %></textarea>
+        </div>
+    </div>
+
+    <div class="card-body bg-light">
+        <div class="row gx-2">
+            <label class="form-label" for="drawings_dozer">배토판 </label>
+            <textarea name="drawings_dozer"
+                class="form-control tinymce d-none"><% if (editing){ %><%= product.drawings.dozer %><% } %></textarea>
+        </div>
+    </div>
+
+</div>

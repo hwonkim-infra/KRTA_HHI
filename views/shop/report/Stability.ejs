@@ -1,0 +1,351 @@
+<% 
+var GrossWeight=product.operating_weight + 65;
+var GrossWeight_load = product.operating_weight + 65 + 1500 * product.attachments.bucket_heap;
+var attachments_load_weight = product.COG.attachments.weight + 1500 * product.attachments.bucket_heap;  %>
+
+<% 
+var excavating_limit = Math.round(GrossWeight * (product.stability.tipping_line + product.stability.COG_COS ) / (product.stability.bucket_COS - product.stability.tipping_line)); 
+var bucket_exca_capa=product.attachments.bucket_heap * 1800;
+ %>
+
+<% 
+
+  var upperStructure_weight=GrossWeight - product.COG.counterWeight.weight - product.COG.underCarriage.weight - product.COG.attachments.weight;
+
+// default Config.
+var COG_longitudinal=Math.round((upperStructure_weight*product.COG.upperStructure.longitudinal + product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+product.COG.attachments.weight*product.COG.attachments.longitudinal)/ GrossWeight, 1); 
+
+var COG_lateral = Math.round((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+product.COG.attachments.weight*product.COG.attachments.lateral)/
+GrossWeight, 1); 
+
+var COG_vertical = Math.round((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+product.COG.attachments.weight*product.COG.attachments.vertical)/ GrossWeight, 1) ; 
+
+// attachments_load
+var COG_longitudinal_load = ((upperStructure_weight*product.COG.upperStructure.longitudinal+product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+attachments_load_weight*product.COG.attachments_load.longitudinal)/ GrossWeight_load, 1) ; 
+
+var COG_lateral_load  = Math.round((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+attachments_load_weight*product.COG.attachments_load.lateral)/
+GrossWeight_load, 1); 
+
+var COG_vertical_load  = Math.round((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+attachments_load_weight*product.COG.attachments_load.vertical)/ GrossWeight_load, 1); 
+
+
+// attachments_maxReach
+var COG_longitudinal_maxReach = Math.round((upperStructure_weight*product.COG.upperStructure.longitudinal+product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+attachments_load_weight*product.COG.attachments_maxReach.longitudinal)/ GrossWeight_load, 1); 
+
+var COG_lateral_maxReach  = Math.round((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+attachments_load_weight*product.COG.attachments_maxReach.lateral)/
+GrossWeight_load, 1); 
+
+var COG_vertical_maxReach  = Math.round((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+attachments_load_weight*product.COG.attachments_maxReach.vertical)/ GrossWeight_load, 1);
+
+%>
+
+<% 
+const radians_to_degrees=(radians)=> {return radians * (180/Math.PI);}
+
+const degrees_to_radians=(degrees)=> {return degrees / (180/Math.PI);};
+
+var lateral_slope_limit	= Math.round(radians_to_degrees(Math.atan((product.stability.tipping_line+COG_lateral) / COG_vertical)),1);
+
+    %>
+
+<!-- ===============================================-->
+<!--    중량과 무게중심    -->
+<!-- ===============================================-->
+<div class="pages" id="COGs_1">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">
+                무게중심 분포
+            </td>
+        </tr>
+        <tr>
+            <td class="head_description">
+                <p>공차 상태</p>
+<table class="table table-striped">
+<tbody>
+  <tr>
+    <td>항목</td>
+    <td>중 량 (㎏)</td>
+    <td>전후방향 (X)</td>
+    <td>좌우방향(Y)</td>
+    <td>상하방향(Z)</td>
+    <td>비고</td>
+  </tr>
+  <tr>
+    <td>상부체</td>
+    <td><%= upperStructure_weight %></td>
+    <td><%= product.COG.upperStructure.longitudinal %></td>
+    <td><%= product.COG.upperStructure.lateral %></td>
+    <td><%= product.COG.upperStructure.vertical %></td>
+    <td>운전자 65kg</td>
+  </tr>
+  <tr>
+    <td>CounterWeight</td>
+    <td><%= product.COG.counterWeight.weight %></td>
+    <td><%= product.COG.counterWeight.longitudinal %></td>
+    <td><%= product.COG.counterWeight.lateral %></td>
+    <td><%= product.COG.counterWeight.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>하부체</td>
+    <td><%= product.COG.underCarriage.weight %></td>
+    <td><%= product.COG.underCarriage.longitudinal %></td>
+    <td><%= product.COG.underCarriage.lateral %></td>
+    <td><%= product.COG.underCarriage.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>작업장치 (Front)</td>
+    <td><%= product.COG.attachments.weight %></td>
+    <td><%= product.COG.attachments.longitudinal %></td>
+    <td><%= product.COG.attachments.lateral %></td>
+    <td><%= product.COG.attachments.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>합계</td>
+    <td><%= GrossWeight %></td>
+    <td><%= COG_longitudinal %></td>
+    <td><%= COG_lateral %></td>
+    <td><%= COG_vertical %></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+
+<div class="pages" id="COGs_2">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">
+                무게중심 분포
+            </td>
+        </tr>
+        <tr>
+            <td class="head_description">
+                <p>적재 - 주행 자세</p>
+<table class="table table-striped">
+<tbody>
+  <tr>
+    <td>항목</td>
+    <td>중 량 (㎏)</td>
+    <td>전후방향 (X)</td>
+    <td>좌우방향(Y)</td>
+    <td>상하방향(Z)</td>
+    <td>비고</td>
+  </tr>
+  <tr>
+    <td>상부체</td>
+    <td><%= upperStructure_weight %></td>
+    <td><%= product.COG.upperStructure.longitudinal %></td>
+    <td><%= product.COG.upperStructure.lateral %></td>
+    <td><%= product.COG.upperStructure.vertical %></td>
+    <td>운전자 65kg</td>
+  </tr>
+  <tr>
+    <td>CounterWeight</td>
+    <td><%= product.COG.counterWeight.weight %></td>
+    <td><%= product.COG.counterWeight.longitudinal %></td>
+    <td><%= product.COG.counterWeight.lateral %></td>
+    <td><%= product.COG.counterWeight.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>하부체</td>
+    <td><%= product.COG.underCarriage.weight %></td>
+    <td><%= product.COG.underCarriage.longitudinal %></td>
+    <td><%= product.COG.underCarriage.lateral %></td>
+    <td><%= product.COG.underCarriage.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>작업장치 (Front)</td>
+    <td><%= attachments_load_weight %></td>
+    <td><%= product.COG.attachments_load.longitudinal %></td>
+    <td><%= product.COG.attachments_load.lateral %></td>
+    <td><%= product.COG.attachments_load.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>합계</td>
+    <td><%= GrossWeight_load %></td>
+    <td><%= COG_longitudinal_load %></td>
+    <td><%= COG_lateral_load %></td>
+    <td><%= COG_vertical_load %></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="pages" id="COGs_3">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">
+                무게중심 분포
+            </td>
+        </tr>
+        <tr>
+            <td class="head_description">
+                <p>적재 - 인양 자세</p>
+<table class="table table-striped">
+<tbody>
+  <tr>
+    <td>항목</td>
+    <td>중 량 (㎏)</td>
+    <td>전후방향 (X)</td>
+    <td>좌우방향(Y)</td>
+    <td>상하방향(Z)</td>
+    <td>비고</td>
+  </tr>
+  <tr>
+    <td>상부체</td>
+    <td><%= upperStructure_weight %></td>
+    <td><%= product.COG.upperStructure.longitudinal %></td>
+    <td><%= product.COG.upperStructure.lateral %></td>
+    <td><%= product.COG.upperStructure.vertical %></td>
+    <td>운전자 65kg</td>
+  </tr>
+  <tr>
+    <td>CounterWeight</td>
+    <td><%= product.COG.counterWeight.weight %></td>
+    <td><%= product.COG.counterWeight.longitudinal %></td>
+    <td><%= product.COG.counterWeight.lateral %></td>
+    <td><%= product.COG.counterWeight.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>하부체</td>
+    <td><%= product.COG.underCarriage.weight %></td>
+    <td><%= product.COG.underCarriage.longitudinal %></td>
+    <td><%= product.COG.underCarriage.lateral %></td>
+    <td><%= product.COG.underCarriage.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>작업장치 (Front)</td>
+    <td><%= attachments_load_weight %></td>
+    <td><%= product.COG.attachments_maxReach.longitudinal %></td>
+    <td><%= product.COG.attachments_maxReach.lateral %></td>
+    <td><%= product.COG.attachments_maxReach.vertical %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>합계</td>
+    <td><%= GrossWeight_load %></td>
+    <td><%= COG_longitudinal_maxReach %></td>
+    <td><%= COG_lateral_maxReach %></td>
+    <td><%= COG_vertical_maxReach %></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+    <!-- ===============================================-->
+    <!--    경사지 전도안정성    -->
+    <!-- ===============================================-->
+    <div class="pages" id="Stability_Slope">
+        <table class="bordertable">
+            <tr class="borderheader">
+                <td height="30mm">좌우의 안정도</td>
+            </tr>
+
+            <tr>
+                <td class="head_description">
+                    <p>
+                        타이어식 굴착기는 견고한 땅 위에서 자체중량 상태로 좌우로 25도까지 기울여도 넘어지지 않는 구조이어야 한다. 이 경우 굴착기의 자세는 주행자세로 한다.
+                    </p>
+                        <img src="/images/stability_Lateral.jpg" alt="" srcset="" width="40%">
+
+                    <p>○ 측방안정도 관련 제원</p>
+
+
+                    <table class="table-striped innertable" width="60%" height="300px">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>기호</th>
+                                <th>단위</th>
+                                <th>제원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>전장비중량</td>
+                                <td>$$W_T$$</td>
+                                <td>㎏</td>
+                                <td>
+                                    <%= GrossWeight %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>무게중심 Y</td>
+                                <td>$$Y_T$$</td>
+                                <td>㎜</td>
+                                <td>
+                                    <%= COG_lateral %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>무게중심 Z</td>
+                                <td>$$Z_T$$</td>
+                                <td>㎜</td>
+                                <td>
+                                    <%= COG_vertical %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>선회중심 - 전도지선</td>
+                                <td>$$L_1$$</td>
+                                <td>㎜</td>
+                                <td>
+                                    <%= product.stability.tipping_line %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>○ 전도 한계각 계산</p>
+
+                    <table class=" innertable" width="90%" height="">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>산식</th>
+                                <th></th>
+                                <th>제원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>전도최대각</td>
+                                <td>$$\theta = \tan ^{-1} (\frac{L_1 + Y_T}{Z_T})$$</td>
+                                <td>$$ \tan ^{-1} (\frac{<%= product.stability.tipping_line %> + <%= COG_lateral %>}{<%= COG_vertical %>})$$</td>
+                                <td>
+                                    $$<%= lateral_slope_limit %>$$
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+    </div>
