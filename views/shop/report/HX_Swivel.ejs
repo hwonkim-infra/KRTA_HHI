@@ -1,4 +1,15 @@
 
+<% 
+var planet_reduct_1 = 1+product.planetary_ring_gear_C1/product.planetary_sun_gear_A1;
+var planet_reduct_2 = 1+product.planetary_ring_gear_C2/product.planetary_sun_gear_A2;
+var planet_reduct_tot = (planet_reduct_1 * planet_reduct_2).toFixed(2)
+var swing_reduction_rev =  (product.swivel.pump_flow * product.swivel.motor_eff / product.swivel.motor_displacement*1000).toFixed(2)
+
+var i_B = (product.gear_swing_bearing / product.gear_pinion).toFixed(2) // 7.07
+var i_T = (planet_reduct_tot * i_B).toFixed(2) // 148.14
+var swing_rev = (swing_reduction_rev/product.swivel.reduction).toFixed(1);
+%>
+
 
             <!-- ===============================================-->
             <!--    선회 속도    -->

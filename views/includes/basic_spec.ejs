@@ -11,12 +11,9 @@
                 <span class="input-group-text">형식 </span>
                 <input class="form-control" id="model_name" name="model_name" type="text"
                     value="<% if (editing){ %><%= product.model_name %><% } %>" placeholder="기종명" />
-                <span class="input-group-text">시리얼 번호</span>
+                <span class="input-group-text">형식 번호</span>
                 <input class="form-control" id="serial_no" name="serial_no" type="number"
                     value="<% if (editing){ %><%= product.serial_no %><% } %>" placeholder="serial No." />
-                <span class="input-group-text">형식 번호</span>
-                <input class="form-control" id="regist_no" name="regist_no" type="number"
-                    value="<% if (editing){ %><%= product.regist_no %><% } %>" placeholder="serial No." />
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"> 자체중량 </span>
@@ -50,20 +47,11 @@
             <div class="input-group mb-3">
                 <span class="input-group-text"> 변속기 </span>
                 <input class="form-control" id="gearbox" name="gearbox" type="text"
-                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="무변속 / 전진2단후진2단" />
+                    value="<% if (editing){ %><%= product.gearbox %><% } %>" placeholder="무변속" />
                 <span class="input-group-text"> 기타 사항</span>
                 <input class="form-control" id="ETC" name="ETC" type="text"
                     value="<% if (editing){ %><%= product.ETC %><% } %>" placeholder="가변트랙, 특수사양 등" />
             </div>
-            <% if (ChangeModel){ %>
-            <div class="input-group mb-3">
-                <span class="input-group-text"> 형식변경사유 </span>
-                <input class="form-control" id="ECN" name="ECN" type="text"
-                    value="<% if (editing){ %><%= product.ECN %><% } %>" placeholder="작업장치, CW 등 주요 변경사향" />                
-            </div>
-            <% } %>
-
-            
 
 
 
@@ -73,3 +61,4 @@
         </div>
     </div>
 </div>
+

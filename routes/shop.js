@@ -26,6 +26,9 @@ router.get('/WEXs/:productId/:origin', shopWEXController.getChangeModelReport);
 router.get('/Index_Supple', shopFileController.getIndex);
 router.get('/SuppleFiles/:fileId', shopFileController.getReport);
 
+router.get('/Index_Supple', shopFileController.getIndex);
+router.get('/SuppleFiles/:fileId', shopFileController.getReport);
+
 
 
 module.exports = router;

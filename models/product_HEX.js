@@ -10,16 +10,13 @@ const HEXSchema = new Schema({
     // 제원 사양
     model_name: { type: String },
     serial_no: { type: Number },
-    regist_no: { type: Number },
     machine_grade: { type: String },
     operating_weight: { type: Number },
     gearbox: { type: String },
     overall_length: { type: Number },
     overall_width: { type: Number },
     overall_height: { type: Number },
-    rear_swing_radius: { type: Number },
     ETC: { type: String },
-    ECN: { type: String },
 
     // 하부체와 트랙
     undercarriage: {
@@ -54,9 +51,6 @@ const HEXSchema = new Schema({
         quick_coupler_2: { type: String },
         quick_coupler_weight_2: { type: Number },
 
-        height_woqc: { type: Number },
-length_woqc: { type: Number },
-
         // 작업반경
         digging_reach: { type: Number },
         digging_reach_woqc: { type: Number },
@@ -79,7 +73,18 @@ length_woqc: { type: Number },
         motor_displacement: { type: Number },
         reduction: { type: Number },
         motor_eff: { type: Number },
-        
+        swing_gears: {
+            swing_pinion: { type: Number },
+            swing_bearing: { type: Number },
+            gear_pinion: { type: Number },
+            gear_swing_bearing: { type: Number },
+            planetary_sun_gear_A1: { type: Number },
+            planetary_planet_gear_B1: { type: Number },
+            planetary_ring_gear_C1: { type: Number },
+            planetary_sun_gear_A2: { type: Number },
+            planetary_planet_gear_B2: { type: Number },
+            planetary_ring_gear_C2: { type: Number },
+        },
     },
 
     // 주행성능 관련
@@ -115,7 +120,6 @@ length_woqc: { type: Number },
         bucket: { type: String },
         bucket_capa: { type: String },
         Qcouplr: { type: String },
-        dozer: { type: String },
         Emission_Certi: { type: String },
         Emission_Certi2: { type: String },
         EngineCurve: { type: String },
@@ -153,17 +157,6 @@ length_woqc: { type: Number },
             lateral: Number,
             vertical: Number,
         },
-        attachments_load: {
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
-        attachments_maxReach: {
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
-
     },
 });
 

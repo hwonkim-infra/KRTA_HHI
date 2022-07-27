@@ -62,9 +62,7 @@ const WEXSchema = new Schema({
         quick_coupler_weight_1: { type: Number },
         quick_coupler_2: { type: String },
         quick_coupler_weight_2: { type: Number },
-        height_woqc: { type: Number },
-        length_woqc: { type: Number },
-        
+
         // 작업반경
         digging_reach: { type: Number },
         digging_reach_woqc: { type: Number },
@@ -136,7 +134,6 @@ const WEXSchema = new Schema({
         bucket: { type: String },
         bucket_capa: { type: String },
         Qcouplr: { type: String },
-        dozer: { type: String },
         Emission_Certi: { type: String },
         Emission_Certi2: { type: String },
         Engine_Curve: { type: String },
@@ -147,44 +144,6 @@ const WEXSchema = new Schema({
         travel_reduction: { type: String },
         climb: { type: String },
         bucket_creep: { type: String },
-    },
-
-
-    // 무게중심 관련
-    COG: {
-        upperStructure: {
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
-        counterWeight: {
-            weight: Number,
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
-        underCarriage: {
-            weight: Number,
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
-        attachments: {
-            weight: Number,
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
-        attachments_load: {
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
-        attachments_maxReach: {
-            longitudinal: Number,
-            lateral: Number,
-            vertical: Number,
-        },
     },
 });
 

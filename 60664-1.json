@@ -1,0 +1,101 @@
+{
+    "4 Basic technical characteristics for insulation coordination": {
+        "4.1General.": {},
+        "4.2Voltages": {
+            "4.2.1General aspects": {},
+            "4.2.2Transient overvoltages": {},
+            "4.2.3Temporary overvoltages": {},
+            "4.2.4Recurring peak voltage": {},
+            "4.2.5Steady-state working voltage": {},
+            "4.2.6Steady-state peak voltage": {}
+        },
+        "4.3 Overvoltage categories": {
+
+            "4.3.1General": {},
+            "4.3.2Equipment energized directly from the mains supply": {},
+            "4.3.3Systems and equipment not energized directly from the mains supply": {}
+        },
+        "4.4 Frequency.": {
+
+            "4.4.1General": {},
+            "4.4.2Solid insulation": {}
+        },
+        "4.5Pollution": {
+            "4.5.1General": {},
+            "4.5.2Degrees of pollution in the micro-environment": {},
+            "4.5.3Conditions of conductive pollution": {}
+        },
+        "4.6Insulating material": {
+            "4.6.1Solid insulation": {},
+            "4.6.2Stresses": {},
+            "4.6.3Comparative tracking index (CTI)": {}
+        },
+        "4.7Environmental aspects": {
+            "4.7.1General": {},
+            "4.7.2Altitude": {},
+            "4.7.3Temperature": {},
+            "4.7.4Vibrations": {},
+            "4.7.5Humidity": {}
+        },
+        "4.8Duration of voltage stress": {},
+        "4.9Electrical field distribution": {}
+    },
+    "5 Design for insulation coordination": {
+
+        "5.1General.": {},
+        "5.1.1Means of insulation coordination": {},
+        "5.1.2Frequency above  kHz": {},
+        "5.1.3Reduced distances due to coating or potting": {},
+        "5.1.4Equipment which are not connected to public low-voltage systems.": {},
+        "5.2Dimensioning of clearances": {},
+        "5.2.1General": {},
+        "5.2.2Dimensioning criteria for clearances": {},
+        "5.2.3Other factors involving clearances": {},
+        "5.2.4Dimensioning of clearances of functional insulation": {},
+        "5.2.5Dimensioning of clearances of basic insulation, supplementary insulation and reinforced insulation": {},
+        "5.3Dimensioning of creepage distances": {},
+        "5.3.1General": ["공극, 부분강도, peak 고려"],
+        "5.3.2Dimensioning criteria of creepage distances": ["단시간, 장시간 스트레스, 기계충격, 가열, 부분방전"],
+        "5.3.3Other factors involving creepage distances": {},
+        "5.3.4Dimensioning of creepage distances of functional insulation": {},
+        "5.3.5Dimensioning of creepage distances of basic insulation, supplementary insulation and reinforced insulation": {},
+        "5.4Requirements for design of solid insulation": {},
+        "5.4.1General": {},
+        "5.4.2Voltage stress": {},
+        "5.4.3Withstand of voltage stresses": {},
+        "5.4.4Withstand on environmental stresses.": {}
+    },
+    "6 Tests and measurements.": {
+        "6.1General.": ["임펄스 전압시험으로 스트레스 검증", "공간 거리", "시험 전압", ""],
+        "6.2Verification of clearances": {
+            "6.2.1General": {},
+            "6.2.2Test voltages": {}
+        },
+        "6.3Verification of creepage distances": {},
+        "6.4Verification of solid insulation": {
+            "6.4.1General": {},
+            "6.4.2Selection of tests": {},
+            "6.4.3Conditioning": {},
+            "6.4.4Impulse voltage test.": {},
+            "6.4.5AC power frequency voltage test": {},
+            "6.4.6Partial discharge test": {},
+            "6.4.7DC voltage test": {},
+            "6.4.8High-frequency voltage test": {}
+        },
+        "6.5Performing dielectric tests on complete equipment": {
+            "6.5.1General": {},
+            "6.5.2Parts to be tested": {},
+            "6.5.3Preparation of equipment circuits.": {},
+            "6.5.4Test voltage values": {},
+            "6.5.5Test criteria": {}
+        },
+        "6.6Other tests": {
+
+            "6.6.1Test for purposes other than insulation coordination": {},
+            "6.6.2Sampling and routine tests": {},
+            "6.6.3Measurement accuracy of test parameters.": {}
+        },
+        "6.7Measurement of the attenuation of the transient overvoltages": {},
+        "6.8Measurement of clearances and creepage distances": {}
+    }
+}

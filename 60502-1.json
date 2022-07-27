@@ -1,0 +1,93 @@
+{
+    "4 Voltage designations and materials ": {
+        "4.1 Rated voltages ": ["최고 정격 전압과 고장시 지락 예방 분리 카테코리"],
+        "4.2 Insulating compounds ": ["열가소성, 가교 물질 및 기타 절연체"],
+        "4.3 Sheathing compounds ": ["열가소성 및 탄성 중합체와 정상 작동 온도"]
+    },
+    "5 Conductors ": ["IEC60228에 따르는 동, 연동, 알루미늄 합금"],
+    "6 Insulation": {
+        "6.1 Material ": ["(표2) 압출 유전체"],
+        "6.2 Insulation thickness ": ["도체와 절연체의 공칭 단면적"]
+    },
+    "7 Assembly of multicore cables, inner coverings and fillers.": {
+        "7.1 Inner coverings and fillers ": ["내부 시스는 압출/중첩", "허용 온도와 절연재료", "압출/중첩 시스 두께"],
+        "7.2 Cables with rated voltage 0,6/1(1,2) kV": ["심선 주위 공동 금속층 - 내부 시스 또는 원형 심선"],
+        "7.3 Cables with rated voltage 1,8/3 (3,6) kV": ["심선 주위 공동 금속층 필요"]
+    },
+    "8 Metallic layers for single-core and multicore cables": ["금속층은 아래 1 이상 구성"],
+    "9 Metallic screen ": {
+        "9.1 Construction ": ["금속 차폐는 시스가 될 수 있고 간격과 물리 전기 요구사항은 각국 규정 표준"],
+        "9.2 Requirements ": [""]
+    },
+    "10 Concentric conductor ": {
+        "10.1 Construction ": ["국제 표준에 따라, 기계 전기 안전 고려 재료"],
+        "10.2 Requirements ": ["국제 표준"],
+        "10.3 Application": ["다심 케이블은 내부 시스 위 적용"]
+    },
+    "11 Lead sheath": ["이음매 없는 튜브 형태"],
+    "12 Metallic armour ": {
+        "12.1 Types of metallic armour": ["평각, 원형, 이중테이프"],
+        "12.2 Materials ": ["원형/평각: 아연도금, 구리, 알루미늄. 테이프: 강판, 아연도금, 알루미늄"],
+        "12.3 Application of armour": ["압출/중첩 형태 단심/다심/분리/베딩"],
+        "12.4 Dimensions of the armour wires and armour tapes .": ["외장선과 테이프 공칭 치수"],
+        "12.5 Correlation between cable diameters and armour dimensions .": ["내장 외경 증대에 따라 공칭 지름 "],
+        "12.6 Round or flat wire armour ": ["최소 간격 근접"],
+        "12.7 Double tape armour ": ["내부 시스 테이프 형태 베딩 보강"]
+    },
+    "13 Oversheath": {
+        "13.1 General ": ["외부 시스 및 색상"],
+        "13.2 Material ": ["열가소성 저독성 중합체 화합물"],
+        "13.3 Thickness": [""]
+    },
+    "14 Test conditions ": {
+        "14.1 Ambient temperature ": ["상온"],
+        "14.2 Frequency and waveform of power frequency test voltages .": ["교류 표준 주파수"],
+        "14.3 Waveform of impulse test voltages ": ["IEC 60230"]
+    },
+    "15 Routine tests ": {
+        "15.1 General ": ["통상 케이블 길이"],
+        "15.2 Electrical resistance of conductors": ["동심 포함 모든 도체. IEC 60228 직류저항 측정"],
+        "15.3 Voltage test ": ["단심 차폐 케이블: 도체와 금속 차폐 사이 5분 인가", "다심: 각 도체와 금속 층 사이 인가", "전원 주파수 시험 전압은 2.5U + 2kV)"]
+    },
+    "16 Sample tests": {
+        "16.1 General ": ["도체, 치수, sheaths hot set"],
+        "16.2 Frequency of sample tests ": ["도체 치수, 물리적 시험"],
+        "16.3 Repetition of tests": ["동일 배치 2 샘플 재시험"],
+        "16.4 Conductor examination ": ["IEC 60228 "],
+        "16.5 Measurement of thickness of insulation and of non-metallic sheaths (including extruded separation sheaths, but excluding inner extruded coverings)": ["IEC 60811-1-1", "절연체 최소 두께, 비금속 sheath 최소 크기"],
+        "16.6 Measurement of thickness of lead sheath .": ["공칭 두께 이상", "스트립 / 링 방법"],
+        "16.7 Measurement of armour wires and tapes.": ["외장 선재 / 테이프 측정"],
+        "16.8 Measurement of external diameter ": ["IEC 60811"],
+        "16.9 Hot set test for EPR, HEPR and XLPE insulations and elastomeric sheaths.": [""]
+    },
+    "17 Type tests, electrical ": {
+        "17.1 Insulation resistance measurement at ambient temperature .": ["상온 체적 저항, 80~500V"],
+        "17.2 Insulation resistance measurement at maximum conductor temperature.": [""],
+        "17.3 Voltage test for 4 h ": [""],
+        "17.4 Impulse test for cables of rated voltage 1,8/3 (3,6) kV .": [""]
+    },
+    "18 Type tests, non-electrical ": {
+        "18.1 Measurement of thickness of insulation": [""],
+        "18.2 Measurement of thickness of non-metallic sheaths (including extruded": [""],
+        "separation sheaths, but excluding inner coverings) .": [""],
+        "18.3 Tests for determining the mechanical properties of insulation before and after": [""],
+        "ageing ": [""],
+        "18.4 Tests for determining the mechanical properties of non-metallic sheaths": [""],
+        "before and after ageing": [""],
+        "18.5 Additional ageing test on pieces of completed cables .": [""],
+        "18.6 Loss of mass test on PVC sheaths of type ST2 .": [""],
+        "18.7 Pressure test at high temperature on insulations and non-metallic sheaths.": [""],
+        "18.8 Test on PVC insulation and sheaths and halogen free sheaths at low temperatures ": [""],
+        "18.9 Test for resistance of PVC insulation and sheaths to cracking (heat shock test)": [""],
+        "18.10 Ozone resistance test for EPR and HEPR insulations .": [""],
+        "18.11 Hot set test for EPR, HEPR and XLPE insulations and elastomeric sheaths.": [""],
+        "18.12 Oil immersion test for elastomeric sheaths .": [""],
+        "18.13 Water absorption test on insulation ": [""],
+        "18.14 Fire tests ": [""],
+        "18.15 Measurement of carbon black content of black PE oversheaths.": [""],
+        "18.16 Shrinkage test for XLPE insulation ": [""],
+        "18.17 Special bending test ": [""],
+        "18.18 Determination of hardness of HEPR insulation .": [""],
+        "18.19 Determination of the elastic modulus of HEPR insulation.": [""]
+    }
+}

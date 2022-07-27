@@ -9,7 +9,6 @@
     <%- pageTitle %> 형식신고
   </title>
   <script id="MathJax-script" async src="/vendors/mathjax/tex-mml-chtml.js"></script>
-  <link rel="stylesheet" href="../../css/bootstrap.min.css">
 
   <link rel="stylesheet" href="../../stylesheets/pages.css">
 
@@ -19,8 +18,8 @@
 
 <body>
   <% 
-    var GrossWeight=product.operating_weight + 65;
-    var  GrossWeight_load = product.operating_weight + 65 + 1290;
+    var gross_weight=product.operating_weight + 65;
+    var  gross_weight_load = product.operating_weight + 65 + 1290;
       const degrees_to_radians=(degrees)=> {return degrees / (180/Math.PI)};
       const radians_to_degrees=(radians)=> {return radians * (180/Math.PI)};
   %>
@@ -29,8 +28,8 @@ var rearAxle_center	= product.undercarriage.wheel_base - product.undercarriage.f
 var axle_weight_front_unload = (product.operating_weight * (rearAxle_center-product.undercarriage.COG_center_unload)/product.undercarriage.wheel_base).toFixed(); // 공차하중 1축
 var axle_weight_rear_unload	= (product.operating_weight * (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_unload)/product.undercarriage.wheel_base).toFixed(); // 공차하중 2축
 
-var axle_weight_front_load = (GrossWeight_load* (rearAxle_center - product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
-var axle_weight_rear_load = (GrossWeight_load* (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
+var axle_weight_front_load = (gross_weight_load* (rearAxle_center - product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
+var axle_weight_rear_load = (gross_weight_load* (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
    %>
   <% 
   var axle_motor_rev=(product.travel.pump_displacement_travel *
@@ -40,7 +39,7 @@ var travel_speed=(2 * Math.PI * axle_motor_rev * product.travel.tire_rolling_rad
   <% 
   var noslip_slope = (radians_to_degrees(Math.atan(product.travel.friction_surface))).toFixed(1);
 var traction_slope = (radians_to_degrees(Math.asin((product.travel.traction_force - product.travel.running_resist *
-GrossWeight)/GrossWeight))).toFixed(1);
+gross_weight)/gross_weight))).toFixed(1);
 var min_slope = (Math.min(product.travel.engine_slope, noslip_slope, traction_slope)).toFixed();
 
 var innerKingpin_COS = Math.round(product.undercarriage.wheel_base / Math.sin(degrees_to_radians(product.travel.wheel_angle)));
@@ -51,10 +50,10 @@ var turning_radius = Math.ceil(outer_rim_minRadius*1.05 / 1000) * 1000;
 var braking_speed_standard	= Math.max(travel_speed * 0.8 , 32)
 var braking_force_axle	= (product.travel.brake_torque_axle/(9.8 * product.travel.tire_rolling_radius / 1000)).toFixed()
 var braking_force_total	= (2*braking_force_axle).toFixed()
-var braking_limit_slope	= (radians_to_degrees(Math.asin(braking_force_total/GrossWeight))).toFixed(1)
+var braking_limit_slope	= (radians_to_degrees(Math.asin(braking_force_total/gross_weight))).toFixed(1)
   var idle_running = 0.5;
 var idle_running = 0.5;
-var decceleration_rate = (braking_force_total/ GrossWeight).toFixed(1);
+var decceleration_rate = (braking_force_total/ gross_weight).toFixed(1);
 var decceleration = (decceleration_rate * 9.81).toFixed(1);
 var braking_distance_max = (travel_speed**2/(2*decceleration)*((1000/3600)**2) + idle_running*travel_speed*(1000/3600)).toFixed(1);
 var braking_distance_norm = (braking_speed_standard**2/(2*decceleration)*(1000/3600)**2 + idle_running*braking_speed_standard*(1000/3600)).toFixed(1);
@@ -243,17 +242,6 @@ var swing_speed	= (swing_reduction_rev/product.swivel.reduction).toFixed(1);
 
     </div>
 
-    <% if(product.ChangeModel) { %>
-
-  <%- include('./report/CompareChange.ejs') %>
-<% } %> 
-
-  <%- include('./report/WEXdimensions.ejs') %>
-
-  <%- include('./report/drawings.ejs') %>
-
-
-
     <%- include('./report/HW_WorkingRangeAndQC.ejs') %>
 
     <%- include('./report/HW_axleAndLoad.ejs') %>
@@ -261,7 +249,8 @@ var swing_speed	= (swing_reduction_rev/product.swivel.reduction).toFixed(1);
     <%- include('./report/HW_Swivel.ejs') %>
 
     <%- include('./report/HW_travel.ejs') %>
-<%- include('./report/Stability.ejs') %>
+    <%- include('./report/HW_stability.ejs') %>
+
 
 
 

@@ -7,7 +7,6 @@ exports.getAddProduct = (req, res, next) => {
         pageTitle: "Add Product",
         path: "/admin/add-HEX",
         editing: false,
-        ChangeModel: false,
     });
 };
 
@@ -18,14 +17,12 @@ exports.postAddProduct = (req, res, next) => {
         model_name: req.body.model_name,
         _id: req.body.model_name + "_" + Date.now(),
         serial_no: req.body.serial_no,
-        regist_no: req.body.regist_no,
         machine_grade: req.body.machine_grade,
         operating_weight: req.body.operating_weight,
         gearbox: req.body.gearbox,
         overall_length: req.body.overall_length,
         overall_width: req.body.overall_width,
         overall_height: req.body.overall_height,
-        rear_swing_radius: req.body.rear_swing_radius,
         ETC: req.body.ETC,
 
         // 하부체와 트랙
@@ -60,8 +57,6 @@ exports.postAddProduct = (req, res, next) => {
             quick_coupler_weight_1: req.body.quick_coupler_weight_1,
             quick_coupler_2: req.body.quick_coupler_2,
             quick_coupler_weight_2: req.body.quick_coupler_weight_2,
-            height_woqc: req.body.height_woqc,
-            length_woqc: req.body.length_woqc,
 
             digging_reach: req.body.digging_reach,
             digging_reach_woqc: req.body.digging_reach_woqc,
@@ -101,16 +96,6 @@ exports.postAddProduct = (req, res, next) => {
                 longitudinal: req.body.COG_attachments_longitudinal,
                 lateral: req.body.COG_attachments_lateral,
                 vertical: req.body.COG_attachments_vertical,
-            },
-            attachments_load: {
-                longitudinal: req.body.COG_attachments_load_longitudinal,
-                lateral: req.body.COG_attachments_load_lateral,
-                vertical: req.body.COG_attachments_load_vertical,
-            },
-            attachments_maxReach: {
-                longitudinal: req.body.COG_attachments_maxReach_longitudinal,
-                lateral: req.body.COG_attachments_maxReach_lateral,
-                vertical: req.body.COG_attachments_maxReach_vertical,
             },
         },
 
@@ -160,16 +145,15 @@ exports.postAddProduct = (req, res, next) => {
 
         // 외관도 관련
         drawings: {
-            exterior: req.body.drawings_exterior,
-            boom: req.body.drawings_boom,
-            arm: req.body.drawings_arm,
-            bucket: req.body.drawings_bucket,
-            bucket_capa: req.body.drawings_bucket_capa,
-            Qcouplr: req.body.drawings_Qcouplr,
-            dozer: req.body.drawings_dozer,
-            Emission_Certi: req.body.drawings_Emission_Certi,
-            Emission_Certi2: req.body.drawings_Emission_Certi2,
-            EngineCurve: req.body.drawings_EngineCurve,
+            exterior: req.body.drawing_exterior,
+            boom: req.body.drawing_boom,
+            arm: req.body.drawing_arm,
+            bucket: req.body.drawing_bucket,
+            bucket_capa: req.body.drawing_bucket_capa,
+            Qcouplr: req.body.drawing_Qcouplr,
+            Emission_Certi: req.body.drawing_Emission_Certi,
+            Emission_Certi2: req.body.drawing_Emission_Certi2,
+            EngineCurve: req.body.drawing_EngineCurve,
         },
 
         // 계산 설명 자료 관련
@@ -209,7 +193,6 @@ exports.getEditProduct = (req, res, next) => {
                 path: "/admin/edit-HEX",
                 editing: editMode,
                 product: product,
-                ChangeModel: product.ChangeModel
             });
         })
         .catch((err) => console.log(err));
@@ -223,16 +206,13 @@ exports.postEditProduct = (req, res, next) => {
             // 제원 관련
             product.model_name = req.body.model_name;
             product.serial_no = req.body.serial_no;
-            product.regist_no = req.body.regist_no;
             product.machine_grade = req.body.machine_grade;
             product.operating_weight = req.body.operating_weight;
             product.gearbox = req.body.gearbox;
             product.overall_length = req.body.overall_length;
             product.overall_width = req.body.overall_width;
             product.overall_height = req.body.overall_height;
-            product.rear_swing_radius = req.body.rear_swing_radius;
             product.ETC = req.body.ETC;
-            product.ECN = req.body.ECN;
 
             // 하부체와 트랙
             product.undercarriage.ground_clearance = req.body.ground_clearance;
@@ -263,8 +243,6 @@ exports.postEditProduct = (req, res, next) => {
             product.attachments.quick_coupler_2 = req.body.quick_coupler_2;
             product.attachments.quick_coupler_weight_2 =
                 req.body.quick_coupler_weight_2;
-            product.attachments.height_woqc= req.body.height_woqc;
-            product.attachments.length_woqc= req.body.length_woqc;
 
             product.attachments.digging_reach = req.body.digging_reach;
             product.attachments.digging_reach_woqc = req.body.digging_reach_woqc;
@@ -294,12 +272,6 @@ exports.postEditProduct = (req, res, next) => {
             product.COG.attachments.longitudinal = req.body.COG_attachments_longitudinal;
             product.COG.attachments.lateral = req.body.COG_attachments_lateral;
             product.COG.attachments.vertical = req.body.COG_attachments_vertical;
-            product.COG.attachments_load.longitudinal = req.body.COG_attachments_load_longitudinal;
-            product.COG.attachments_load.lateral = req.body.COG_attachments_load_lateral;
-            product.COG.attachments_load.vertical = req.body.COG_attachments_load_vertical;
-            product.COG.attachments_maxReach.longitudinal = req.body.COG_attachments_maxReach_longitudinal;
-            product.COG.attachments_maxReach.lateral = req.body.COG_attachments_maxReach_lateral;
-            product.COG.attachments_maxReach.vertical = req.body.COG_attachments_maxReach_vertical;
 
             // 선회 성능 관련
             product.swivel.pump_flow = req.body.pump_displacement_swing;
@@ -307,7 +279,23 @@ exports.postEditProduct = (req, res, next) => {
             product.swivel.reduction = req.body.swing_reduction;
             product.swivel.motor_eff = req.body.swing_motor_eff;
 
-
+            product.swivel.swing_gears.swing_pinion = req.body.swing_pinion;
+            product.swivel.swing_gears.swing_bearing = req.body.swing_bearing;
+            product.swivel.swing_gears.gear_pinion = req.body.gear_pinion;
+            product.swivel.swing_gears.gear_swing_bearing =
+                req.body.gear_swing_bearing;
+            product.swivel.swing_gears.planetary_sun_gear_A1 =
+                req.body.planetary_sun_gear_A1;
+            product.swivel.swing_gears.planetary_planet_gear_B1 =
+                req.body.planetary_planet_gear_B1;
+            product.swivel.swing_gears.planetary_ring_gear_C1 =
+                req.body.planetary_ring_gear_C1;
+            product.swivel.swing_gears.planetary_sun_gear_A2 =
+                req.body.planetary_sun_gear_A2;
+            product.swivel.swing_gears.planetary_planet_gear_B2 =
+                req.body.planetary_planet_gear_B2;
+            product.swivel.swing_gears.planetary_ring_gear_C2 =
+                req.body.planetary_ring_gear_C2;
 
             // 주행 성능 관련
             product.travel.pump_displacement = req.body.pump_displacement_travel;
@@ -335,24 +323,17 @@ exports.postEditProduct = (req, res, next) => {
                 req.body.travel_ring_gear_R2;
 
             // 외관도 관련
-            product.drawings.exterior = req.body.drawings_exterior;
-            product.drawings.boom = req.body.drawings_boom;
-            product.drawings.arm = req.body.drawings_arm;
-            product.drawings.bucket = req.body.drawings_bucket;
-            product.drawings.bucket_capa = req.body.drawings_bucket_capa;
-            product.drawings.Qcouplr = req.body.drawings_Qcouplr;
-            product.drawings.dozer = req.body.drawings_dozer;
+            product.drawings.exterior = req.body.drawing_exterior;
+            product.drawings.boom = req.body.drawing_boom;
+            product.drawings.arm = req.body.drawing_arm;
+            product.drawings.bucket = req.body.drawing_bucket;
+            product.drawings.bucket_capa = req.body.drawing_bucket_capa;
+            product.drawings.Qcouplr = req.body.drawing_Qcouplr;
+            product.drawings.Emission_Certi = req.body.drawing_Emission_Certi;
+            product.drawings.Emission_Certi2 = req.body.drawing_Emission_Certi2;
+            product.drawings.EngineCurve = req.body.drawing_EngineCurve;
 
-            product.drawings.Emission_Certi = req.body.drawings_Emission_Certi;
-            product.drawings.Emission_Certi2 = req.body.drawings_Emission_Certi2;
-            product.drawings.EngineCurve = req.body.drawings_EngineCurve;
-
-            product.description.swing_reduction = req.body.swing_reduction_description;
-            product.description.travel_reduction = req.body.travel_reduction_description;
-            product.description.climb = req.body.climb;
-            product.description.bucket_creep = req.body.bucket_creep;
-
-            console.log(product);
+            console.log(product.COG);
             return product.save();
         })
         .then((result) => {

@@ -1,11 +1,12 @@
 
-<% 
-
+<% var GrossWeight = product.operating_weight + 65 // 운전중량 
+var quick_coupler_weight = Math.max(product.attachments.quick_coupler_weight_1, product.attachments.quick_coupler_weight_2)|| 0;
 var  gross_weight_load = product.operating_weight + 65 + 1500*product.attachments.bucket_heap;
 
 %>
 <% 
 var ground_Length = product.undercarriage.tumbler_distance+0.35*(product.undercarriage.track_length-product.undercarriage.tumbler_distance);
+var ground_pressure = (GrossWeight / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
 var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.undercarriage.shoe_width/10 * ground_Length/10));
 %> 
 
@@ -146,7 +147,7 @@ var ground_pressure_woqc = ((GrossWeight - quick_coupler_weight) / (2 * product.
                 <td> 운전중량 / <br>(트랙의 수 × 슈폭 × 접지길이) </td>
               </tr>
               <tr>
-                <td colspan="5">접지압 (퀵커플러 <%= quick_coupler_weight %>kg 제외)</td>
+                <td colspan="5">접지압 (퀵커플러 제외)</td>
               </tr>
 
               <tr>

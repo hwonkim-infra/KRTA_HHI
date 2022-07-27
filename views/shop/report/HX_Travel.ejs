@@ -1,3 +1,27 @@
+<% var gross_weight=product.operating_weight + 65; %>
+
+<%  %>
+<% 
+var TM_rev_1=(product.travel.pump_displacement * product.travel.TM_mv/(product.travel.TM_flow_1 * product.travel.reduc)*1000).toFixed(2); 
+var TM_rev_2=(product.travel.pump_displacement * product.travel.TM_mv/(product.travel.TM_flow_2 * product.travel.reduc)*1000).toFixed(2); 
+var travel_speed_1=(TM_rev_1 * 2 * Math.PI*product.travel.sprocket_radius * 60 / 10**6).toFixed(2); 
+var travel_speed_2=(TM_rev_2 * 2 * Math.PI*product.travel.sprocket_radius * 60 / 10**6).toFixed(2); 
+var travel_speed = Math.max(travel_speed_1, travel_speed_2); 
+%>
+<% var TM_1=(( product.travel.pump_pressure * product.travel.TM_flow_1 / (200* Math.PI)) * product.travel.reduc * product.travel.TM_mt).toFixed(2); 
+var TM_2=(( product.travel.pump_pressure * product.travel.TM_flow_2 / (200 * Math.PI)) * product.travel.reduc * product.travel.TM_mt).toFixed(2); 
+var Traction_Sprocket=(2 * TM_2 * 1000 / product.travel.sprocket_radius) * product.travel.TM_r; 
+var ground_traction = product.travel.surface_drag * gross_weight; %>
+
+<% var TS=((2 * TM_1 * 1000 / product.travel.sprocket_radius) * product.travel.TM_r).toFixed(0); 
+var AF=(product.travel.surface_drag * (product.operating_weight + 65)).toFixed(2);
+var DP=Math.min(TS, AF);
+var traction_downward=(product.travel.sprocket_radius / 1000 * gross_weight * Math.sin(16.7/180*Math.PI)).toFixed(2);
+                    %>
+
+<% var theta_1=(Math.atan(product.travel.surface_drag)*(180/Math.PI)).toFixed(1);
+ var theta_2=((180/Math.PI) * Math.asin( (DP - product.travel.drag * gross_weight) / gross_weight)).toFixed(1);
+var theta_3=product.travel.greadability_ref; %>
 
 <!-- ===============================================-->
 <!--    주행 능력    -->
@@ -66,24 +90,9 @@
                         </tr>
                     </tbody>
                 </table>
-
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div class="pages" id="Travel_Speed">
-    <table class="bordertable">
-        <tr class="borderheader">
-            <td height="30mm">주행 속도</td>
-        </tr>
-
-        <tr>
-            <td class="head_description">
-
                 <p>○ 주행모터 회전속도에 따른 주행속도 계산</p>
 
-                <table class="innertable " width="100%">
+                <table width="100%">
                     <tbody>
                         <tr>
                             <td class="item-headers" colspan="3">주행모터 축 회전</td>
@@ -135,8 +144,7 @@
     </table>
 </div>
 
-
-<div class="pages" id="Travel_Reduction">
+<div class="pages" id="Travel_Speed">
     <table class="bordertable">
         <tr class="borderheader">
             <td height="30mm">주행 속도</td>
@@ -346,7 +354,7 @@
                         <tr>
                             <td>$$ \theta_2 = \sin^{-1}{{DP - \xi W_T}\over W_T} $$</td>
                                                     <td>$$ \sin^{-1}({{<%= DP %> - <%= product.travel.drag %> × <%=
-                                                                    GrossWeight %>} \over <%= GrossWeight %>}) $$</td>
+                                                                    gross_weight %>} \over <%= gross_weight %>}) $$</td>
                                                     <td>$$ <%= theta_2 %> $$</td>
                                                 </tr>
                                                 <tr>
@@ -374,7 +382,6 @@
                                     <td class="head_description">
 
                                         <div class="head_description">경사지에서의 제동 유지는 제동 토크와 내려가는 힘 간의 비교로 결정</div>
-                                        <p></p>
                                         <p>○ 제동능력 관련 사양</p>
 
                                         <table class="innertable" width="80%">
@@ -392,7 +399,7 @@
                                                     <td>$$W_T$$</td>
                                                     <td>㎏</td>
                                                     <td>
-                                                        <%= GrossWeight %>
+                                                        <%= gross_weight %>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -421,8 +428,6 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <p></p>
-                                        <p></p>
                                         <p>○ 주차 토크와 내려가는 힘 간의 비교</p>
                                         <table width="100%">
                                             <tbody>
@@ -443,7 +448,7 @@
                                                 <tr>
                                                     <td>$$TS = R \times W_t \times \sin \theta$$</td>
                                                     <td>$$<%= (product.travel.sprocket_radius / 1000).toFixed(3) %> \times <%=
-                                                                GrossWeight %> \times \sin 16.7$$</td>
+                                                                gross_weight %> \times \sin 16.7$$</td>
                                                     <td>$$<%= traction_downward %>$$ </td>
                                                 </tr>
                                             </tbody>

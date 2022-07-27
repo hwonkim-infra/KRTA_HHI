@@ -7,7 +7,6 @@ exports.getAddProduct = (req, res, next) => {
         pageTitle: "Add Product",
         path: "/admin/add-WEX",
         editing: false,
-        ChangeModel: false,
     });
 };
 
@@ -28,10 +27,8 @@ exports.postAddProduct = (req, res, next) => {
         overall_length: req.body.overall_length,
         overall_width: req.body.overall_width,
         overall_height: req.body.overall_height,
-        ETC: req.body.ETC,
 
-
-        // 하부체와 액슬
+        // 타이어 제원과 부하
         undercarriage: {
             ground_clearance: req.body.ground_clearance,
             wheel_base: req.body.wheel_base,
@@ -50,20 +47,9 @@ exports.postAddProduct = (req, res, next) => {
             axle_limit_description: req.body.axle_limit_description,
         },
 
-        // 엔진 관련
-        engine: {
-            engine_name: req.body.engine_name,
-            supplier: req.body.engine_supplier,
-            power: req.body.engine_power,
-            nominal_rev: req.body.nominal_rev,
-            torque: req.body.engine_torque,
-            torque_rev: req.body.torque_rev,
-            cylinder: req.body.engine_cylinder,
-        },
-
-
         // 작업장치 관련
         attachments: {
+
             bucket_struck: req.body.bucket_struck,
             bucket_heap: req.body.bucket_heap,
             arm_length: req.body.arm_length,
@@ -72,8 +58,6 @@ exports.postAddProduct = (req, res, next) => {
             quick_coupler_weight_1: req.body.quick_coupler_weight_1,
             quick_coupler_2: req.body.quick_coupler_2,
             quick_coupler_weight_2: req.body.quick_coupler_weight_2,
-            height_woqc: req.body.height_woqc,
-            length_woqc: req.body.length_woqc,
 
             digging_reach: req.body.digging_reach,
             digging_reach_woqc: req.body.digging_reach_woqc,
@@ -85,6 +69,16 @@ exports.postAddProduct = (req, res, next) => {
 
 
 
+        // 엔진 관련
+        engine: {
+            engine_name: req.body.engine_name,
+            supplier: req.body.engine_supplier,
+            power: req.body.engine_power,
+            nominal_rev: req.body.nominal_rev,
+            torque: req.body.engine_torque,
+            torque_rev: req.body.torque_rev,
+            cylinder: req.body.engine_cylinder,
+        },
 
         // 주행성능 관련
         travel: {
@@ -123,42 +117,6 @@ exports.postAddProduct = (req, res, next) => {
             motor_eff: req.body.swing_motor_eff,
         },
 
-        // 무게중심
-        COG: {
-            upperStructure: {
-                longitudinal: req.body.COG_upperStructure_longitudinal,
-                lateral: req.body.COG_upperStructure_lateral,
-                vertical: req.body.COG_upperStructure_vertical,
-            },
-            counterWeight: {
-                weight: req.body.COG_counterWeight_weight,
-                longitudinal: req.body.COG_counterWeight_longitudinal,
-                lateral: req.body.COG_counterWeight_lateral,
-                vertical: req.body.COG_counterWeight_vertical,
-            },
-            underCarriage: {
-                weight: req.body.COG_underCarriage_weight,
-                longitudinal: req.body.COG_underCarriage_longitudinal,
-                lateral: req.body.COG_underCarriage_lateral,
-                vertical: req.body.COG_underCarriage_vertical,
-            },
-            attachments: {
-                weight: req.body.COG_attachments_weight,
-                longitudinal: req.body.COG_attachments_longitudinal,
-                lateral: req.body.COG_attachments_lateral,
-                vertical: req.body.COG_attachments_vertical,
-            },
-            attachments_load: {
-                longitudinal: req.body.COG_attachments_load_longitudinal,
-                lateral: req.body.COG_attachments_load_lateral,
-                vertical: req.body.COG_attachments_load_vertical,
-            },
-            attachments_maxReach: {
-                longitudinal: req.body.COG_attachments_maxReach_longitudinal,
-                lateral: req.body.COG_attachments_maxReach_lateral,
-                vertical: req.body.COG_attachments_maxReach_vertical,
-            },
-        },
 
         // 전도안정성
         stability: {
@@ -175,7 +133,6 @@ exports.postAddProduct = (req, res, next) => {
             bucket: req.body.drawings_bucket,
             bucket_capa: req.body.drawings_bucket_capa,
             Qcouplr: req.body.drawings_Qcouplr,
-            dozer: req.body.drawings_dozer,
             Emission_Certi: req.body.drawings_Emission_Certi,
             Emission_Certi2: req.body.drawings_Emission_Certi2,
             Engine_Curve: req.body.drawings_Engine_Curve,
@@ -217,7 +174,6 @@ exports.getEditProduct = (req, res, next) => {
                 path: "/admin/edit-WEX",
                 editing: editMode,
                 product: product,
-        ChangeModel: false,
             });
         })
         .catch((err) => console.log(err));
@@ -246,15 +202,12 @@ exports.postEditProduct = (req, res, next) => {
             product.undercarriage.axle_track_front = req.body.axle_track_front;
             product.undercarriage.axle_track_rear = req.body.axle_track_rear;
             product.undercarriage.no_tires = req.body.no_tires;
-
             product.undercarriage.tire_frontAxle = req.body.tire_frontAxle;
             product.undercarriage.tire_rearAxle = req.body.tire_rearAxle;
             product.undercarriage.tire_load_limit = req.body.tire_load_limit;
             product.undercarriage.tire_load_limit_running = req.body.tire_load_limit_running;
-
             product.undercarriage.COG_center_unload = req.body.COG_center_unload;
             product.undercarriage.COG_center_load = req.body.COG_center_load;
-
             product.undercarriage.frontAxle_center = req.body.frontAxle_center;
             product.undercarriage.axle_weight_front_limit = req.body.axle_weight_front_limit;
             product.undercarriage.axle_weight_rear_limit = req.body.axle_weight_rear_limit;
@@ -270,8 +223,6 @@ exports.postEditProduct = (req, res, next) => {
             product.attachments.quick_coupler_weight_1 = req.body.quick_coupler_weight_1;
             product.attachments.quick_coupler_2 = req.body.quick_coupler_2;
             product.attachments.quick_coupler_weight_2 = req.body.quick_coupler_weight_2;
-            product.attachments.height_woqc= req.body.height_woqc;
-            product.attachments.length_woqc= req.body.length_woqc;
 
             product.attachments.digging_reach = req.body.digging_reach;
             product.attachments.digging_reach_woqc = req.body.digging_reach_woqc;
@@ -320,28 +271,6 @@ exports.postEditProduct = (req, res, next) => {
             product.stability.COG_vertical = req.body.COG_vertical;
             product.stability.tipping_line = req.body.tipping_line;
 
-            // 무게중심 관련
-            product.COG.upperStructure.longitudinal = req.body.COG_upperStructure_longitudinal;
-            product.COG.upperStructure.lateral = req.body.COG_upperStructure_lateral;
-            product.COG.upperStructure.vertical = req.body.COG_upperStructure_vertical;
-            product.COG.counterWeight.weight = req.body.COG_counterWeight_weight;
-            product.COG.counterWeight.longitudinal = req.body.COG_counterWeight_longitudinal;
-            product.COG.counterWeight.lateral = req.body.COG_counterWeight_lateral;
-            product.COG.counterWeight.vertical = req.body.COG_counterWeight_vertical;
-            product.COG.underCarriage.weight = req.body.COG_underCarriage_weight;
-            product.COG.underCarriage.longitudinal = req.body.COG_underCarriage_longitudinal;
-            product.COG.underCarriage.lateral = req.body.COG_underCarriage_lateral;
-            product.COG.underCarriage.vertical = req.body.COG_underCarriage_vertical;
-            product.COG.attachments.weight = req.body.COG_attachments_weight;
-            product.COG.attachments.longitudinal = req.body.COG_attachments_longitudinal;
-            product.COG.attachments.lateral = req.body.COG_attachments_lateral;
-            product.COG.attachments.vertical = req.body.COG_attachments_vertical;
-            product.COG.attachments_load.longitudinal = req.body.COG_attachments_load_longitudinal;
-            product.COG.attachments_load.lateral = req.body.COG_attachments_load_lateral;
-            product.COG.attachments_load.vertical = req.body.COG_attachments_load_vertical;
-            product.COG.attachments_maxReach.longitudinal = req.body.COG_attachments_maxReach_longitudinal;
-            product.COG.attachments_maxReach.lateral = req.body.COG_attachments_maxReach_lateral;
-            product.COG.attachments_maxReach.vertical = req.body.COG_attachments_maxReach_vertical;
 
             // 브레이크 제동력
             product.travel.brake_pressure = req.body.brake_pressure;
@@ -357,22 +286,18 @@ exports.postEditProduct = (req, res, next) => {
             product.drawings.bucket = req.body.drawings_bucket;
             product.drawings.bucket_capa = req.body.drawings_bucket_capa;
             product.drawings.Qcouplr = req.body.drawings_Qcouplr;
-            product.drawings.dozer = req.body.drawings_Qcouplr;
-
             product.drawings.Emission_Certi = req.body.drawings_Emission_Certi;
             product.drawings.Emission_Certi2 = req.body.drawings_Emission_Certi2;
             product.drawings.Engine_Curve = req.body.drawings_Engine_Curve;
 
-            // 관련 설명 자료
-            product.description.swing_reduction = req.body.swing_reduction_description;
-            product.description.travel_reduction = req.body.travel_reduction;
-            product.description.climb = req.body.climb;
-            product.description.bucket_creep = req.body.bucket_creep;
+            product.stability.swing_reduction = req.body.swing_reduction;
+            product.stability.travel_reduction = req.body.travel_reduction;
+            product.stability.climb = req.body.climb;
+            product.stability.bucket_creep = req.body.bucket_creep;
 
             return product.save();
         })
         .then((result) => {
-            console.log(result)
             console.log("UPDATED PRODUCT!");
             res.redirect("/index_WEX");
         })

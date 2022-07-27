@@ -1,6 +1,6 @@
 <% 
 var GrossWeight=product.operating_weight + 65;
-var  GrossWeight_load = product.operating_weight + 65 + 1500*product.attachments.bucket_heap;
+var  gross_weight_load = product.operating_weight + 65 + 1500*product.attachments.bucket_heap;
 
 %>
 <% 
@@ -8,8 +8,8 @@ var rearAxle_center	= product.undercarriage.wheel_base - product.undercarriage.f
 var axle_weight_front_unload = (product.operating_weight * (rearAxle_center-product.undercarriage.COG_center_unload)/product.undercarriage.wheel_base).toFixed(); // 공차하중 1축
 var axle_weight_rear_unload	= (product.operating_weight * (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_unload)/product.undercarriage.wheel_base).toFixed(); // 공차하중 2축
 
-var axle_weight_front_load = (GrossWeight_load* (rearAxle_center - product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
-var axle_weight_rear_load = (GrossWeight_load* (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
+var axle_weight_front_load = (gross_weight_load* (rearAxle_center - product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
+var axle_weight_rear_load = (gross_weight_load* (product.undercarriage.frontAxle_center+product.undercarriage.COG_center_load)/product.undercarriage.wheel_base).toFixed();
 %>
 <% 
 var	tire_load_front_unload = (axle_weight_front_unload/product.undercarriage.no_tires/product.undercarriage.tire_load_limit * 100).toFixed(1);
@@ -35,7 +35,7 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
                     <thead>
                         <tr>
                             <th colspan="5" height="350px">
-                                <img src="/images/WEX-running.png" width="80%" />
+                                <img src="/images/ .png" width="80%" />
                             </th>
                         </tr>
                     </thead>
@@ -77,7 +77,7 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
                         <tr>
                             <td>“총중량”</td>
                             <td><%= product.operating_weight %> + 65 + 1500 × <%= product.attachments.bucket_heap %> </td>
-                            <td><%= GrossWeight_load %> ㎏</td>
+                            <td><%= gross_weight_load %> ㎏</td>
                         </tr>
                     </tbody>
                 </table>
@@ -90,7 +90,7 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
 <!-- ===============================================-->
 <!--    축별 허용하중    -->
 <!-- ===============================================-->
-<div class="pages" id="Axle_Load_unload_1">
+<div class="pages" id="Axle_Load_unload">
     <table class="bordertable">
         <tr class="borderheader">
             <td height="30mm">축별 하중</td>
@@ -99,7 +99,6 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
         <tr>
             <td class="head_description">
                 <p>○ 축별 하중 (공차)</p>
-                <img src="/images/WEX_unloading.png" alt="" srcset="">
                 <table class="innertable" width="80%" height="300px">
                     <thead>
                         <tr>
@@ -162,21 +161,6 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
                         </tr>
                     </tbody>
                 </table>
-
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div class="pages" id="Axle_Load_unload_2">
-    <table class="bordertable">
-        <tr class="borderheader">
-            <td height="30mm">축별 하중</td>
-        </tr>
-
-        <tr>
-            <td class="head_description">
- 
                 <p>○ 축별 하중값 계산 (공차)</p>
 
                 <table class="innertable" width="90%" height="200px">
@@ -211,7 +195,8 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
     </table>
 </div>
 
-<div class="pages" id="Axle_Load_loaded_1">
+
+<div class="pages" id="Axle_Load_loaded">
     <table class="bordertable">
         <tr class="borderheader">
             <td height="30mm">축별 하중</td>
@@ -219,9 +204,7 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
 
         <tr>
             <td class="head_description">
-
                 <p>○ 축별 하중 (적재)</p>
-                <img src="/images/WEX_Loading.png" alt="" srcset="">
                 <table class="innertable" width="80%" height="300px">
                     <thead>
                         <tr>
@@ -237,7 +220,7 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
                             <td>장비 총 중량</td>
                             <td>$$W_T$$</td>
                             <td>㎏</td>
-                            <td><%= GrossWeight_load %></td>
+                            <td><%= gross_weight_load %></td>
                             <td>적재 총 중량</td>
                         </tr>
                         <tr>
@@ -270,21 +253,6 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
                         </tr>
                     </tbody>
                 </table>
-
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div class="pages" id="Axle_Load_loaded_2">
-    <table class="bordertable">
-        <tr class="borderheader">
-            <td height="30mm">축별 하중</td>
-        </tr>
-
-        <tr>
-            <td class="head_description">
-
                 <p>○ 축별 하중값 계산 (적재)</p>
 
                 <table class="innertable" width="90%" height="200px">
@@ -300,14 +268,14 @@ var	tire_load_rear_unload_running = (axle_weight_rear_unload/product.undercarria
                         <tr>
                             <td>1축 하중</td>
                             <td>$$F_1 = \frac{W_T \cdot (L_2-X_T)}{L}$$</td>
-                            <td>$$ \frac{ <%= GrossWeight_load %> \cdot ( <%= rearAxle_center %> -
+                            <td>$$ \frac{ <%= gross_weight_load %> \cdot ( <%= rearAxle_center %> -
                                 <%= product.undercarriage.COG_center_load %> )}{ <%= product.undercarriage.wheel_base %> }$$</td>
                             <td><%= axle_weight_front_load %> </td>
                         </tr>
                         <tr>
                             <td>2축 하중</td>
                             <td>$$F_2 = \frac{W_T \cdot (L_1+X_T)}{L}$$</td>
-                            <td>$$ \frac{ <%= GrossWeight_load %> \cdot ( <%= product.undercarriage.frontAxle_center %> +
+                            <td>$$ \frac{ <%= gross_weight_load %> \cdot ( <%= product.undercarriage.frontAxle_center %> +
                                 <%= product.undercarriage.COG_center_load %> )}{ <%= product.undercarriage.wheel_base %> }$$</td>
                             <td><%= axle_weight_rear_load %> </td>
                         </tr>
